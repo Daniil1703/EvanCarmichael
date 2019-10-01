@@ -8,22 +8,82 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-	<div class="menu">
-		<div class="logo">
-			<a href="/"></a>
+	<div class="wrapper">
+		<!-- Шапка сайта со всей фигней -->
+		<div class="menu">
+			<div class="logo">
+				<a href="/"></a>
+			</div>
+			<div class="but1">
+				<a href="/">О нас</a>
+				<a href="/">Товары</a>
+				<a href="/">Корзина</a>
+				<a href="/">Закладки</a>
+			</div>
+			<div class="line"></div>
+			<div class="but2">
+				<a href="/">Регистрация</a>
+			</div>
+			<div class="but22">
+				<a href="/">Вход</a>
+			</div>
+		</div>	
+		<!-- Конец шапки сайта -->
+	
+		<!-- Основной контент -->
+		<div class="main">
+			<div class="hmincontent">
+				<div class="leftline"></div>
+				<div class="rightline"></div>
+				<div class="contentmenu">
+						<!-- СЛАЙДЕР -->
+					<div class="slide"> 
+						<div class="all">
+							<input checked type="radio" name="respond" id="desktop">
+								<article id="slider">
+										<input checked type="radio" name="slider" id="switch1">
+										<input type="radio" name="slider" id="switch2">
+										<input type="radio" name="slider" id="switch3">
+									<div id="slides">
+										<div id="overflow">
+											<div class="image">
+												<article><img src="../polls/static/media/index/slider/1.jpg"></article>
+												<article><img src="2.jpg"></article>
+												<article><img src="3.jpg"></article>
+											</div>
+										</div>
+									</div>
+								
+									<div id="controls">
+										<div class="controls1">
+											<label for="switch1"></label>
+											<label for="switch2"></label>
+											<label for="switch3"></label>
+										</div>
+									</div>								
+									<div id="active">
+										<label for="switch1"></label>
+										<label for="switch2"></label>
+										<label for="switch3"></label>
+									</div>
+								</article>
+						</div>
+					</div>
+						<!-- КОНЕЦ СЛАЙДЕРА -->
+					<div class="ads"> 
+						<h1>МЕСТО ДЛЯ РЕКЛАМЫ</h1>
+						<!-- ВЫСОТА РЕКЛАМЫ: 400h x 280w -->
+					</div>
+				</div>
+					<div class="twitter"> <h1> Твитты </h1></div>
+			</div>
+		</div> 
+		<!-- Конец основного контента -->
+	
+		<!-- Подвал сайта -->
+		<div class="podval">
+	
 		</div>
-		<div class="but1">
-			<a href="/">О нас</a>
-			<a href="/">Товары</a>
-			<a href="/">Корзина</a>
-		</div>
-		<div class="line"></div>
-		<div class="but2">
-			<a href="/">Регистрация</a>
-		</div>
-		<div class="but22">
-			<a href="../singup/vhod.html">Вход</a>
-		</div>
-	</div>	
-</body>
+	</div> 
+	</body>
 </html>
