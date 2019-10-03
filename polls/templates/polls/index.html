@@ -8,28 +8,14 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+		{% block body %}
+            
+		{% endblock body %}
 	<div class="wrapper">
 		<!-- Шапка сайта со всей фигней -->
-		<div class="menu">
-			<div class="logo">
-				<a href="/"></a>
-			</div>
-			<div class="but1">
-				<a href="/">О нас</a>
-				<a href="/">Товары</a>
-				<a href="/">Корзина</a>
-				<a href="/">Закладки</a>
-			</div>
-			<div class="line"></div>
-			<div class="but2">
-				<a href="/">Регистрация</a>
-			</div>
-			<div class="but22">
-				<a href="/">Вход</a>
-			</div>
-		</div>	
+		{% include "polls/includes/navbar.html" %}
 		<!-- Конец шапки сайта -->
-	
+		
 		<!-- Основной контент -->
 		<div class="main">
 			<div class="hmincontent">
@@ -72,18 +58,28 @@
 						<!-- КОНЕЦ СЛАЙДЕРА -->
 					<div class="ads"> 
 						<h1>МЕСТО ДЛЯ РЕКЛАМЫ</h1>
-						<!-- ВЫСОТА РЕКЛАМЫ: 400h x 280w -->
+						<!-- Размер РЕКЛАМЫ: 400h x 280w -->
 					</div>
 				</div>
-					<div class="twitter"> <h1> Твитты </h1></div>
+				<!-- ПОСТЫ В МОЕМ БЛОГГЕ БУДУТ РАССПОЛОГАТЬСЯ ТАК: -->
+					<div class="twitter"> 
+						{% for post in posts %}
+						<div>
+							<p class="publikacia-time-raspolojenie">{{ post.published_date }}</p>
+							<h1 class="zagolovok_posta_kotoriy_budet_pereadresovivat_peoples"><a href="">{{ post.title }}</a></h1>
+							<p class="text_savogo_posta">{{ post.text|linebreaksbr }}</p>
+						</div>
+						{% endfor %}
+					</div>
+				<!-- НА ЭТОМ ЗАКАНЧИВАЕТСЯ КОД С ПОСТАМИ -->
 			</div>
 		</div> 
 		<!-- Конец основного контента -->
 	
 		<!-- Подвал сайта -->
-		<div class="podval">
-	
-		</div>
+		{% include "polls/includes/footer.html" %}
+		<!-- Конец подвала сайта -->
 	</div> 
+
 </body>
 </html>
