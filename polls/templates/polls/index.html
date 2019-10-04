@@ -5,17 +5,15 @@
 	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
 	<title>Главная</title>
+
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-		{% block body %}
-            
-		{% endblock body %}
 	<div class="wrapper">
 		<!-- Шапка сайта со всей фигней -->
 		{% include "polls/includes/navbar.html" %}
 		<!-- Конец шапки сайта -->
-		
+
 		<!-- Основной контент -->
 		<div class="main">
 			<div class="hmincontent">
@@ -60,7 +58,7 @@
 						<h1>МЕСТО ДЛЯ РЕКЛАМЫ</h1>
 						<!-- Размер РЕКЛАМЫ: 400h x 280w -->
 					</div>
-				</div>
+				</div>			
 				<!-- ПОСТЫ В МОЕМ БЛОГГЕ БУДУТ РАССПОЛОГАТЬСЯ ТАК: -->
 					<div class="twitter"> 
 						{% for post in posts %}
@@ -72,14 +70,14 @@
 						{% endfor %}
 					</div>
 				<!-- НА ЭТОМ ЗАКАНЧИВАЕТСЯ КОД С ПОСТАМИ -->
+
 			</div>
 		</div> 
 		<!-- Конец основного контента -->
-	
+
 		<!-- Подвал сайта -->
 		{% include "polls/includes/footer.html" %}
 		<!-- Конец подвала сайта -->
 	</div> 
-
 </body>
 </html>
