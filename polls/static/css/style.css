@@ -138,9 +138,11 @@ body {
 	border: 2px solid white;
 	height: 400px;
 	width: 280px;
+	background: #fff;
 }
 /* Стать */
 .twitter {
+	background: #fff;
 	text-align: center;
 	border: 2px solid white;
 	margin: 0 65px 0px 50px;
