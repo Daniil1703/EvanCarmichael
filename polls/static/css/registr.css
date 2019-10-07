@@ -1,8 +1,71 @@
+.helptext {
+    display: none;
+}
+li{
+    display: none;
+}
+
 .base_window_registr {
     display: flex;
-    background: white;
-    height: 600px;
-    width: 900px;
+    background: black;
+    height: 590px;
+    width: 890px;
     margin: 10% 25% 25% 25%;
     border-radius: 15px;
+    border: 10px solid white;
+}
+.base_window_registr button{
+    margin-top: 30px;
+    margin-left: 310px;
+    font-weight: 1000;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    background: #ed9a22;
+    box-shadow: 0 -3px rgb(190, 102, 0) inset;
+    transition: 0.2s;
+} 
+.base_window_registr button:hover { 
+    background: #eca94a; 
+}
+.base_window_registr button:active {
+    background: #a16209;
+    box-shadow: 0 3px rgb(190, 102, 0) inset;
+}
+
+
+.logo_background{
+    background: url(../media/index/logo.jpg) no-repeat; 
+    margin-left: 220px;
+    margin-top: 100px;
+	width: 196px;
+    height: 42px;
+}
+
+.base_window_registr #id_username{
+    margin-left: 45px;
+}
+
+.base_window_registr input{
+    margin-top: 100px;
+}
+.base_window_registr #id_password1{
+    margin-left: 138px;
+    margin-top: 50px;
+}
+#id_password2{
+    margin-top: 10px;
+}
+
+#id_username .base_window_registr{
+    margin-top: 40px;
+}
+
+.base_window_registr label{
+    margin-left: 80px;
+}
+
+.base_window_registr .vopr{
+    margin-left: 70px;
 }

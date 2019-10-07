@@ -3,7 +3,10 @@
 <html>
 <head>
 	<title>Главная</title>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
 </head>
 <body>
 	<div class="wrapper">
@@ -52,19 +55,19 @@
 					</div>
 						<!-- КОНЕЦ СЛАЙДЕРА -->
 					<div class="ads"> 
-						<h1>МЕСТО ДЛЯ РЕКЛАМЫ</h1>
+						{% include "polls/includes/messages.html" %}
 						<!-- Размер РЕКЛАМЫ: 400h x 280w -->
 					</div>
 				</div>			
 				<!-- ПОСТЫ В МОЕМ БЛОГГЕ БУДУТ РАССПОЛОГАТЬСЯ ТАК: -->
 					<div class="twitter"> 
-						{% for post in posts %}
+						<!-- {% for post in posts %}
 						<div>
 							<p class="publikacia-time-raspolojenie">{{ post.published_date }}</p>
 							<h1 class="zagolovok_posta_kotoriy_budet_pereadresovivat_peoples"><a href="">{{ post.title }}</a></h1>
 							<p class="text_savogo_posta">{{ post.text|linebreaksbr }}</p>
 						</div>
-						{% endfor %}
+						{% endfor %} -->
 					</div>
 				<!-- НА ЭТОМ ЗАКАНЧИВАЕТСЯ КОД С ПОСТАМИ -->
 

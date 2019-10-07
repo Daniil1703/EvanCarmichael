@@ -7,12 +7,17 @@
 
 {% block login %}
     <div class="base_window_registr">
+        <div class="form_of_register">
         <form method="POST">
+            <div class="logo_background"></div>
             {% csrf_token %}
             {{form.as_p}} 
-            <button style = "background-color:#F4EB16;color:blue" class = "btn btn-outline-info" type = "submit" > Зарегистрироваться </button> 
+            <button class = "btn btn-outline-info" type = "submit" > Зарегистрироваться </button> 
         </form>
-    
-        If you already have an account <a href="/login" target="blank"><strong>login</strong></a> instead.
+        <div class="vopr">
+        <p class="Vopros">Уже зарегистрированы?</p>
+        <a href="{% url 'polls:login' %}" target="blank"><strong>Войти</strong></a>
+        </div>
+        </div>
     </div>
 {% endblock%}

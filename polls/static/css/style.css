@@ -50,6 +50,7 @@ body {
 }
 
 .but1 a{
+	font-family: 'Yeseva One', cursive;
 	display: inline-block;
 	background: #ed9a22;
 	text-align: center;
@@ -71,6 +72,7 @@ body {
 }
 
 .but2 a{
+	
 	display: block;
 	text-align: center;
 	color: black;
@@ -85,6 +87,20 @@ body {
 }
 
 .but22 a{
+	
+	display: block;
+	text-align: center;
+	color: black;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 7px 0px 7px 0px;
+}
+
+.nick_name{
+	max-width: 150px;
+}
+
+.nick_name a{
 	display: block;
 	text-align: center;
 	color: black;
@@ -142,9 +158,10 @@ body {
 }
 /* Стать */
 .twitter {
-	background: #fff;
+	background: black;
+	border-radius: 15px;
 	text-align: center;
-	border: 2px solid white;
+	border: 10px solid white;
 	margin: 0 65px 0px 50px;
 	height: 740px;
 }
@@ -155,6 +172,7 @@ body {
 	text-align: center;
 	height: 400px;
 	border: 2px solid white;
+	border-radius: 2px;
 	
 }
 

@@ -7,6 +7,18 @@
 
 {% block login %}
     <div class="base_window_login">
-        
+        <div class="container">
+            <div class="logo_background">
+            </div>
+            <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </form>
+            <div class="vopr">
+            <p class="Vopros">Все еще нет аккаунта?</p>
+            <a href="{% url 'polls:register' %}" target="blank"><strong>Зарегистрироваться</strong></a>
+            </div>
+        </div>
     </div>
 {% endblock%}

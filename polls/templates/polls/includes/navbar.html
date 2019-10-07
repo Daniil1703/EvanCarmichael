@@ -9,10 +9,21 @@
         <a href="/">Закладки</a>
     </div>
     <div class="line"></div>
+
+    {% if user.is_authenticated %}
+    <div class="nick_name">
+        <a href="/">{{user.username|title}}</a>
+    </div>
+    <div class="but22">
+        <a href="{% url 'polls:logout' %}">Выход</a>
+    </div>
+    {% else %}
     <div class="but2">
         <a href="{% url 'polls:register'  %}">Регистрация</a>
     </div>
     <div class="but22">
         <a href="{% url 'polls:login'  %}">Вход</a>
     </div>
+    {% endif %}
+
 </div>	
