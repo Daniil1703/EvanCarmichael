@@ -117,7 +117,7 @@ body {
 }
 
 .hmincontent{
-	height: 1200px;
+	height: 1300px;
 }
 
 .leftline{
@@ -146,24 +146,27 @@ body {
 	height: 400px;
 	width: 800px;
 	text-align: center;
+	border: 5px solid white;
+	border-radius: 10px;
 }
 /* Реклама */
-.ads{
+/* .ads{
 	text-align: center;
-	margin: 20px 0px 20px 70px;
-	border: 2px solid white;
+	margin: 20px 0px 20px 45px;
+	border: 7px solid white;
+	border-radius: 15px;
 	height: 400px;
 	width: 280px;
-	background: #fff;
-}
+	background: black;
+} */
 /* Стать */
 .twitter {
 	background: black;
-	border-radius: 15px;
+	border-radius: 10px;
 	text-align: center;
-	border: 10px solid white;
+	border: 5px solid white;
 	margin: 0 65px 0px 50px;
-	height: 740px;
+	height: 780px;
 }
 
 /* Собственно сам слайдер */
@@ -171,9 +174,6 @@ body {
     position: relative;
 	text-align: center;
 	height: 400px;
-	border: 2px solid white;
-	border-radius: 2px;
-	
 }
 
 #slider{ /*центровка слайдера*/
@@ -303,6 +303,7 @@ label, a{ /*при наведении на стрелки или переклю�
 /* Подвал сайта */
 
 .podval {
+	margin-top: 40px;
 	border-top: 3px solid white;
 	height: 150px;
     background: #ed9a22; /* Цвет фона  */
