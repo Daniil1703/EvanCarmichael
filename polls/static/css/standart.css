@@ -8,7 +8,6 @@ a{
 	text-decoration: none;
 }
 body {
-	background: url(../media/index/evan3.jpg);
 	display: flex;
 	flex-direction: column;
 }
@@ -122,21 +121,22 @@ body {
 }
 
 .leftline{
-	background: white;
+	background: #ed9a22;
 	float: left;
 	height: 100%;
-	width: 3px;
+	width: 2px;
 }
 
 .rightline{
-	background: white;
+	background: #ed9a22;
 	float: right;
 	height: 100%;
-	width: 3px;
+	width: 2px;
 
 }
 
 .contentmenu{
+	margin: 0 auto;
 	display: flex;
 	max-height: 800px;
 	max-width: 1300px;

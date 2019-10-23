@@ -7,8 +7,8 @@
 a{
 	text-decoration: none;
 }
+
 body {
-	background: url(../media/index/evan3.jpg);
 	display: flex;
 	flex-direction: column;
 }
@@ -117,37 +117,43 @@ body {
 }
 
 .hmincontent{
+	margin: 0 auto;
+	text-align: center;
 	height: 1300px;
 }
 
 .leftline{
-	background: white;
+	background: #ed9a22;
 	float: left;
 	height: 100%;
-	width: 3px;
+	width: 2px;
 }
 
 .rightline{
-	background: white;
+	background: #ed9a22;
 	float: right;
 	height: 100%;
-	width: 3px;
+	width: 2px;
 
 }
 
 .contentmenu{
+	margin: 0 auto;
 	display: flex;
 	max-height: 800px;
 	max-width: 1300px;
 }
 /* Билборд */
 .slide {
-	margin: 20px 20px 20px 50px;
+	margin: 0 auto;
+	/* margin: 20px 20px 20px 50px; */
 	height: 400px;
 	width: 800px;
 	text-align: center;
 	border: 5px solid white;
 	border-radius: 10px;
+	max-height: 400px;
+	max-width: 800px;
 }
 /* Реклама */
 /* .ads{
@@ -161,12 +167,14 @@ body {
 } */
 /* Стать */
 .twitter {
-	background: black;
+	background: white;
 	border-radius: 10px;
 	text-align: center;
-	border: 5px solid white;
-	margin: 0 65px 0px 50px;
+	border: 5px solid black;
+	margin: 0 auto;
 	height: 780px;
+	width: 1160px;
+	max-width: 1160px;
 }
 
 /* Собственно сам слайдер */
