@@ -1,8 +1,8 @@
 {% extends 'polls/layout.html' %}
-{% block title %}
+{% block title %} 
     <title>
         Логин
-    </title>
+    </title>    
 {% endblock %}
 
 {% block login %}
@@ -14,7 +14,17 @@
             {% csrf_token %}
             {{form.as_p}}
                 <button class="btn btn-outline-info" type="submit">Login</button>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error'%}
+                    <script>M.toast({html: "{{message}}", classes: 'red rounded', displayLength:10000});</script>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
             </form>
+            <div class="messages_all_login">
+
+            </div>
             <div class="vopr">
             <p class="Vopros">Все еще нет аккаунта?</p>
             <a href="{% url 'polls:register' %}" target="blank"><strong>Зарегистрироваться</strong></a>

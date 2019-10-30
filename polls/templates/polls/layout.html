@@ -9,19 +9,26 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="{% static 'css/registr.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     {% block title %}
     {% endblock%}
 </head>
 <body>
-    <div class="wrapper">
+    <div>
 <!-- ШАПКА САЙТА -->
         {% include "polls/includes/navbar.html" %}
 <!-- ОСНОВНОЙ КОНТЕНТ -->
+
         {% block main %}
         <div class="main">
             <div class="hmincontent">
-                    <div class="leftline"></div>
-                    <div class="rightline"></div>
                     <div class="contentmenu">
                         {% block login %}
                         {% endblock %}
@@ -32,6 +39,5 @@
 <!-- ПОДВАЛ САЙТА -->
         {% include "polls/includes/footer.html" %}
     </div>
-    
 </body> 
 </html>

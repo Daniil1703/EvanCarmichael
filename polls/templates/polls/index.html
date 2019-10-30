@@ -7,9 +7,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
+
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
-	<div class="wrapper">
+	<div>
 		<!-- Шапка сайта со всей фигней -->
 		{% include "polls/includes/navbar.html" %}
 		<!-- Конец шапки сайта -->
@@ -17,8 +24,8 @@
 		<!-- Основной контент -->
 		<div class="main">
 			<div class="hmincontent">
-				<div class="leftline"></div>
-				<div class="rightline"></div>
+				<!-- <div class="leftline"></div>
+				<div class="rightline"></div> -->
 				<div class="contentmenu">
 						<!-- СЛАЙДЕР -->
 					<div class="slide"> 
@@ -61,23 +68,16 @@
 				</div>			
 				<!-- ПОСТЫ В МОЕМ БЛОГГЕ БУДУТ РАССПОЛОГАТЬСЯ ТАК: -->
 					<div class="twitter"> 
-						<!-- {% for post in posts %}
-						<div>
-							<p class="publikacia-time-raspolojenie">{{ post.published_date }}</p>
-							<h1 class="zagolovok_posta_kotoriy_budet_pereadresovivat_peoples"><a href="">{{ post.title }}</a></h1>
-							<p class="text_savogo_posta">{{ post.text|linebreaksbr }}</p>
-						</div>
-						{% endfor %} -->
+		
 					</div>
 				<!-- НА ЭТОМ ЗАКАНЧИВАЕТСЯ КОД С ПОСТАМИ -->
 
 			</div>
 		</div> 
-		<!-- Конец основного контента -->
 
 		<!-- Подвал сайта -->
 		{% include "polls/includes/footer.html" %}
 		<!-- Конец подвала сайта -->
-	</div> 
+	</div>
 </body>
 </html>

@@ -1,29 +1,41 @@
-<div class="menu">
-    <div class="logo">
-        <a href="{% url 'polls:index'  %}"></a>
-    </div>
-    <div class="but1">
-        <a href="/">О нас</a>
-        <a href="/">Товары</a>
-        <a href="/">Корзина</a>
-        <a href="/">Закладки</a>
-    </div>
-    <div class="line"></div>
+<nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top">
+    <div class="container-fluid">
+        <a href="{% url 'polls:index'  %}" class="navbar-brad"><img src="../static/media/index/logo.jpg"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">О нас</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Товары</a>
+                </li>
 
-    {% if user.is_authenticated %}
-    <div class="nick_name">
-        <a href="/">{{user.username|title}}</a>
-    </div>
-    <div class="but22">
-        <a href="{% url 'polls:logout' %}">Выход</a>
-    </div>
-    {% else %}
-    <div class="but2">
-        <a href="{% url 'polls:register'  %}">Регистрация</a>
-    </div>
-    <div class="but22">
-        <a href="{% url 'polls:login'  %}">Вход</a>
-    </div>
-    {% endif %}
+                <li class="nav-item">
+                        <a href="#" class="nav-link">Закладки</a>
+                    </li>
 
-</div>	
+                <div class="line"></div>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'polls:logout' %}" class="nav-link active">Выход</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link active">{{user.username|title}}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'polls:register'  %}" class="nav-link active">Регистрация</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'polls:login'  %}" class="nav-link active">Вход</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

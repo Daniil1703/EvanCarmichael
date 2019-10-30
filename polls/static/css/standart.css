@@ -12,103 +12,6 @@ body {
 	flex-direction: column;
 }
 
-.wrapper {
-	display: table;
-	height: 100%;
-	width: 100%;
-}
-
-/* Начало стилей для шапки сайта */
-.menu{
-	background: #ed9a22;
-	padding: 25px;
-	border-bottom: 3px solid white;
-}
-
-.menu{
-	display: flex;
-}
-
-.menu div {
-	flex: 1;
-	height: 42px;
-}
-
-.logo{
-	background: url(../media/index/logo.jpg) no-repeat;
-	width: 196px;
-	height: 42px;
-	margin-left: 10px;
-}
-.logo a{
-	padding: 1px 1px 22px 195px;
-}
-
-.but1{
-	max-width: 380px;
-}
-
-.but1 a{
-	font-family: 'Yeseva One', cursive;
-	display: inline-block;
-	background: #ed9a22;
-	text-align: center;
-	padding: 9px;
-	color:white;
-	border: 1px solid white;
-	border-radius: 5px;
-}
-
-.line{
-	max-width: 1px;
-	border-radius: 5px;
-	margin-right: 20px;
-	background: #fff;
-}
-
-.but2{
-	max-width: 150px;
-}
-
-.but2 a{
-	display: block;
-	text-align: center;
-	color: black;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 7px 0px 7px 0px;
-}
-
-.but22{
-	max-width: 60px;
-	margin-left: 10px;
-}
-
-.but22 a{
-	display: block;
-	text-align: center;
-	color: black;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 7px 0px 7px 0px;
-}
-
-.nick_name{
-	max-width: 150px;
-}
-.nick_name:hover{
-	cursor: context-menu;
-}
-
-.nick_name a{
-	display: block;
-	text-align: center;
-	color: black;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 7px 0px 7px 0px;
-}
-/* Конец стилей для шапки сайта */
 
 /* Главный контент */
 
@@ -118,21 +21,6 @@ body {
 
 .hmincontent{
 	height: 1200px;
-}
-
-.leftline{
-	background: #ed9a22;
-	float: left;
-	height: 100%;
-	width: 2px;
-}
-
-.rightline{
-	background: #ed9a22;
-	float: right;
-	height: 100%;
-	width: 2px;
-
 }
 
 .contentmenu{
@@ -150,6 +38,5 @@ body {
     background: #ed9a22; /* Цвет фона  */
 	width: 100%; /* Ширина слоя */
 } 
-
 
 /* Конец подвала */
