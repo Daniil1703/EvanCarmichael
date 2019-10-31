@@ -14,67 +14,23 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login//main.css' %}">
+
+	<link href="https://fonts.googleapis.com/css?family=Oswald:600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}">
+	 <!--===============================================================================================-->
 </head>
 <body>
 	<div>
 		<!-- Шапка сайта со всей фигней -->
 		{% include "polls/includes/navbar.html" %}
-		<!-- Конец шапки сайта -->
-
 		<!-- Основной контент -->
-		<div class="main">
-			<div class="hmincontent">
-				<!-- <div class="leftline"></div>
-				<div class="rightline"></div> -->
-				<div class="contentmenu">
-						<!-- СЛАЙДЕР -->
-					<div class="slide"> 
-						<div class="all">
-							<input checked type="radio" name="respond" id="desktop">
-								<article id="slider">
-										<input checked type="radio" name="slider" id="switch1">
-										<input type="radio" name="slider" id="switch2">
-										<input type="radio" name="slider" id="switch3">
-									<div id="slides">
-										<div id="overflow">
-											<div class="image">
-												<article><img src="static/media/bilboard/1.jpg"></article>
-												<article><img src="static/media/bilboard/2.jpg"></article>
-												<article><img src="static/media/bilboard/3.jpg"></article>
-											</div>
-										</div>
-									</div>
-								
-									<div id="controls">
-										<div class="controls1">
-											<label for="switch1"></label>
-											<label for="switch2"></label>
-											<label for="switch3"></label>
-										</div>
-									</div>								
-									<div id="active">
-										<label for="switch1"></label>
-										<label for="switch2"></label>
-										<label for="switch3"></label>
-									</div>
-								</article>
-						</div>
-					</div>
-						<!-- КОНЕЦ СЛАЙДЕРА -->
-					<div class="ads"> 
-						{% include "polls/includes/messages.html" %}
-						<!-- Размер РЕКЛАМЫ: 400h x 280w -->
-					</div>
-				</div>			
-				<!-- ПОСТЫ В МОЕМ БЛОГГЕ БУДУТ РАССПОЛОГАТЬСЯ ТАК: -->
-					<div class="twitter"> 
-		
-					</div>
-				<!-- НА ЭТОМ ЗАКАНЧИВАЕТСЯ КОД С ПОСТАМИ -->
-
-			</div>
-		</div> 
-
+		<div class="main_content">
+		<!-- АДАПТИВНЫЙ БИЛБОРД -->
+		{% include "polls/includes/slider.html" %}
+		</div>
 		<!-- Подвал сайта -->
 		{% include "polls/includes/footer.html" %}
 		<!-- Конец подвала сайта -->
