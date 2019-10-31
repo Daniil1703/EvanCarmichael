@@ -25,7 +25,7 @@ def login_request(request):
                         if user is not None:
                                 login(request, user)
                                 messages.info(request, f"Вы авторизовались как {username}")
-                                return redirect('/')
+                                return redirect('polls:index')
                         else:
                                 messages.error(request, f"NE")
                 else:
