@@ -1,23 +1,108 @@
 {% extends 'polls/layout.html' %}
 {% block title %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/login/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/login//main.css">
+<!--===============================================================================================-->
+
+    <script type="text/javascript">
+        function toggle_show(id) {
+            document.getElementById(id).style.display = document.getElementById(id).style.display == 'none' ? 'block' : 'none';
+        }
+    </script>
     <title>
         Регистрация
     </title>
 {% endblock %}
 
 {% block login %}
-    <div class="base_window_registr">
-        <div class="form_of_register">
-        <form method="POST">
-            <div class="logo_background"></div>
-            {% csrf_token %}
-            {{form.as_p}} 
-            <button class = "btn btn-outline-info" type = "submit" > Зарегистрироваться </button> 
-        </form>
-        <div class="vopr">
-        <p class="Vopros">Уже зарегистрированы?</p>
-        <a href="{% url 'polls:login' %}" target="blank"><strong>Войти</strong></a>
-        </div>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-85 p-b-20">
+            <form class="login100-form validate-form" method="POST">
+                <span class="login100-form-title p-b-70">Регистрация</span>
+                <span class="login100-form-avatar">
+					<img src="../static/images/avatar1.jpeg" alt="AVATAR">
+                </span>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Введите логин!">
+					<input id="id_username" class="input100" type="text" name="username">
+					<span class="focus-input100" data-placeholder="Имя пользователя"></span>
+                </div>
+                
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Введите пароль!">
+					<input id="id_password1" class="input100" type="password" name="password1">
+					<span class="focus-input100" data-placeholder="Пароль">{% csrf_token %}</span>
+                </div> 	
+                
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Повторите пароль!">
+                    <input id="id_password2" class="input100" type="password" name="password2">
+                    <span class="focus-input100" data-placeholder="Подтверждение">{% csrf_token %}</span>
+                </div> 
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">
+                        Регистрация
+                    </button>
+                </div>
+                <ul>
+                    <li onClick="toggle_show('bla-bla2')"> <button class="btn_recom"><u class="cherta">показать рекомендации</u></button>
+                        <ul id="bla-bla2" style="display: none" class="border-li">
+                            <li class="li_pass">Ваш пароль не должен совпадать с вашим именем или другой персональной информацией или быть слишком похожим на неё.</li>
+                            <li class="li_pass">Ваш пароль должен содержать как минимум 8 символов.</li>
+                            <li class="li_pass">Ваш пароль не может быть одним из широко распространённых паролей.</li>
+                            <li class="li_pass">Ваш пароль не может состоять только из цифр.</li>
+                        </ul>
+                    </li>
+                </ul>	
+               
+                <ul class="login-more p-t-190">
+						<li class="m-b-8">
+							<span class="txt1">
+								Уже зарегистрированы?
+							</span>
+
+							<a href="#" class="txt2">
+								Авторизация
+							</a>
+						</li>
+					</ul>
+            </form>
         </div>
     </div>
+</div>
+
+        <div id="dropDownSelect1"></div>
+<!--===============================================================================================-->
+<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
 {% endblock%}
