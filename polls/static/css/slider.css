@@ -18,7 +18,7 @@
 	}
 }
 
-@media screen and (max-width : 414px) { 
+@media screen and (max-width : 314px) { 
 	.carousel-caption button{
 		font-size:15px;
 		transform: translateY(-60px);
