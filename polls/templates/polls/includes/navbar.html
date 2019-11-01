@@ -24,17 +24,17 @@
 
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a href="{% url 'polls:logout' %}" class="nav-link active">Выход</a>
+                    <a href="{% url 'polls:logout' %}" class="nav-link active" id="id_color_btn">Выход</a>
                 </li>
                 <li class="nav-item">
                     <a href="/" class="nav-link_active">{{user.username|title}}</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="{% url 'polls:register'  %}" class="nav-link active">Регистрация</a>
+                    <a href="{% url 'polls:register'  %}" class="nav-link active" id="id_color_btn">Регистрация</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'polls:login'  %}" class="nav-link active">Вход</a>
+                    <a href="{% url 'polls:login'  %}" class="nav-link active" id="id_color_btn">Вход</a>
                 </li>
                 {% endif %}
             </ul>
