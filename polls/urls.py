@@ -10,7 +10,7 @@ urlpatterns = [
     path("login/", views.login_request, name="login"),
     path('register/', views.register, name="register"),
     path("logout/", views.logout_request, name="logout"),
-    path('post/<str:slug>/', views.post_detail, name="post_detail_url")
+    path('post/<str:slug>/', views.PostDetail.as_view(), name="post_detail_url")
 ]
 
 if settings.DEBUG is True:

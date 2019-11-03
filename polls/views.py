@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
-# from .models import Post
+from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -15,9 +15,11 @@ def index(request):
         posts = Post.objects.all()
         return render(request, 'polls/index.html', {'posts': posts})
 
-def post_detail(request, slug):
-        post = Post.objects.get(slug__iexact=slug)
-        return render(request, 'polls/post_detail.html', context = {'post': post})
+class PostDetail(View):
+        def get(self, request, slug):
+                # post = Post.objects.get(slug__iexact=slug)
+                post = get_object_or_404(Post, slug__iexact=slug)
+                return render(request, 'polls/post_detail.html', context = {'post': post})
 
 def login_request(request):
         if request.method == 'POST':
