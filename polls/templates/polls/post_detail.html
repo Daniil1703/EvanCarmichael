@@ -1,0 +1,15 @@
+{% extends 'polls/base.html' %}
+
+{% block title_block %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="nt-5">
+        {{ post.title }}
+    </h1>
+
+    <p>
+        {{ post.body }}
+    </p>
+{% endblock %}
