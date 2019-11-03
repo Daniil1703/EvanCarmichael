@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html leng="ru">
+<head>
+	<title>
+        {% block title_block %}
+            
+        {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- NAVBAR and FOOTER LINK -->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+    <!-- BOOTSTRAP LINK -->
+
+    {% block links %}
+
+    {% endblock %}
+</head>
+<body>
+	<!-- ШАПКА САЙТА -->
+    {% include "polls/includes/navbar.html" %}
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    {% block content %}
+        К СОЖЕЛЕНИЮ, на данный момент нет контента
+    {% endblock %}
+
+
+</body>
+</html>

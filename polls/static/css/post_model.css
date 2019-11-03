@@ -127,6 +127,25 @@ p, h1 {
   border-bottom: 5px solid#ed9a22;
 }
 
+@media all and (max-width : 770px) {
+  .styled-link {
+    color: #eeb668;
+  }
+  .shadow-1 {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+  }
+  .blue-hover {
+    transition: all 0.25s ease-in;
+    border-bottom: 5px solid transparent;
+  }
+  .blue-hover{
+    transform: translateY(-5px);
+    border: none;
+    border-bottom: 5px solid#ed9a22;
+  }
+
+}
+
 
 
 
