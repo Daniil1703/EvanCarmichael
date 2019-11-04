@@ -10,4 +10,4 @@ class Post(models.Model):
     article_image = models.FileField(blank = True,null = True)
 
     def __str__(self):
-        return '{}'.format(self.title)
+        return self.title
