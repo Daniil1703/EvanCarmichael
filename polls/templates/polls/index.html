@@ -29,11 +29,14 @@
 			<!-- АДАПТИВНЫЙ БИЛБОРД -->
 			{% include "polls/includes/slider.html" %}
 		<div class="bacground-wallpapers">
-			{% include "polls/includes/posts.html" %}
-			<!-- Подвал сайта -->
-
+			<div class="do_it">
+				{% for post in posts %}
+					{% include "polls/includes/posts.html" %}
+				{% endfor %}
+			</div>
+				<!-- Подвал сайта -->
 			{% include "polls/includes/footer.html" %}
-			<!-- Конец подвала сайта -->
+				<!-- Конец подвала сайта -->
 		</div>
 	</body>
 {% endblock %}

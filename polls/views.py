@@ -5,21 +5,35 @@ from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+
 from .forms import NewUserForm
-from .models import Post
+from .models import Post, Tag
+from .utils import ObjectDetailMixin
 
 
-# Create your views here.
+# ИСПОЛЬЗОВАНИЕ МЕТОДА CLASS BASED VIEWS
+class PostDetail(ObjectDetailMixin, View):
+        model = Post
+        template = 'polls/post_detail.html'
+        # def get(self, request, slug):
+        #         post = get_object_or_404(Post, slug__iexact=slug)
+        #         return render(request, 'polls/post_detail.html', context = {'post': post})
+class TagDetail(ObjectDetailMixin, View):
+        model = Tag
+        template = 'polls/tag_detail.html'
+        # def get(self, request, slug):
+        #         tag = get_object_or_404(Tag, slug__iexact=slug)
+        #         return render(request, 'polls/tag_detail.html', context={'tag': tag})
+
 
 def index(request):
         posts = Post.objects.all()
         return render(request, 'polls/index.html', {'posts': posts})
 
-class PostDetail(View):
-        def get(self, request, slug):
-                # post = Post.objects.get(slug__iexact=slug)
-                post = get_object_or_404(Post, slug__iexact=slug)
-                return render(request, 'polls/post_detail.html', context = {'post': post})
+
+def tags_list(request):
+        tags = Tag.objects.all()
+        return render(request, 'polls/tags_list.html', context={'tags': tags})
 
 def login_request(request):
         if request.method == 'POST':
