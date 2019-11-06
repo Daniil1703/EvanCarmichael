@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Tag
+from .models import Tag,Post
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -20,11 +20,7 @@ class NewUserForm(UserCreationForm):
         return user
 
 class TagForm(forms.ModelForm):
-    # title = forms.CharField(max_length=50)
-    # slug = forms.CharField(max_length=50)
 
-    # title.widget.attrs.update({'class': 'form-control'})
-    # slug.widget.attrs.update({'class': 'form-control'})
     class Meta:
         model = Tag
         fields = ['title', 'slug']
@@ -44,9 +40,21 @@ class TagForm(forms.ModelForm):
         return new_slug
 
 
-    # def save(self):
-    #     new_tag = Tag.objects.create(
-    #         title=self.cleaned_data['title'], 
-    #         slug=self.cleaned_data['slug']
-    #     )
-    #     return new_tag
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'slug', 'body', 'article_image', 'tags']
+        
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),
+            'article_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'tags': forms.SelectMultiple(attrs={'class': 'form-control'}),
+        }
+        
+        def clean_slug(self):
+            new_slug = self.cleaned_data['slug'].lower()
+            if new_slug == 'create':
+                raise ValidationError('Такой URL не может быть создан для тега!')
+            return new_slug
