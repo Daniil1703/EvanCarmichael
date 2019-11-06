@@ -29,16 +29,30 @@
 		font-family: 'Oswald', sans-serif;
 	}
 }
+
+/* ДЕЛАЮ АДАПТАЦИЮ САМОГО БИЛБЛОРДА */
+@media screen and (min-width : 1160px){
+	.carousel-inner {
+		height: 100%;
+	}
+	#slides {
+		width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
 .carousel-inner {
-	height: 500px;
-	margin-top: 3px;
 	text-align: center;
 }
 
 .carousel-inner img{
-	transform: translateY(-10%);
 	width: 100%;
 	height: 100%;
+	border: 2px solid white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 	
 }
 .carousel-caption{
@@ -52,9 +66,24 @@
 #btn-color {
 	background: #ed9a22;
 	color: white;
-	text-shadow: 1px 1px 10px #000;
+	text-shadow: 3px 3px 10px #000;
 }
 
 .buttom_two {
 	margin-top: 30px;
+}
+
+/* 
+#bilboard_id {
+	height: 100%;
+} */
+.carousel-caption h1{
+	color: white;
+	text-shadow: 0 0 3px black, 0 0 5px rgb(143, 143, 151);
+
+}
+
+#button-zakladki {
+	color: white;
+	text-shadow: 0 0 3px black, 0 0 5px rgb(143, 143, 151);
 }

@@ -9,23 +9,33 @@ from django.contrib import messages
 from .forms import NewUserForm
 from .models import Post, Tag
 from .utils import ObjectDetailMixin
+from .forms import TagForm
 
 
 # ИСПОЛЬЗОВАНИЕ МЕТОДА CLASS BASED VIEWS
 class PostDetail(ObjectDetailMixin, View):
         model = Post
         template = 'polls/post_detail.html'
-        # def get(self, request, slug):
-        #         post = get_object_or_404(Post, slug__iexact=slug)
-        #         return render(request, 'polls/post_detail.html', context = {'post': post})
+   
 class TagDetail(ObjectDetailMixin, View):
         model = Tag
         template = 'polls/tag_detail.html'
-        # def get(self, request, slug):
-        #         tag = get_object_or_404(Tag, slug__iexact=slug)
-        #         return render(request, 'polls/tag_detail.html', context={'tag': tag})
+
+class TagCreate(View):
+        def get(self, request):
+                form = TagForm()
+                return render(request, 'polls/includes/tag_create.html', context={'form': form})
+
+        def post(self, request):
+                bound_form = TagForm(request.POST)
+
+                if bound_form.is_valid():
+                        new_tag = bound_form.save()
+                        return redirect('polls:tags_list')
+                return render(request, 'polls/includes/tag_create.html', context={'form': bound_form})
 
 
+# Отображение постов
 def index(request):
         posts = Post.objects.all()
         return render(request, 'polls/index.html', {'posts': posts})

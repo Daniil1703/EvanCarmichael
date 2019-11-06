@@ -10,18 +10,17 @@ a{
 body {
 	display: flex;
 	flex-direction: column;
+	background: rgb(211, 210, 210) !important;
 }
 
 /* СТИЛИ ДЛЯ ОТОБРАЖЕНИЯ ПОСТОВ НА ГЛАВНОЙ СТРАНИЦЕ */
 
-.bacground-wallpapers {
-    background: rgb(211, 210, 210);
-}
 
 .do_it {
     display: flex;
     flex-direction: row !important;
     flex-wrap: wrap;
-    align-items: flex-start;
+	align-items: flex-start;
+	margin-top: 40px;
 }
 
