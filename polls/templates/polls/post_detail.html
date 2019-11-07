@@ -10,6 +10,8 @@
     </h1>
 
     <p>
-        {{ post.body }}
+        {% autoescape off %}
+            {{ post.body }}
+        {% endautoescape %}
     </p>
 {% endblock %}

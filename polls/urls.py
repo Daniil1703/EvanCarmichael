@@ -10,10 +10,9 @@ urlpatterns = [
     path("login/", views.login_request, name="login"),
     path('register/', views.register, name="register"),
     path("logout/", views.logout_request, name="logout"),
-    path('post/create/', views.PostCreate.as_view(), name='post_create_url'),
+    
     path('post/<str:slug>/', views.PostDetail.as_view(), name="post_detail_url"),
     path('tags/', views.tags_list, name='tags_list'),
-    path('tag/create', views.TagCreate.as_view(), name='tag_create_url'),
     path('tag/<str:slug>/', views.TagDetail.as_view(), name='tag_detail')
 
 ]

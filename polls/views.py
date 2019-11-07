@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
-from .forms import NewUserForm, TagForm, PostForm
+from .forms import NewUserForm
 from .models import Post, Tag
 from .utils import ObjectDetailMixin
 
@@ -20,32 +20,6 @@ class TagDetail(ObjectDetailMixin, View):
         model = Tag
         template = 'polls/tag_detail.html'
         
-class PostCreate(View):
-        def get(self,request):
-                form = PostForm()
-                return render(request, 'polls/includes/post_create_form.html', context={'form': form})
-        
-        def post(self, request):
-             bound_form = PostForm(request.POST)
-             
-             if bound_form.is_valid():
-                     new_post = bound_form.save()
-                     return redirect('polls:index') #изменить на post_list
-             return render(request, 'polls/includes/post_create_form.html', context={'form': bound_form})
-        
-
-class TagCreate(View):
-        def get(self, request):
-                form = TagForm()
-                return render(request, 'polls/includes/tag_create.html', context={'form': form})
-
-        def post(self, request):
-                bound_form = TagForm(request.POST)
-
-                if bound_form.is_valid():
-                        new_tag = bound_form.save()
-                        return redirect('polls:tags_list')
-                return render(request, 'polls/includes/tag_create.html', context={'form': bound_form})
 
 
 # Отображение постов

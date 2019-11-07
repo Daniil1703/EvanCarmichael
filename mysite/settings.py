@@ -25,7 +25,7 @@ SECRET_KEY = 'jh#$urd&y7s!(%daz+6-b34#)5ohsdwlauv_44m6-vv16=&tub'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
+    'ckeditor',
+    'ckeditor_uploader'
     
 ]
 
@@ -68,6 +70,12 @@ TEMPLATES = [
         },
     },
 ]
+
+CKEDITOR_CONFIGS = {
+    'default':{
+        'toolbar': 'None'
+    },
+}
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -124,3 +132,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
