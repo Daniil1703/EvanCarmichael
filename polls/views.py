@@ -5,6 +5,7 @@ from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from .forms import NewUserForm
 from .models import Post, Tag
@@ -25,7 +26,25 @@ class TagDetail(ObjectDetailMixin, View):
 # Отображение постов
 def index(request):
         posts = Post.objects.all()
-        return render(request, 'polls/index.html', {'posts': posts})
+        paginator = Paginator(posts, 3)
+        page_number = request.GET.get('page', 1)
+        page = paginator.get_page(page_number)
+        
+        is_paginated = page.has_other_pages()
+        
+        if page.has_next():
+                next_url = '?page={}'.format(page.next_page_number())
+        else:
+                next_url = ''
+                
+        context = {
+                'page_object': page,
+                'is_paginated': is_paginated,
+                'next_url': next_url
+        }
+        
+        
+        return render(request, 'polls/index.html', context=context)
 
 
 def tags_list(request):

@@ -28,11 +28,16 @@
 	<body>
 			<!-- АДАПТИВНЫЙ БИЛБОРД -->
 			{% include "polls/includes/slider.html" %}
-			<div class="do_it">
-				{% for post in posts %}
-					{% include "polls/includes/posts.html" %}
-				{% endfor %}
+
+				<div class="do_it" id="slides">
+					{% for post in page_object.object_list %}
+						{% include "polls/includes/posts.html" %}
+					{% endfor %}
+				</div>
 			</div>
+			{% include "polls/includes/pagination.html" %}
+			{% include "polls/includes/ajax.html" %}
+			
 				<!-- Подвал сайта -->
 			{% include "polls/includes/footer.html" %}
 				<!-- Конец подвала сайта -->
