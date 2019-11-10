@@ -30,6 +30,12 @@
 	}
 }
 
+@media screen and (max-width: 450px){
+	.slide {
+		display: none;
+	}
+}
+
 /* ДЕЛАЮ АДАПТАЦИЮ САМОГО БИЛБЛОРДА */
 @media screen and (min-width : 1160px){
 	.carousel-inner {
@@ -46,7 +52,6 @@
 .carousel-inner {
 	text-align: center;
 }
-
 .carousel-inner img{
 	width: 100%;
 	height: 100%;
@@ -71,6 +76,7 @@
 
 .buttom_two {
 	margin-top: 30px;
+	font-size: 13px;
 }
 
 /* 

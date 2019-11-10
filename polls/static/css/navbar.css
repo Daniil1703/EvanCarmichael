@@ -46,3 +46,10 @@ a:focus {
     margin-top: 3px;
 }
   
+#width {
+    width: 1165px;
+}
+
+.navbar-brad {
+    margin-left: 19px;
+}
