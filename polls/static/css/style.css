@@ -16,18 +16,18 @@ body {
 /* СТИЛИ ДЛЯ ОТОБРАЖЕНИЯ ПОСТОВ НА ГЛАВНОЙ СТРАНИЦЕ */
 
 
+.pagination {
+	margin: 10px 0 5px 0;
+	opacity: 0.5;
+	
+}
+
 .do_it {
     display: flex;
     flex-direction: row !important;
     flex-wrap: wrap;
 	align-items: flex-start;
 	margin-top: 50px;
-}
-
-.pagination {
-	margin: 10px 0 5px 0;
-	opacity: 0.5;
-	
 }
 
 
