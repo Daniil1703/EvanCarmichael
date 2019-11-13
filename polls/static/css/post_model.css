@@ -40,6 +40,10 @@ a {
   text-decoration: none;
 }
 
+.card:hover {
+  --bg-filter-opacity: 0.6;
+  background-image: linear-gradient(rgba(0, 0, 0,var(--bg-filter-opacity)),rgba(6,0,0,var(--bg-filter-opacity))), var(--bg-img);;
+}
 
 
 .card .title_main {

@@ -1,12 +1,20 @@
 {% extends 'polls/base.html' %}
 
 {% block title_block %}
-    Tags list
+    Категории
 {% endblock %}
 
 {% block content %}
-    <h1 class="mb-5">Tags: </h1>
+
+<div class="main_in_select">
+    <div>
+        <h4 class="mb-5" style="text-align: center;">Выберите раздел, который вас интересует</h4>
+    </div>
     {% for tag in tags %}
-        <a href="{% url 'polls:tag_detail' slug=tag.slug %}"> {{ tag.title }} </a>
+        <div id="cat-cont">
+            <li class="select_a"><a href="{% url 'polls:tag_detail' slug=tag.slug %}"> {{ tag.title }} </a> </li>
+        </div>
     {% endfor %}
+</div>
+
 {% endblock %}

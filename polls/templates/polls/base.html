@@ -15,7 +15,12 @@
     <!-- NAVBAR and FOOTER LINK -->
     <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tags_list.css' %}">
+    
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- BOOTSTRAP LINK -->
 
     {% block links %}
@@ -23,7 +28,7 @@
     {% endblock %}
 </head>
 <body>
-	<!-- ШАПКА САЙТА -->
+    <!-- ШАПКА САЙТА -->
     {% include "polls/includes/navbar.html" %}
 
     <!-- ОСНОВНОЙ КОНТЕНТ -->
