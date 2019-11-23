@@ -5,13 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="nt-5">
-        {{ post.title }}
-    </h1>
+    <div class="post_structure">
+        <h1 class="nt-5">
+            {{ post.title }}
+        </h1>
 
-    <p>
-        {% autoescape off %}
-            {{ post.body }}
-        {% endautoescape %}
-    </p>
+        <p>
+            {% autoescape off %}
+                {{ post.body }}
+            {% endautoescape %}
+        </p>
+    </div>
 {% endblock %}

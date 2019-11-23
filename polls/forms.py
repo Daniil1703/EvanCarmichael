@@ -3,11 +3,12 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Tag,Post
+from .models import Tag, Post
+
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    
+
     class Meta:
         model = User
         fields = ("username", "email", "password1", "password2")
@@ -18,4 +19,3 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
-

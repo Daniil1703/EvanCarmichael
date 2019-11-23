@@ -1,20 +1,10 @@
 {% extends 'polls/base.html' %}
 {% load static %}
 {% block links %}
-<link href="https://fonts.googleapis.com/css?family=Oswald:600&display=swap" rel="stylesheet"> 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}">
 <link rel="stylesheet" href="{% static 'css/post_model.css' %}">
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/login/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/tag_detail.css' %}">
 {% endblock%}
 
 {% block title_block %}
@@ -22,15 +12,18 @@
 {% endblock %}
 
 {% block content %}
-<div class="bacground-wallpapers">
-    <h1 class="mb-5">
-        Post with "{{ tag.title|title }}" tag:
-    </h1>
-<div class="do_it">
-    {% for post in tag.posts.all %}
-        {% include "polls/includes/posts.html" %}
-    {% endfor %}
-</div>   
+<div class="posts_display">
+        <div class="zagolovok">
+            <p class="zagolovok_style">
+                {{ tag.title|title }}
+            </p>
+        </div>
+    <div class="do_it">
+        {% for post in tag.posts.all %}
+            {% include "polls/includes/posts.html" %}
+        {% endfor %}
+    </div>   
 </div>
+    {% include "polls/includes/footer.html" %}
  
 {% endblock %}
