@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}
 
 <nav class="navbar_top">
     <span class="top">
@@ -11,13 +11,13 @@
             <a href="https://www.pinterest.com/paviliongift/" class="generic-anchor" target="_blank" title="Pinterest" itemprop="significantLink"><i class="fa fa-pinterest"></i></a>
 
             <a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>
-                
+
             <a href="https://twitter.com/PavilionGiftCo" class="generic-anchor" target="_blank" title="Twitter" itemprop="significantLink"><i class="fa fa-twitter"></i></a>
-                
+
             <a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-                
+
             <a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-               
+
             <a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
         </span>
     </span>
@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-md navbar-light">
     <div class="container-fluid">
         <a href="{% url 'polls:index'  %}" class="navbar-brad">LOGO</a>
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,36 +33,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{% url 'polls:index'  %}" class="nav-link">Лента</a>     
+                    <a href="{% url 'polls:index'  %}" class="nav-link">Лента</a>
                 </li>
                 <li class="nav-item">
                         <a href="{% url 'polls:tags_list' %}" class="nav-link">Категории</a>
                     </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Товары</a>     
+                    <a href="#" class="nav-link">Товары</a>
                 </li>
 
                 <li class="nav-item">
                         <a href="#" class="nav-link">Закладки</a>
                     </li>
-
-                <!-- <div class="line"></div>
-
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="{% url 'polls:logout' %}" class="nav-link active" id="id_color_btn">Выход</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/" class="nav-link_active">{{user.username|title}}</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a href="{% url 'polls:register'  %}" class="nav-link active" id="id_color_btn">Регистрация</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'polls:login'  %}" class="nav-link active" id="id_color_btn">Вход</a>
-                </li>
-                {% endif %} -->
             </ul>
         </div>
     </div>
