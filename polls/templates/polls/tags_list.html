@@ -8,18 +8,23 @@
 <div class="zagolovok">
   <p class="zagolovok_style">Категории</p>
 </div>
-      <div class="cards-list">
-            {% for tag in tags %}
-            <a href="{% url 'polls:tag_detail' slug=tag.slug %}">
+
+<div class="cards-list">
+    {% for tag in tags %}
+        <a href="{% url 'polls:tag_detail' slug=tag.slug %}">
             <div class="card-tag">
-              
-             <div class="card_image">{% if tag.tag_image %}<img src="{{ tag.tag_image.url}}" />{% endif %}</div>
-              
-              <div class="card_title title-white">
-                <p class="title-white" style="font-size: 21px;">{{ tag.title }}</p>
-              </div>
+
+                <div class="card_image">
+                    {% if tag.tag_image %}
+                        <img src="{{ tag.tag_image.url}}" />
+                    {% endif %}
+                </div>
+
+                <div class="card_title title-white">
+                    <p class="title-white" style="font-size: 21px;">{{ tag.title }}</p>
+                </div>
             </div>
         </a>
-              {% endfor %}
-            </div>
+    {% endfor %}
+</div>
 {% endblock %}

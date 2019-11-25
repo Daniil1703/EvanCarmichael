@@ -1,18 +1,17 @@
 {% autoescape off %}
-      <nav class="cards-wrapper" style="margin-right: auto; margin-left: auto; align-items: flex-end;">
+    <nav class="cards-wrapper" style="margin-right: auto; margin-left: auto; align-items: flex-end;">
         <div class="card-grid-space">
             {% if post.article_image %}
                 <a class="card" href="{% url 'polls:post_detail_url' slug=post.slug %}" style="--bg-img: url('{{ post.article_image.url}}')">
-            {% endif %}
             <div class="date" style="color: rgb(243, 237, 237);">{{ post.date_pub|date:"j E Y"}}</div>
             <div class="new_class">
-              <h1 class="title_main" style="color: rgb(243, 237, 237); margin-bottom: 10px">{{ post.title }}</h1>
-              <div>
-              <p style="color: rgb(255, 254, 254);">{{ post.body|truncatewords:20 }}</p>
-              </div>
-            
+                <h1 class="title_main" style="color: rgb(243, 237, 237); margin-bottom: 10px">{{ post.title }}</h1>
+                <div>
+                    <p style="color: rgb(255, 254, 254);">{{ post.body|truncatewords:20 }}</p>
+                </div>
             </div>
-          </a>
+                </a>
+            {% endif %}
         </div>
-        </nav>
+    </nav>
 {% endautoescape %}

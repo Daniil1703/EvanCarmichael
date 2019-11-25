@@ -2,12 +2,12 @@
 {% load static %}
 	{% block links %}
 	<!-- Compiled and minified JavaScript -->
-	<link href="https://fonts.googleapis.com/css?family=Oswald:600&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Oswald:600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-	
-    
+
+
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -19,36 +19,36 @@
 	<link rel="stylesheet" href="{%static 'css/search.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}">
 	<link rel="stylesheet" href="{% static 'css/post_model.css' %}">
-	
+
 	<link rel="stylesheet" type="text/css" href="{% static 'css/login/main.css' %}">
 
 
-		
+
 	{% endblock %}
 
 	{% block title_block %}
 		Главная
 	{% endblock %}
-	
+
 {% block content %}
 	<body>
-			<!-- АДАПТИВНЫЙ БИЛБОРД -->
-			<div id="#search_form">
-				{% include "polls/includes/search.html" %}
-			</div>
-			{% include "polls/includes/slider.html" %}
+		<!-- АДАПТИВНЫЙ БИЛБОРД -->
+		<div id="#search_form">
+			{% include "polls/includes/search.html" %}
+		</div>
+		{% include "polls/includes/slider.html" %}
 
-				<div class="do_it" id="slides">
-					{% for post in page_object.object_list %}
-						{% include "polls/includes/posts.html" %}
-					{% endfor %}
-				</div>
-			
-			{% include "polls/includes/pagination.html" %}
-			{% include "polls/includes/ajax.html" %}
-			
+		<div class="do_it" id="slides">
+			{% for post in page_object.object_list %}
+				{% include "polls/includes/posts.html" %}
+			{% endfor %}
+		</div>
+
+		{% include "polls/includes/pagination.html" %}
+		{% include "polls/includes/ajax.html" %}
+
 				<!-- Подвал сайта -->
-			{% include "polls/includes/footer.html" %}
+		{% include "polls/includes/footer.html" %}
 				<!-- Конец подвала сайта -->
 	</body>
 {% endblock %}
