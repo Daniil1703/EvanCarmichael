@@ -52,6 +52,12 @@ body {
 	  transition: .2s ease-in-out;
 	}
 	#toTop:hover {
-  background: #ed9a22;
+  		background: #ed9a22;
+	}
 }
+
+@media screen and (max-width: 1278px){
+	.toTop {
+		display: none;
+	}
 }
