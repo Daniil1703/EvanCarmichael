@@ -17,7 +17,8 @@ class Post(models.Model):
     body = RichTextField(blank=True, db_index=True)
     article_image = models.FileField(blank = True,null = True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
-    
+    title_detail = RichTextField(blank=True, db_index=True)
+
     class Meta:
         ordering = ('-date_pub',)
 
@@ -25,7 +26,7 @@ class Post(models.Model):
         if not self.id:
             self.slug = gen_slug(self.title)
         super().save(*args, **kwargs)
-    
+
     def __str__(self):
         return self.title
 
