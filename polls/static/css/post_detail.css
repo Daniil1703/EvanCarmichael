@@ -1,0 +1,25 @@
+
+.category_datePub{
+    display: inline-flex;
+}
+
+.title_post_detail{
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-right: 20%;
+    color: #525050;
+}
+
+.post_structure {
+    width: 910px;
+    border: 2px solid rgb(124, 124, 124);
+    background: white;
+    padding: 30px;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.body_of_post{
+    margin-top: 30px;
+    margin-right: 15%;
+}

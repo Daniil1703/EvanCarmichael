@@ -6,14 +6,31 @@
 
 {% block content %}
     <div class="post_structure">
-        <h1 class="nt-5">
-            {{ post.title }}
-        </h1>
+        <div class="category_datePub">
 
-        <p>
+            {% for tag in post.tags.all %}
+                <a href="{% url 'polls:tag_detail' slug=tag.slug %}" style="border-bottom: 1px solid #576197; font-size: 15px;">
+                    Категория: {{ tag.title }}
+                </a>
+            {% endfor %}
+            <p style="margin-left: 25px">
+            {{ post.date_pub|date:"j E Y"}}
+            </p>
+        </div>
+
+        <div class="title_post_detail">
+            <h1 class="nt-6">
+                    "{{ post.title }}"
+            </h1>
+        </div>
+
+
+        <div class="body_of_post">
             {% autoescape off %}
                 {{ post.body }}
             {% endautoescape %}
-        </p>
+        </div>
+
     </div>
+    {% include "polls/includes/footer.html" %}
 {% endblock %}

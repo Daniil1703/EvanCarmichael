@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls',
     'ckeditor',
-    'ckeditor_uploader'
-    
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
