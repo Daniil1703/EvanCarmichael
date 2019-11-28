@@ -10,10 +10,14 @@
     color: #525050;
 }
 
+.share_link_for_post {
+    margin-top: 20px;
+}
+
 .post_structure {
     width: 910px;
     border: 2px solid rgb(124, 124, 124);
-    background: white;
+    background: #f3f3f3;
     padding: 30px;
     margin-left: auto;
     margin-right:auto;
