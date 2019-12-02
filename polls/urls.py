@@ -9,7 +9,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('post/<str:slug>/', views.PostDetail.as_view(), name="post_detail_url"),
     path('tags/', views.tags_list, name='tags_list'),
-    path('tag/<str:slug>/', views.TagDetail.as_view(), name='tag_detail')
+    path('tag/<str:slug>/', views.TagDetail.as_view(), name='tag_detail'),
+    path('bookmark/', views.Bookmark, name='bookmarks')
 
 ]
 

@@ -50,3 +50,6 @@ def index(request):
 def tags_list(request):
         tags = Tag.objects.all()
         return render(request, 'polls/tags_list.html', context={'tags': tags})
+
+def Bookmark(request):
+    return render(request, 'polls/bookmarks.html', context=None)
