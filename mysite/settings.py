@@ -31,13 +31,13 @@ ALLOWED_HOSTS = [ ]
 # Application definition
 
 INSTALLED_APPS = [
+    'polls',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls',
     'ckeditor',
     'ckeditor_uploader',
 ]
@@ -68,6 +68,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS =[
+    'django.contrib.auth.backends.ModelBackend',
+    'polls.authentication.EmailAuthBackend',    
 ]
 
 CKEDITOR_CONFIGS = {
@@ -133,3 +138,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+# PASSWORD_CHANE_REDIRECT_URL =
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

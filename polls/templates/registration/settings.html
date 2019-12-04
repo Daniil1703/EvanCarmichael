@@ -1,0 +1,29 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Настройки
+{% endblock %}
+
+
+{% block content %}
+<div class="zagolovok">
+    <p class="zagolovok_style">Управление аккаунтом</p>
+</div>
+<div class="">
+    <a href="{% url 'polls:password_change' %}">Сменить пароль</a>
+</div>
+<form class="" action="." method="post" enctype="multipart/form-data">
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    {% csrf_token %}
+    <p>нажмите <input type="submit" name="" value="Загрузить"> два раза</p>
+    <input type="submit" name="" value="Сохранить">
+</form>
+<script>
+    var submitButton = document.getElementById('submit');
+    submitButton.addEventListener('click', function(event) {
+        this.disabled = true;
+    });
+</script>
+{% endblock %}

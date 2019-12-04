@@ -1,0 +1,16 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Регистрация
+{% endblock %}
+
+
+{% block content %}
+<div class="zagolovok">
+    <p class="zagolovok_style">Регистрация</p>
+</div>
+<p>Добро пожаловать {{ new_user.first_name }}!</p>
+<p>Ваш аккаунт упешно создан</p>
+<p>Теперь вы можете спокойно авторизоваться <a href="{% url 'polls:login' %}">здесь</a></p>
+{% endblock %}

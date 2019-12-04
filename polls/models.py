@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from time import time
+from django.conf import settings
 
 def gen_slug(s):
     new_slug = slugify(s, allow_unicode=True)
@@ -42,3 +43,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return '{}'.format(self.title)
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
+
+    def __str__(self):
+        return 'Profile for user {}'.format(self.user.username)

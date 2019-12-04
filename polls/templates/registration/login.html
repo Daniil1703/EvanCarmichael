@@ -1,0 +1,31 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Логин
+{% endblock %}
+
+
+{% block content %}
+<div class="zagolovok">
+    <p class="zagolovok_style">Авторизация</p>
+</div>
+    <h1>Вход</h1>
+    {% if form.errors %}
+        <p>Логин или пароль были введены не верно</p>
+        {% else %}
+            <p>Заполните поля для входа в аккаунт</p>
+    {% endif %}
+    <form class="" action="{% url 'polls:login' %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <p>
+            <input type="submit" value="Вход">
+        </p>
+    </form>
+    <div class="">
+        <p>Забыли пароль? <a href="{% url 'polls:password_reset' %}">Восстановить</a></p>
+        <p>Все еще нет аккаунта? <a href="{% url 'polls:register'%}">Регистрация</a></p>
+    </div>
+{% endblock %}
