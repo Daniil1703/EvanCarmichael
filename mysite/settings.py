@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sorl.thumbnail',
     'ckeditor',
     'ckeditor_uploader',
 ]
@@ -72,7 +73,7 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS =[
     'django.contrib.auth.backends.ModelBackend',
-    'polls.authentication.EmailAuthBackend',    
+    'polls.authentication.EmailAuthBackend',
 ]
 
 CKEDITOR_CONFIGS = {

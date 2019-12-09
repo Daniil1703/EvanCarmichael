@@ -5,15 +5,74 @@
     Регистрация
 {% endblock %}
 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/auth/login.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="zagolovok">
     <p class="zagolovok_style">Регистрация</p>
 </div>
-<h1>создание аккаунта</h1>
-<form class="" action="." method="post">
-    {{ user_form.as_p }}
-    {% csrf_token %}
-    <p><input type="submit" name="" value="Зарегистрировать"></p>
-</form>
+
+
+<div class="block_auth">
+    <h6 class="login_title">
+        Создание аккаунта
+    </h6>
+    <form class="form1" action="." method="post">
+        <div class="field_input">
+            <label for="id_username"></label>
+            <input spellcheck="false" class="un " required id="id_username" type="text" name="username"
+             align="center" placeholder="введите логин" autocomplete="off" maxlength="150">
+
+            <label for="id_first_name"></label>
+            <input type="text" class="un" placeholder="введите имя пользователя" name="first_name" maxlength="30"
+             id="id_first_name" value="" autocomplete="off">
+
+            <label for="id_email"></label>
+            <input class="un" type="email" name="email" maxlength="254" id="id_email" value=""
+             placeholder="введите email" spellcheck="false">
+
+            <label for="id_password"></label>
+            <input type="password" class="pass" name="password" required id="id_password" value=""
+            placeholder="придумайте пароль">
+
+            <label for="id_password2"></label>
+            <input type="password" class="pass" name="password2" required id="id_password2" value=""
+            placeholder="повторите пароль">
+
+
+            {% csrf_token %}
+
+            <input style="margin-right: 0px" class="but_auth" type="submit" value="зарегистрировать">
+
+        </div>
+    </form>
+    <div class="toggle_show_recom">
+
+            <li onClick="toggle_show('bla-bla2')">
+                <div  class="">
+
+                    <button style="width:100%"class="btn_recom"><u class="cherta">рекомендации к созданию пароля</u></button>
+                </div>
+                <div class="">
+                <ul id="bla-bla2" style="display: none" class="border-li">
+                    <li class="li_pass">пароль не должен совпадать с вашим именем или другой персональной информацией или быть  слишком похожим на неё.</li>
+                    <li class="li_pass">пароль должен содержать как минимум 8 символов.</li>
+                    <li class="li_pass">пароль не может быть одним из широко распространённых паролей.</li>
+                    <li class="li_pass">пароль не может состоять только из цифр.</li>
+                </ul>
+                </div>
+            </li>
+
+    </div>
+    <div id="dropDownSelect1"></div>
+    <script type="text/javascript">
+        function toggle_show(id) {
+            document.getElementById(id).style.display = document.getElementById(id).style.display == 'none' ? 'block' : 'none';
+        }
+    </script>
+</div>
+{% include "polls/includes/footer.html" %}
+
 {% endblock %}

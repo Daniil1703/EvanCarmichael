@@ -1,16 +1,65 @@
 {% extends 'polls/base.html' %}
 {% load static %}
-
+{% load thumbnail %}
 {% block title_block %}
     Настройки
 {% endblock %}
-
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/auth/login.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="zagolovok">
     <p class="zagolovok_style">Управление аккаунтом</p>
 </div>
-<div class="">
+
+<div class="block_auth">
+    <div class="login_title">
+        <h4>Личный кабинет</h4> <br> (для изменения данных, измените поля и нажмите сохранить)
+    </div>
+
+    <form class="form1" action="." method="post" enctype="multipart/form-data">
+        <div class="field_input">
+
+            <div class="card_image">
+                {% thumbnail user.profile.photo "150x150" crop="0%" format="PNG" as im %}
+                    <img src="{{ im.url }}" />
+                {% endthumbnail %}
+            </div>
+
+            <p>Изменить текущую фотографию:</p>
+            <label for="id_photo"></label>
+            <input style="opacity: 0.5" class="un" id="id_photo" type="file" name="photo" value="" accept="photo/*">
+
+            <p>Ваше имя:</p>
+            <label for="id_first_name"></label>
+            <input class="un" type="text" name="first_name" maxlength="30"
+            required id="id_first_name" value="{{user.first_name|title}}" placeholder="изменить логин">
+
+            <p>Ваш email:</p>
+            <label for="id_email"></label>
+            <input class="un" type="email" name="email" maxlength="254" id="id_email" value="{{user.email}}"
+             placeholder="введите email" spellcheck="false">
+            {% csrf_token %}
+            <a class="btn_recom"style="text-align:center;width:100%;border: 1px solid #7c7c7c; padding: 10px; border-radius: 3px;"
+            href="{% url 'polls:password_change' %}">Сменить пароль</a>
+            <input style="margin-top: 50px; margin-right:25%" class="but_auth" type="submit" name="" value="сохранить">
+        </div>
+    </form>
+
+    <script>
+        var submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', function(event) {
+            this.disabled = true;
+        });
+    </script>
+
+</div>
+
+
+
+
+<!-- <div class="">
     <a href="{% url 'polls:password_change' %}">Сменить пароль</a>
 </div>
 <form class="" action="." method="post" enctype="multipart/form-data">
@@ -25,5 +74,5 @@
     submitButton.addEventListener('click', function(event) {
         this.disabled = true;
     });
-</script>
+</script> -->
 {% endblock %}
