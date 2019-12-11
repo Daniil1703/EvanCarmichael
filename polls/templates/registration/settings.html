@@ -1,6 +1,5 @@
 {% extends 'polls/base.html' %}
 {% load static %}
-{% load thumbnail %}
 {% block title_block %}
     Настройки
 {% endblock %}
@@ -22,9 +21,11 @@
         <div class="field_input">
 
             <div class="card_image">
-                {% thumbnail user.profile.photo "150x150" crop="0%" format="PNG" as im %}
-                    <img src="{{ im.url }}" />
-                {% endthumbnail %}
+                {% if user.profile.photo %}
+                    <img src="{{ user.profile.photo.url }}" />
+                {% else %}
+                    <img src="{% static 'images/icons/User.png' %}" alt="">
+                {% endif %}
             </div>
 
             <p>Изменить текущую фотографию:</p>
@@ -56,23 +57,4 @@
 
 </div>
 
-
-
-
-<!-- <div class="">
-    <a href="{% url 'polls:password_change' %}">Сменить пароль</a>
-</div>
-<form class="" action="." method="post" enctype="multipart/form-data">
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    {% csrf_token %}
-    <p>нажмите <input type="submit" name="" value="Загрузить"> два раза</p>
-    <input type="submit" name="" value="Сохранить">
-</form>
-<script>
-    var submitButton = document.getElementById('submit');
-    submitButton.addEventListener('click', function(event) {
-        this.disabled = true;
-    });
-</script> -->
 {% endblock %}
