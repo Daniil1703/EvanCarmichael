@@ -1,7 +1,14 @@
 {% extends 'polls/base.html' %}
+{% load static %}
 
 {% block title_block %}
     {{ post.title }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/post_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/comments.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/not-auth-comment.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -45,6 +52,22 @@
             {% endautoescape %}
         </div>
 
+        <!-- СИСТЕМА КОММЕНТАРИЕВ НАЧИНАЕТСЯ ТУТ -->
+        <div class="line"></div>
+
+        <div class="line"></div>
+        {% if request.user.is_authenticated %}
+            <div class="comments">
+                {% include "polls/includes/comments.html" %}
+            </div>
+        {% else %}
+            <div class="not-auth-comment">
+                {% include "polls/includes/not-auth-comment.html" %}
+            </div>
+        {% endif %}
+
     </div>
+
+
     {% include "polls/includes/footer.html" %}
 {% endblock %}

@@ -18,6 +18,10 @@
     border-color: #ed9a22;
 }
 
+.nav-link:active{
+    border-color: #ed9a22;
+}
+
 .container-fluid {
     border-bottom: 1px solid black;
 }

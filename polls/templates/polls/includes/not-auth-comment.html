@@ -1,0 +1,13 @@
+<div class="not-auth-comments">
+    <div class="not-auth-comments-position"
+        <p>
+            <!-- если убрать этот тег то стили для нижнего пропадут -->
+        </p>
+
+        <p class="not-auth-comments-text">
+            Чтобы оставлять комментарии
+            <br>
+            <a class="but_comments" href="{% url 'polls:login' %}">войдите</a> в систему или <a class="but_comments" href="{% url 'polls:register' %}">зарегистрируйтесь</a>
+        </p>
+    </div>
+</div>
