@@ -7,8 +7,6 @@
 
 {% block links %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/post_detail.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/comments.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/not-auth-comment.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -27,7 +25,7 @@
 
         <div class="title_post_detail">
             <h1 class="nt-6">
-                    "{{ post.title }}"
+                    {{ post.title }}
             </h1>
         </div>
 
@@ -52,22 +50,24 @@
             {% endautoescape %}
         </div>
 
-        <!-- СИСТЕМА КОММЕНТАРИЕВ НАЧИНАЕТСЯ ТУТ -->
         <div class="line"></div>
-
-        <div class="line"></div>
-        {% if request.user.is_authenticated %}
-            <div class="comments">
-                {% include "polls/includes/comments.html" %}
-            </div>
-        {% else %}
-            <div class="not-auth-comment">
-                {% include "polls/includes/not-auth-comment.html" %}
-            </div>
-        {% endif %}
-
+    <div class="" style="width: 90%;">
+        <div id="disqus_thread"></div>
+        <script>
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://self-made-people.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">
+                comments powered by Disqus.
+            </a>
+        </noscript>
     </div>
-
+    </div>
 
     {% include "polls/includes/footer.html" %}
 {% endblock %}

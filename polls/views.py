@@ -14,15 +14,37 @@ from .utils import ObjectDetailMixin
 
 
 # ИСПОЛЬЗОВАНИЕ МЕТОДА CLASS BASED VIEWS
-class PostDetail(ObjectDetailMixin, View):
-        model = Post
-        template = 'polls/post_detail.html'
+# class PostDetail(ObjectDetailMixin, View):
+#         model = Post
+#         template = 'polls/post_detail.html'
 
 class TagDetail(ObjectDetailMixin, View):
         model = Tag
         template = 'polls/tag_detail.html'
 
+def post_detail(request,slug):
+    post = Post.objects.get(slug__iexact=slug)
+    return render(request, 'polls/post_detail.html', context={'post':post})
 
+# def post_detail(request,slug):
+#     post = Post.objects.get(slug__iexact=slug)
+#     comments = post.comments.filter(active=True)
+#
+#     if request.method == 'POST':
+#         # A comment was posted
+#         comment_form = CommentForm(data=request.POST)
+#         if comment_form.is_valid():
+#             # Create Comment object but don't save to database yet
+#             new_comment = comment_form.save(commit=False)
+#             # Assign the current post to the comment
+#             new_comment.post = post
+#             # Save the comment to the database
+#             new_comment.save()
+#     else:
+#         comment_form = CommentForm()
+#     return render(request, 'polls/post_detail.html', context={'post':post,
+#                                                               'comments': comments,
+#                                                               'comment_form': comment_form})
 
 # Отображение постов
 def index(request):

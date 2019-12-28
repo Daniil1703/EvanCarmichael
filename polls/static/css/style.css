@@ -28,35 +28,42 @@ body {
     flex-wrap: wrap;
 	align-items: flex-start;
 	margin-top: 50px;
+	color: white;
 }
+
+
 
 @media screen and (min-width: 1279px){
 	#toTop {
 		margin-top: 200px;
 	  	position: fixed;
 	  	display: none;
-	  	font-size: 90%;
-	  	font-weight: 700;
-	  	color: rgb(255,255,255);
 	  	text-decoration: none;
 	  	text-shadow: 0 -1px 2px rgba(0,0,0,.2);
-	  	padding: .5em 1em;
+	  	width: 6em;
+		height: 3.5em;
+		text-align: center;
+		padding-top: 0.4%;
 	  	outline: none;
 	  	border-radius: 3px;
+		margin-left: 3px;
 	  	cursor: pointer;
-	  	background: linear-gradient(rgb(237,159,100), rgb(237,159,100)) rgb(237,159,100);
+	  	background: rgb(163, 163, 163);
 	  	box-shadow:
 	   0 1px rgba(255,255,255,.2) inset,
 	   0 3px 5px rgba(0,1,6,.5),
 	   0 0 1px 1px rgba(0,1,6,.2);
-	  transition: .2s ease-in-out;
+	  	transition: .2s ease-in-out;
+
 	}
+
+
 	#toTop:hover {
-  		background: #ed9a22;
+  		background: #969799;
 	}
 }
 
-@media screen and (max-width: 1278px){
+@media screen and (max-width: 1298px){
 	.toTop {
 		display: none;
 	}

@@ -49,4 +49,11 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='users/%Y/', blank=True)
 
     def __str__(self):
-        return 'Profile for user {}'.format(self.user.username)
+        return 'Profile for user {} {}'.format(self.user.username,self.user.first_name)
+
+# class Comment(object):
+#     """docstring forComment."""
+#
+#     def __str__(self):
+#         return '{}'.format(self.)
+#
