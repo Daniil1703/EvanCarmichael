@@ -25,7 +25,7 @@ SECRET_KEY = 'jh#$urd&y7s!(%daz+6-b34#)5ohsdwlauv_44m6-vv16=&tub'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.104']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
+    'favorites',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,7 @@ CKEDITOR_CONFIGS = {
 }
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
+
 
 
 # Database

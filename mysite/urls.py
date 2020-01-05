@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('polls.urls')),
+    path('',include('favorites.urls')),
 ]
 
 if settings.DEBUG:

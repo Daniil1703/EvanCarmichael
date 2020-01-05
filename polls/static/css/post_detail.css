@@ -17,6 +17,10 @@
     background: #7c7c7c;
 }
 
+.star {
+    margin-left: 10px;
+    height: 35px;
+}
 
 @media only screen and (min-width: 911px) {
     .body_of_post{

@@ -1,0 +1,15 @@
+@media only screen and (min-width: 599px) {
+    .clear_all_favorites_btn {
+        margin-left: auto;
+        margin-right: auto;
+        transform: translate(30px,20px);
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .clear_all_favorites_btn {
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateY(20px);
+    }
+}

@@ -11,7 +11,6 @@ urlpatterns = [
     path('post/<str:slug>/', views.post_detail, name="post_detail_url"),
     path('tags/', views.tags_list, name='tags_list'),
     path('tag/<str:slug>/', views.TagDetail.as_view(), name='tag_detail'),
-    path('bookmark/', views.Bookmark, name='bookmarks'),
     # Система аунтентификации
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(), name='login'),

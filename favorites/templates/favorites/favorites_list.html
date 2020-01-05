@@ -1,0 +1,39 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+{% block links %}
+<!-- Compiled and minified JavaScript -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/post_model.css' %}">
+<link rel="stylesheet" type="text/css" type="text/css" href="{% static 'css/slider.css' %}">
+<link rel="stylesheet" type="text/css" type="text/css" href="{% static 'css/auth/login.css' %}">
+
+
+
+{% endblock %}
+{% block title_block %}
+    Закладки
+{% endblock %}
+
+{% block content %}
+    <div class="zagolovok">
+        <p class="zagolovok_style">Избранное</p>
+    </div>
+    <div class="clear_all_favorites_btn">
+        <form class="" action="{% url 'favorites:delete' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="url_from" value="{{ request.path }}">
+            <button class="but_auth" type="submit" name="button">
+                Отчистить все
+            </button>
+        </form>
+    </div>
+
+<div class="do_it" id="slides">
+    {% for post in posts %}
+        {% for item in request.session.favorites %}
+            {% if item.id == post.id|stringformat:'i' %}
+                {% include "polls/includes/posts.html" %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>
+{% endblock %}

@@ -45,7 +45,9 @@ def post_detail(request,slug):
 #     return render(request, 'polls/post_detail.html', context={'post':post,
 #                                                               'comments': comments,
 #                                                               'comment_form': comment_form})
-
+def favorites_list(request):
+    context = {}
+    return render(request, 'favorites/favorites_list.html', context=context)
 # Отображение постов
 def index(request):
         posts = Post.objects.all()
@@ -74,8 +76,6 @@ def tags_list(request):
         tags = Tag.objects.all()
         return render(request, 'polls/tags_list.html', context={'tags': tags})
 
-def Bookmark(request):
-    return render(request, 'polls/bookmarks.html', context=None)
 
 def setting_account(request):
     return render(request, 'registration/settings.html', context=None)

@@ -3,7 +3,7 @@
 {% block links %}
 
 
-<link rel="stylesheet" href="{% static 'css/post_model.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/post_model.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/tag_detail.css' %}">
 {% endblock%}
 
@@ -22,8 +22,8 @@
         {% for post in tag.posts.all %}
             {% include "polls/includes/posts.html" %}
         {% endfor %}
-    </div>   
+    </div>
 </div>
     {% include "polls/includes/footer.html" %}
- 
+
 {% endblock %}

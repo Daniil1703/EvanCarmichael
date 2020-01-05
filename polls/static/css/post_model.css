@@ -41,7 +41,7 @@ a {
 }
 
 .card:hover {
-  --bg-filter-opacity: 0.6;
+  --bg-filter-opacity: 0.7;
   background-image: linear-gradient(rgba(0, 0, 0,var(--bg-filter-opacity)),rgba(6,0,0,var(--bg-filter-opacity))), var(--bg-img);;
 }
 
@@ -80,6 +80,14 @@ a {
   position: absolute;
   bottom: 5%;
   left: 3%;
+}
+
+.star2 {
+    box-shadow: 0px 0px 4px 2px #9c9c9c;
+    margin-right: 290px;
+    background: #9c9c9c;
+    height: 40px;
+    transform: translateY(-21px);
 }
 
 @media screen and (max-width: 1100px){

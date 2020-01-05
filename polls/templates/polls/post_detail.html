@@ -21,6 +21,14 @@
             <p style="margin-left: 25px">
             {{ post.date_pub|date:"j E Y"}}
             </p>
+
+            <div class="star">
+                {% include 'favorites/includes/add_to_favorites.html' with type="post" id="posts.id" %}
+                <div class=" " style="transform: translateY(-40px);">
+                    {% include 'favorites/includes/remove_from_favorites.html' with type="post" id="posts.id" %}
+                </div>
+            </div>
+
         </div>
 
         <div class="title_post_detail">
@@ -51,7 +59,7 @@
         </div>
 
         <div class="line"></div>
-    <div class="" style="width: 90%;">
+    <div class="block_comments">
         <div id="disqus_thread"></div>
         <script>
             (function() { // DON'T EDIT BELOW THIS LINE
