@@ -1,5 +1,5 @@
 
-@media screen and (max-width : 725px) { 
+@media screen and (max-width : 725px) {
 	.carousel-caption h1{
 		font-size: 20px;
 		transform: translateY(-60%);
@@ -13,12 +13,9 @@
 		transform: translateY(-80%);
 
 	}
-	#button-zakladki{
-		display: none;
-	}
 }
 
-@media screen and (max-width : 397px) { 
+@media screen and (max-width : 397px) {
 	.carousel-caption button{
 		font-size:15px;
 		transform: translateY(-60px);
@@ -52,8 +49,8 @@
 .carousel-inner {
 	text-align: center;
 	background: rgb(0, 0, 0);
-	border: 1px solid rgb(0, 0, 0);
-	border-radius: 6px;
+	border: 1px solid #4e4e4e;
+	/* border-radius: 4px; */
 }
 .carousel-inner img{
 	opacity: 0.8;
@@ -79,7 +76,7 @@
 	font-size: 13px;
 }
 
-/* 
+/*
 #bilboard_id {
 	height: 100%;
 } */

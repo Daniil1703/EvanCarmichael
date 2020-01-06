@@ -45,11 +45,13 @@ class Tag(models.Model):
         return '{}'.format(self.title)
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
+                                on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='users/%Y/', blank=True)
 
     def __str__(self):
-        return 'Profile for user {} {}'.format(self.user.username,self.user.first_name)
+        return 'Profile for user {} {}'.format(self.user.username,
+                                               self.user.first_name)
 
 # class Comment(object):
 #     """docstring forComment."""

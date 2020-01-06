@@ -8,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
 
-from .forms import NewUserForm, LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from .forms import NewUserForm, LoginForm, UserRegistrationForm,\
+                   UserEditForm, ProfileEditForm
 from .models import Post, Tag, Profile
 from .utils import ObjectDetailMixin
 
@@ -26,55 +27,31 @@ def post_detail(request,slug):
     post = Post.objects.get(slug__iexact=slug)
     return render(request, 'polls/post_detail.html', context={'post':post})
 
-# def post_detail(request,slug):
-#     post = Post.objects.get(slug__iexact=slug)
-#     comments = post.comments.filter(active=True)
-#
-#     if request.method == 'POST':
-#         # A comment was posted
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
-#             # Create Comment object but don't save to database yet
-#             new_comment = comment_form.save(commit=False)
-#             # Assign the current post to the comment
-#             new_comment.post = post
-#             # Save the comment to the database
-#             new_comment.save()
-#     else:
-#         comment_form = CommentForm()
-#     return render(request, 'polls/post_detail.html', context={'post':post,
-#                                                               'comments': comments,
-#                                                               'comment_form': comment_form})
-def favorites_list(request):
-    context = {}
-    return render(request, 'favorites/favorites_list.html', context=context)
+
 # Отображение постов
 def index(request):
-        posts = Post.objects.all()
-        paginator = Paginator(posts, 9)
-        page_number = request.GET.get('page', 1)
-        page = paginator.get_page(page_number)
+    posts = Post.objects.all()
+    paginator = Paginator(posts, 9)
+    page_number = request.GET.get('page', 1)
+    page = paginator.get_page(page_number)
 
-        is_paginated = page.has_other_pages()
+    is_paginated = page.has_other_pages()
 
-        if page.has_next():
-                next_url = '?page={}'.format(page.next_page_number())
-        else:
-                next_url = ''
+    if page.has_next():
+        next_url = '?page={}'.format(page.next_page_number())
+    else:
+        next_url = ''
 
-        context = {
-                'page_object': page,
-                'is_paginated': is_paginated,
-                'next_url': next_url
-        }
-
-
-        return render(request, 'polls/index.html', context=context)
-
+    context = {
+        'page_object': page,
+        'is_paginated': is_paginated,
+         'next_url': next_url
+    }
+    return render(request, 'polls/index.html', context=context)
 
 def tags_list(request):
-        tags = Tag.objects.all()
-        return render(request, 'polls/tags_list.html', context={'tags': tags})
+    tags = Tag.objects.all()
+    return render(request, 'polls/tags_list.html', context={'tags': tags})
 
 
 def setting_account(request):
@@ -92,20 +69,24 @@ def register(request):
             new_user.save()
             # Создание профиля пользователя
             Profile.objects.create(user=new_user)
-            return render(request, 'registration/register_done.html', {'new_user': new_user})
+            return render(request, 'registration/register_done.html',
+                          {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
-    return render(request, 'registration/register.html', {'user_form': user_form})
+    return render(request, 'registration/register.html',
+                  {'user_form': user_form})
 
 @login_required
 def setting_account(request):
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user,data=request.POST)
-        profile_form = ProfileEditForm(instance=request.user.profile,data=request.POST,files=request.FILES)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+                                       data=request.POST,files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
-    return render(request, 'registration/settings.html', {'user_form': user_form,'profile_form': profile_form})
+    return render(request, 'registration/settings.html',
+                  {'user_form': user_form,'profile_form': profile_form})
