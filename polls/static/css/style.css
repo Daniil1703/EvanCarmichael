@@ -8,8 +8,6 @@ a{
 	text-decoration: none;
 }
 body {
-	display: flex;
-	flex-direction: column;
 	background: rgb(211, 210, 210) !important;
 }
 
