@@ -19,7 +19,6 @@
     max-width: 600px;
     margin-bottom: 20px;
     padding-top: 60px;
-    padding-bottom: 40px;
 }
 
 .login_title {
@@ -106,9 +105,8 @@
 }
 
 .login_detail{
-    float: right;
     margin-bottom: 50px;
-    margin-right: 20px;
+    margin-left: 80px;
 }
 
 .link_login_detail {
@@ -123,6 +121,7 @@
 }
 
 .btn_recom {
+    transform: translateY(-35px);
     margin-left: auto;
     margin-right: auto;
 }

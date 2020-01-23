@@ -1,15 +1,27 @@
-@media only screen and (min-width: 599px) {
-    .clear_all_favorites_btn {
-        margin-left: auto;
-        margin-right: auto;
-        transform: translate(30px,20px);
-    }
+.clear_all_favorites_btn {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(20px);
 }
 
-@media only screen and (max-width: 599px) {
-    .clear_all_favorites_btn {
-        margin-left: auto;
-        margin-right: auto;
-        transform: translateY(20px);
-    }
+.but_auth_for_favorites {
+    font-weight: 700;
+    font-size: 14px;
+    color: #e3e3e3;
+    background: #7c7c7c;
+    font-family: 'Ubuntu', sans-serif;
+    width: 200px;
+    height: 50px;
+    border-radius: 40px;
+}
+.but_auth_for_favorites:hover {
+    cursor: pointer;
+    background: #ed9f64;
+    color: #857c7c;
+}
+
+.but_auth_for_favorites:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    background: #ed9a22;
 }

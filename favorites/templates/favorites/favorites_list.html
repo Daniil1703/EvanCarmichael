@@ -17,11 +17,12 @@
     <div class="zagolovok">
         <p class="zagolovok_style">Избранное</p>
     </div>
+
     <div class="clear_all_favorites_btn">
         <form class="" action="{% url 'favorites:delete' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="url_from" value="{{ request.path }}">
-            <button class="but_auth" type="submit" name="button">
+            <button class="but_auth_for_favorites" type="submit" name="button">
                 Отчистить все
             </button>
         </form>

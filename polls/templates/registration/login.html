@@ -22,6 +22,7 @@
                 {% endif %}
             </h6>
             <form class="form1" action="{% url 'polls:login' %}" method="post">
+                {% csrf_token %}
                 <div class="field_input">
                     <label for="id_username"></label>
                     <input spellcheck="false" class="un " id="id_username"type="text" name="username" align="center" placeholder="логин" autocomplete="off">
@@ -29,7 +30,6 @@
                     <label for="id_password"></label>
                     <input class="pass" id="id_password" type="password" name="password" value="" placeholder="пароль">
                 </div>
-                {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}">
 
                 <input class="but_auth" type="submit" value="войти">
