@@ -18,7 +18,7 @@
     </div>
 
     <form class="form1" action="." method="post" enctype="multipart/form-data">
-        <div class="field_input">
+        <div class="field_input" style="margin-bottom:80px;">
 
             <div class="card_image">
                 {% if user.profile.photo %}
@@ -42,7 +42,7 @@
             <input class="un" type="email" name="email" maxlength="254" id="id_email" value="{{user.email}}"
              placeholder="введите email" spellcheck="false">
             {% csrf_token %}
-            <a class="btn_recom"style="text-align:center;width:100%;border: 1px solid #7c7c7c; padding: 10px; border-radius: 3px;"
+            <a class="btn_recom"style=" margin-top:40px;text-align:center;width:100%;border: 1px solid #7c7c7c; padding: 10px; border-radius: 3px;"
             href="{% url 'polls:password_change' %}">Сменить пароль</a>
             <input style="margin-top: 50px; margin-right:25%" class="but_auth" type="submit" name="" value="сохранить">
         </div>

@@ -20,14 +20,6 @@ body {
 
 }
 
-.do_it {
-    display: flex;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-	align-items: flex-start;
-	margin-top: 50px;
-	color: white;
-}
 
 
 
