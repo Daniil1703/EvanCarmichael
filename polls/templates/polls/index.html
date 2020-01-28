@@ -16,8 +16,10 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/post_model.css' %}">
 
+	<script type="text/javascript" src="{% static 'js/ajax_for_favorites.js' %}"></script>
 
 
+		<script type="text/javascript" src="{% static 'js/ajax_for_pagination.js' %}"></script>
 	{% endblock %}
 
 	{% block title_block %}
@@ -37,9 +39,7 @@
 				{% include "polls/includes/posts.html" %}
 			{% endfor %}
 		</div>
-		<!-- {% include "polls/includes/ajax_for_csrf.html" %} -->
 		{% include "polls/includes/pagination.html" %}
-		{% include "polls/includes/ajax.html" %}
 
 		<div class="footer_main">		<!-- Подвал сайта -->
 			{% include "polls/includes/footer.html" %}

@@ -31,7 +31,7 @@ def post_detail(request,slug):
 # Отображение постов
 def index(request):
     posts = Post.objects.all()
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 9)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
 

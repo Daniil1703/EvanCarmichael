@@ -1,12 +1,4 @@
-{% load static %}
 
-    <div class="favorites">
-        <form class="" action="{% url 'favorites:add' id=post.id%}" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="type" value="{{ type }}">
-            <input type="hidden" name="url_from" value="{{ request.path }}">
-            <button class="favorites_button" type="submit" name="button">
-                <img src="{% static 'images/icons/star.png' %}">
-            </button>
-        </form>
-    </div>
+<div class="add-to-favorites" style="cursor:pointer; padding:17px;" data-type="{{ type }}" data-id="{{ id }}">
+
+</div>

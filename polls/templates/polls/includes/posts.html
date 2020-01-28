@@ -1,3 +1,14 @@
+{% load static %}
+<style media="screen">
+    .add-to-favorites {
+        background-repeat: no-repeat;
+        background-image: url("{% static 'images/icons/star.png' %}");
+    }
+    .add-to-favorites.added {
+        background-repeat: no-repeat;
+        background-image: url("{% static 'images/icons/pointed-star.png' %}");
+    }
+</style>
 {% autoescape off %}
     <nav class="cards-wrapper" style="margin-right: auto; margin-left: auto; align-items: flex-end;">
         <div class="card-grid-space">
@@ -5,10 +16,7 @@
                 <a class="card" href="{% url 'polls:post_detail_url' slug=post.slug %}" style="--bg-img: url('{{ post.article_image.url}}')">
                     <div class="date" style="color: rgb(243, 237, 237);">{{ post.date_pub|date:"j E Y"}}</div>
                     <div class="star2">
-                        {% include 'favorites/includes/add_to_favorites.html' with type="post" id="posts.id" %}
-                        <div class=" " style="transform: translateY(-41px);">
-                            {% include 'favorites/includes/remove_from_favorites.html' with type="post" id="posts.id" %}
-                        </div>
+                        {% include 'favorites/includes/add_to_favorites.html' with type="post" id=post.id %}
                     </div>
                     <div class="new_class">
                         <h1 class="title_main" style="color: rgb(243, 237, 237); margin-bottom: 10px">{{ post.title }}</h1>
