@@ -20,7 +20,9 @@ body {
 
 }
 
-
+.zagolovok_index {
+	margin-top: 30px;
+}
 
 
 @media screen and (min-width: 1279px){

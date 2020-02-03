@@ -6,12 +6,12 @@
 }
 @media screen and (max-width: 450px){
 
-.form-item {
-    display: inline-flex;
+    .form-item {
+        display: inline-flex;
 }
 
 #search-block-form{
-    width:278px;
+    width:300px;
     height:43px;
     border-radius:15px;
     border:#929191 solid 2px;

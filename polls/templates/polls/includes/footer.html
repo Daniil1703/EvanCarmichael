@@ -2,34 +2,22 @@
 
     <ul class="footer-list-top">
       <li>
-        <h4 class="footer-list-header">Категории</h4></li>
-      <li><a href='/shop/about-mission' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
-      <li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Советы</a></li>
-      <li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Истории успеха</a></li>
+        <h4 class="footer-list-header">Главные категории</h4></li>
+      <li><a href='{% url "polls:tag_detail" slug="daynews" %}' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новость дня</a></li>
+      <li><a href='{% url "polls:tag_detail" slug="allnews" %}' class="generic-anchor footer-list-anchor" itemprop="significantLink">Все новости</a></li>
+      <li><a href='{% url "polls:tag_detail" slug="success_story" %}' class="generic-anchor footer-list-anchor" itemprop="significantLink">Истории успеха</a></li>
+      <li><a href='{% url "polls:tag_detail" slug="top_advice" %}' class="generic-anchor footer-list-anchor" itemprop="significantLink">Топ советы</a></li>
+       <li><a href='{% url "polls:tag_detail" slug="business_world" %}' class="generic-anchor footer-list-anchor" itemprop="significantLink">Мир бизнеса</a></li>
+     </ul>
 
-      <li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">Вход</a></li>
-
-      <li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Регистрация</a></li>
-    </ul>
-    <!-- <ul class="footer-list-top">
-      <li>
-        <h4 class="footer-list-header">The Gift Selection</h4></li>
-
-
-      <li><a href='/Angels/cat/id/70' class="generic-anchor footer-list-anchor">ANGEL FIGURINES</a></li>
-      <li><a href='/Home-Decor/cat/id/64' class="generic-anchor footer-list-anchor">HOME DECOR</a></li>
-      <li><a href='/Mugs/cat/id/32' class="generic-anchor footer-list-anchor">MUGS</a></li>
-      <li><a href='/Pet-Lover/cat/id/108' class="generic-anchor footer-list-anchor">PET LOVER</a></li>
-      <li><a href='/Ladies-Accessories/cat/id/117' class="generic-anchor footer-list-anchor" target="_blank">HANDBAGS & JEWELRY</a></li>
-    </ul> -->
     <ul class="footer-list-top">
       <li id='help'>
-        <h4 class="footer-list-header">Please Help Me</h4></li>
-      <li><a href='/shop/about-contact' class="generic-anchor footer-list-anchor" itemprop="significantLink">CONTACT</a></li>
-      <li><a href='/faq.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-      <li id='find-a-store'><a href='/shop/store-locator' class="generic-anchor footer-list-anchor" itemprop="significantLink">STORE LOCATOR</a></li>
-      <li id='user-registration'><a href='/shop/user-registration?URL=' class="generic-anchor footer-list-anchor" itemprop="significantLink">NEW USERS</a></li>
-      <li id='order-tracking'><a href='/shop/order-status' itemprop="significantLink" class="generic-anchor footer-list-anchor">ORDER STATUS</a></li>
+        <h4 class="footer-list-header">Помощь проекту</h4></li>
+      <li><a href='/shop/about-contact' class="generic-anchor footer-list-anchor" itemprop="significantLink">О нас</a></li>
+      <li><a href='/faq.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Донат</a></li>
+      <li id='find-a-store'><a href='/shop/store-locator' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+      <li id='user-registration'><a href='/shop/user-registration?URL=' class="generic-anchor footer-list-anchor" itemprop="significantLink">Реклама</a></li>
+      <li id='user-registration'><a href='/shop/user-registration?URL=' class="generic-anchor footer-list-anchor" itemprop="significantLink">Рекомендации</a></li>
     </ul>
     <div class="share_link_for_post" style="margin-right:auto; margin-left:auto;">
         <!— AddToAny BEGIN —>

@@ -8,30 +8,20 @@
 	.carousel-caption h5{
 		display: none;
 	}
-	.carousel-caption button {
+	.carousel-caption .buttom_two{
 		size: 30px;
 		transform: translateY(-80%);
-
+	}
+}
+@media screen and (max-width : 526px) {
+	.carousel-caption .buttom_1{
+		size: 20px;
+		transform: translateY(-50px);
+		padding: 10px;
 	}
 }
 
-@media screen and (max-width : 397px) {
-	.carousel-caption button{
-		font-size:15px;
-		transform: translateY(-60px);
-	}
-	.carousel-caption h1{
-		text-shadow: 1px 1px 20px #000;
-		transform: translateY(-80%);
-		font-family: 'Oswald', sans-serif;
-	}
-}
 
-@media screen and (max-width: 450px){
-	.slide {
-		display: none;
-	}
-}
 
 /* ДЕЛАЮ АДАПТАЦИЮ САМОГО БИЛБЛОРДА */
 @media screen and (min-width : 1160px){
@@ -65,13 +55,17 @@
 }
 
 
-#btn-color {
+.buttom_two{
 	background: #ed9a22;
 	color: white;
+	border-radius: 25px;
+	padding: 15px;
 	text-shadow: 3px 3px 10px #000;
 }
-
-.buttom_two {
+.buttom_two:hover{
+	background: #d3d2d2;
+}
+.buttom_1 {
 	margin-top: 30px;
 	font-size: 13px;
 }
@@ -86,7 +80,95 @@
 
 }
 
-#button-zakladki {
+@media screen and (min-width: 450px){
+	.mb-wrap {
+		display: none;
+	}
+	/* Делаю цитату вместо билборда */
+}
+
+@media screen and (max-width: 450px){
+	.slide {
+		display: none;
+	}
+	/* Делаю цитату вместо билборда */
+	/* Let's set and reset some common styles */
+	.mb-wrap {
+	    margin: auto;
+	    padding: 20px;
+	    position: relative;
+	}
+
+
+	.mb-wrap .blockquote {
+	    position: relative;
+	}
+
+
+
+.mb-style-1 {
+    background: black url(images/background_leather.jpg) repeat top left;
+    margin-top: 100px;
+    padding-top: 100px;
+    color: #fff;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    border-top: 10px solid #fff;
+}
+
+.mb-style-1 .mb-thumb {
+    display: block;
+    width: 160px;
+    height: 190px;
+    border: 10px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: -95px;
+    margin: 0 0 0 -75px;
+    box-shadow:
+        inset 1px 1px 4px rgba(0,0,0,0.5),
+        0 2px 3px rgba(0,0,0,0.6);
+}
+
+.mb-style-1 .blockquote:before,
+.mb-style-1 .blockquote:after {
+    font-family: 'icons';
+    position: absolute;
+    font-size: 120px;
+    top: -90px;
+    color: #242526;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+}
+
+.mb-style-1 .blockquote:before{
+    content: '\201C';
+}
+
+.mb-style-1 .blockquote:after{
+    right: 0px;
+    content: '\201D';
+}
+.mb-style-1 .blockquote .blockquote_p {
+    font-family: Cambria, Georgia, serif;
+    font-style: italic;
+    font-size: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.2);
 	color: white;
-	text-shadow: 0 0 3px black, 0 0 5px rgb(143, 143, 151);
+    padding: 10px 10px 20px 10px;
+    text-align: center;
+    margin: 0 0 20px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0);
+}
+
+
+.mb-style-1 .mb-author{
+	text-align: right;
+    font-size: 23px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+	/* opacity: 0.8; */
+}
+
 }

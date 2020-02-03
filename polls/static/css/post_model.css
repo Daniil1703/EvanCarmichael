@@ -36,7 +36,8 @@ a {
   width: 15em;
   font-size: 1.5em;
   color: white;
-  border-radius: 0.3em;
+  border: 0.4px solid #adacac;
+  border-radius: 0.2em;
   padding: 1em;
   /*margin: 2em;*/
   display: flex;
@@ -101,7 +102,7 @@ a {
     background: #9c9c9c;
     border-radius: 20px;
     height: 35px;
-    transform: translateY(-21px);
+    transform: translateY(-20px);
 }
 
 
@@ -119,7 +120,7 @@ a {
         width: 340px;
     }
     .star2 {
-        transform: translate(25px, -25px);
+        transform: translate(25px, -20px);
     }
 }
 
@@ -138,7 +139,7 @@ a {
         width: 320px;
     }
     .star2 {
-        transform: translate(35px, -25px);
+        transform: translate(35px, -20px);
     }
     .card .title_main {
       text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
@@ -162,7 +163,7 @@ a {
         width: 310px;
     }
     .star2 {
-        transform: translate(45px, -25px);
+        transform: translate(45px, -20px);
     }
 }
 
@@ -183,7 +184,7 @@ a {
     }
 
     .star2 {
-        transform: translate(65px, -25px);
+        transform: translate(65px, -20px);
     }
 
     .card .title_main {
@@ -217,7 +218,7 @@ a {
         width: 255px;
     }
     .star2 {
-        transform: translate(105px, -25px);
+        transform: translate(105px, -20px);
     }
     .card .title_main {
       text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
@@ -242,7 +243,7 @@ a {
         width: 315px;
     }
     .star2 {
-        transform: translate(45px, -25px);
+        transform: translate(45px, -20px);
     }
     .card .title_main {
       text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
