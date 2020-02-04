@@ -68,9 +68,9 @@ a:focus {
     margin-top: 3px;
 }
 
-#width {
+/* #width {
     width: 1165px;
-}
+} */
 
 .navbar-brad {
     margin-left: 19px;
@@ -112,22 +112,10 @@ a:focus {
     border: 1px solid #d3d2d2;
 }
 
-@media only screen and (min-width: 767px){
-    .dropdown-content {
-        right:0;
-    }
-}
-
-@media only screen and (max-width: 767px){
-    .dropdown-content    {
-        padding: 5px;
-    }
-}
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     margin-top: 2px;
-    display: none;
     position: absolute;
     background-color: #f3f3f3;
     min-width: 100px;
@@ -147,8 +135,6 @@ a:focus {
     display: block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
