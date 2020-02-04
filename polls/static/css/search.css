@@ -70,6 +70,10 @@
         caret-color:transparent;
         line-height: 40px;
         transition: width 0.4s linear;
+        padding: 0 10px;
+        width: 250px;
+        caret-color:#ed9a22;
+        transition: width 0.4s linear;
         }
 
         .searchbar:hover > .search_input{

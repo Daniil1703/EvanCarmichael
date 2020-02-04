@@ -7,6 +7,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 from .forms import NewUserForm, LoginForm, UserRegistrationForm,\
                    UserEditForm, ProfileEditForm
@@ -30,7 +31,15 @@ def post_detail(request,slug):
 
 # Отображение постов
 def index(request):
-    posts = Post.objects.all()
+    search_query = request.GET.get('search','')
+
+    if search_query:
+        posts = Post.objects.filter(Q(title__icontains=search_query) |
+                                    Q(body__icontains=search_query) |
+                                    Q(title_detail__icontains=search_query))
+    else:
+        posts = Post.objects.all()
+
     paginator = Paginator(posts, 3)
     page_number = request.GET.get('page', 1)
     page = paginator.get_page(page_number)
