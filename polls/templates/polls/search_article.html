@@ -1,0 +1,48 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/post_model.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tag_detail.css' %}">
+
+{% endblock %}
+
+{% block title_block %}
+    Поиск
+{% endblock %}
+
+{% block content %}
+<div class="zagolovok zagolovok_index">
+  <p class="zagolovok_style">По вашему запросу найдено:</p>
+</div>
+
+<div class="posts_display">
+    <p class="zagolovok_style" style="margin-left:15px;">Категорий:</p>
+    <div class="cards-list">
+        {% for tag in tags %}
+            <a href="{% url 'polls:tag_detail' slug=tag.slug %}">
+                <div class="card-tag">
+
+                    <div class="card_image">
+                        {% if tag.tag_image %}
+                            <img src="{{ tag.tag_image.url}}" />
+                        {% endif %}
+                    </div>
+
+                    <div class="card_title title-white">
+                        <p class="title-white" style="font-size: 21px;">{{ tag.title }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <p class="zagolovok_style" style="margin-left:15px;">Статей:</p>
+    <div class="do_it">
+        {% for post in posts %}
+        {% include "polls/includes/posts.html" %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

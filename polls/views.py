@@ -31,14 +31,8 @@ def post_detail(request,slug):
 
 # Отображение постов
 def index(request):
-    search_query = request.GET.get('search','')
 
-    if search_query:
-        posts = Post.objects.filter(Q(title__icontains=search_query) |
-                                    Q(body__icontains=search_query) |
-                                    Q(title_detail__icontains=search_query))
-    else:
-        posts = Post.objects.all()
+    posts = Post.objects.all()
 
     paginator = Paginator(posts, 3)
     page_number = request.GET.get('page', 1)
@@ -54,9 +48,26 @@ def index(request):
     context = {
         'page_object': page,
         'is_paginated': is_paginated,
-         'next_url': next_url
+        'next_url': next_url
     }
     return render(request, 'polls/index.html', context=context)
+
+def serchArticles(request):
+    search_query = request.GET.get('search','')
+
+    if search_query:
+        posts = Post.objects.filter(Q(title__icontains=search_query) |
+                                    Q(body__icontains=search_query) |
+                                    Q(title_detail__icontains=search_query))
+
+        tags = Tag.objects.filter(Q(title__icontains=search_query))
+        context = {
+            'posts': posts,
+            'tags': tags
+        }
+    else:
+        context = None
+    return render(request, 'polls/search_article.html', context=context)
 
 def tags_list(request):
     tags = Tag.objects.all()
