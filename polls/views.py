@@ -15,18 +15,15 @@ from .models import Post, Tag, Profile
 from .utils import ObjectDetailMixin
 
 
-# ИСПОЛЬЗОВАНИЕ МЕТОДА CLASS BASED VIEWS
-# class PostDetail(ObjectDetailMixin, View):
-#         model = Post
-#         template = 'polls/post_detail.html'
 
 class TagDetail(ObjectDetailMixin, View):
-        model = Tag
-        template = 'polls/tag_detail.html'
+    model = Tag
+    template = 'polls/tag_detail.html'
 
-def post_detail(request,slug):
-    post = Post.objects.get(slug__iexact=slug)
-    return render(request, 'polls/post_detail.html', context={'post':post})
+class PostDetail(ObjectDetailMixin, View):
+    model = Post
+    template = 'polls/post_detail.html'
+
 
 
 # Отображение постов

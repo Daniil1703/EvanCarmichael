@@ -3,15 +3,17 @@ from django.conf.urls.static import static
 from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 from . import views
+# from .views import *
 
 app_name = 'polls'
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('search', views.serchArticles, name='search_article'),
-    path('post/<str:slug>/', views.post_detail, name="post_detail_url"),
+    path('post/<str:slug>/', views.PostDetail.as_view(), name="post_detail_url"),
     path('tags/', views.tags_list, name='tags_list'),
     path('tag/<str:slug>/', views.TagDetail.as_view(), name='tag_detail'),
+
     # Система аунтентификации
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -22,6 +24,7 @@ urlpatterns = [
     path('account/password_change/done/',
              auth_views.PasswordChangeDoneView.as_view(),
              name='password_change_done'),
+
     # Система восстановления пароля
     path('login/password_reset/',
              auth_views.PasswordResetView.as_view(\
@@ -36,6 +39,7 @@ urlpatterns = [
              name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(),
              name='password_reset_complete'),
+
     # Регистрация пользователя
     path('account/register/', views.register, name='register'),
 
