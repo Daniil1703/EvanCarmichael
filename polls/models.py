@@ -3,10 +3,17 @@ from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from time import time
 from django.conf import settings
+from django.template.defaultfilters import slugify as django_slugify
+
+
+alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
+            'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
+            'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'i', 'э': 'e', 'ю': 'yu',
+            'я': 'ya'}
+
 
 def gen_slug(s):
-    new_slug = slugify(s, allow_unicode=True)
-    return new_slug + '-' + str(int(time()))
+    return django_slugify(''.join(alphabet.get(w, w) for w in s.lower()) + '-' + str(int(time())))
 
 
 
@@ -17,7 +24,7 @@ class Post(models.Model):
     title_detail = models.CharField(max_length=300, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = RichTextField(blank=True, db_index=True)
-    article_image = models.FileField(blank = True,null = True)
+    article_image = models.FileField(upload_to='posts/%Y/', blank = True,null = True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
 
     class Meta:
@@ -34,7 +41,7 @@ class Post(models.Model):
 class Tag(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=50, blank=True, unique=True)
-    tag_image = models.FileField(blank = True,null = True)
+    tag_image = models.FileField(upload_to='categories/%Y/', blank = True,null = True)
 
     def save(self, *args, **kwargs):
         if not self.id:
