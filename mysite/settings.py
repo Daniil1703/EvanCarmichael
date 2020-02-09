@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
     'favorites',
+    'todos'
 ]
 
 MIDDLEWARE = [
@@ -93,8 +94,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lincolnDB',
+        'USER': 'postgres',
+        'PASSWORD': 'Db23Postgres55Ql293',
+        'HOST': 'localhost',
     }
 }
 
