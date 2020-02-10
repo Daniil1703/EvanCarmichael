@@ -23,7 +23,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, db_index=True)
     title_detail = models.CharField(max_length=300, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
-    body = RichTextField(blank=True, db_index=True)
+    body = RichTextField(blank=True)
     article_image = models.FileField(upload_to='posts/%Y/', blank = True,null = True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
 
