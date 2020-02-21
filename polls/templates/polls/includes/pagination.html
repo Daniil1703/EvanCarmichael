@@ -1,4 +1,4 @@
-<nav id="pagination" aria-label="Page navigation example">
+<!-- <nav id="pagination" aria-label="Page navigation example">
     <ul class="pagination justify-content-center pagination-lg ">
         <li class="page-item {% if not next_url %} disabled {% endif %}" {% if not next_url %} style="display: none;" {% endif %}>
             <a class="page-link" href="{{ next_url }}" aria-label="Next">
@@ -6,4 +6,68 @@
             </a>
         </li>
     </ul>
-</nav>
+</nav> -->
+{% if is_paginated %}
+  <div class="pagination__wrapper">
+      <ul class="pagination">
+            <li class="pagination-li">
+                <a class="pagination-li-links"{% if not prev_url %} style="display: none;" {% endif %} href="{{ prev_url }}">&#10094;</a>
+            </li>
+
+            {% if page_object.number < 7 %}
+            <!-- ЕСЛИ НЕТ ПРЕД. СТРАНИЦЫ, СКРЫВАЕМ ТРОЕТОЧИЕ -->
+            <li class="pagination-li">
+                <span class="dats1" style="display: none;">...</span>
+            </li>
+            {% else %}
+            <!-- В ПРОТИВНОМ СЛУЧАЕ, ДОБАВЛЯЕМ НОМЕР ПОСЛЕДНЕЙ И ПОСЛЕ НЕГО ТРОЕТОЧИЕ -->
+            <li class="pagination-li">
+                <a class="pagination-li-links" href="?page={{ page_object.paginator.page_range|first }}">
+                    {{ page_object.paginator.page_range|first }}
+                </a>
+            </li>
+            <li class="pagination-li">
+                <span class="dats1">...</span>
+            </li>
+            {% endif %}
+
+            <!-- ЦИКЛ ПОСТРАНИЧНОЙ ПАГИНАЦИИ -->
+            {% for n in page_object.paginator.page_range %}
+                {% if page_object.number == n %}
+                    <li class="pagination-li">
+                        <a class="pagination-li-links" id="active" href="?page={{ n }}">{{ n }}</a>
+                    </li>
+                {% elif n > page_object.number|add:-6 and n < page_object.number|add:6 %}
+                    <li class="pagination-li">
+                        <a class="pagination-li-links" href="?page={{ n }}">
+                            {{ n }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            <!-- КОНЕЦ ЦИКЛА -->
+
+            {% if page_object.number|add:6 > page_object.paginator.page_range|last %}
+            <!-- ЕСЛИ НЕТ СЛЕДУЩЕЙ СТРАНИЦЫ, СКРЫВАЕМ ТРОЕТОЧИЕ -->
+            <li class="pagination-li">
+                <span class="dats1" style="display: none;">...</span>
+            </li>
+            {% else %}
+            <!-- В ПРОТИВНОМ СЛУЧАЕ, ПОКАЗЫВАЕМ И ПОСЛЕ НЕГО ДОБАВЛЯЕМ НОМЕР ПОСЛЕДНЕЙ СТРАНИЦЫ -->
+            <li class="pagination-li">
+                <span class="dats1">...</span>
+            </li>
+            <li class="pagination-li">
+                <a class="pagination-li-links" href="?page={{ page_object.paginator.page_range|last }}">
+                    {{ page_object.paginator.page_range|last }}
+                </a>
+            </li>
+            {% endif %}
+
+
+            <li class="pagination-li">
+                <a class="pagination-li-links" {% if not next_url %} style="display: none;" {% endif %} href="{{ next_url }}" title="next page">&#10095;</a>
+            </li>
+        </ul>
+    </div>
+ {% endif %}

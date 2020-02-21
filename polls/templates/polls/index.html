@@ -6,7 +6,8 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/slider.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/post_model.css' %}">
-	<script type="text/javascript" src="{% static 'js/ajax_for_pagination.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/pagination.css' %}">
+	<script type="text/javascript" src="{% static 'js/ajax_for_favorites.js' %}"></script>
 	{% endblock %}
 
 	{% block title_block %}
@@ -16,28 +17,31 @@
 {% block content %}
 	<body>
 		<!-- АДАПТИВНЫЙ БИЛБОРД и ЦИТАТА-->
+		{% if page_object.number == 1 %}
 		<div class="mb-wrap mb-style-1">
 			{% include "polls/includes/blockquote.html" %}
 		</div>
-
-
-		{% include "polls/includes/slider.html" %}
-
+			{% include "polls/includes/slider.html" %}
+		<div class="zagolovok zagolovok_index">
+		  <p class="zagolovok_style">Главная</p>
+		</div>
+		{% else %}
 		<div class="zagolovok zagolovok_index">
 		  <p class="zagolovok_style">Лента</p>
 		</div>
+		{% endif %}
+
 
 		<!-- <div id="#search_form">
 			{% include "polls/includes/search.html" %}
 		</div> -->
 
-		<div class="do_it" id="slides">
+		<div class="do_it" id="slides" style="margin-bottom: 50px;">
 			{% for post in page_object.object_list %}
 				{% include "polls/includes/posts.html" %}
 			{% endfor %}
 		</div>
 		{% include "polls/includes/pagination.html" %}
-
 		<div class="footer_main">		<!-- Подвал сайта -->
 			{% include "polls/includes/footer.html" %}
 		</div>	<!-- Конец подвала сайта -->
