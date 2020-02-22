@@ -74,6 +74,10 @@ a:focus {
 
 .navbar-brad {
     margin-left: 19px;
+    font-size: 30px;
+    color: #373737;
+    font-weight: 400;
+    font-family: sans-serif;
 }
 
 .navbar_top {

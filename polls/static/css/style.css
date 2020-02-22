@@ -18,13 +18,6 @@ body {
 
 /* СТИЛИ ДЛЯ ОТОБРАЖЕНИЯ ПОСТОВ НА ГЛАВНОЙ СТРАНИЦЕ */
 
-
-.pagination {
-	margin: 10px 0 5px 0;
-	opacity: 0.5;
-
-}
-
 .zagolovok_index {
 	margin-top: 30px;
 }
