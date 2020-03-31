@@ -5,10 +5,11 @@ from time import time
 from django.conf import settings
 from django.template.defaultfilters import slugify as django_slugify
 
-
-alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
-            'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
-            'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'i', 'э': 'e', 'ю': 'yu',
+alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e',
+            'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k',
+            'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r',
+            'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts',
+            'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'i', 'э': 'e', 'ю': 'yu',
             'я': 'ya'}
 
 
@@ -24,11 +25,13 @@ class Post(models.Model):
     title_detail = models.CharField(max_length=300, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = RichTextField(blank=True)
-    article_image = models.FileField(upload_to='posts/%Y/', blank = True,null = True)
+    article_image = models.FileField(
+        upload_to='posts/%Y/', blank = True,null = True
+    )
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
 
     class Meta:
-        ordering = ('-date_pub',)
+        ordering = ['-date_pub']
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -51,6 +54,9 @@ class Tag(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
+    class Meta:
+        ordering = ['title']
+
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE)
@@ -59,10 +65,3 @@ class Profile(models.Model):
     def __str__(self):
         return 'Profile for user {} {}'.format(self.user.username,
                                                self.user.first_name)
-
-# class Comment(object):
-#     """docstring forComment."""
-#
-#     def __str__(self):
-#         return '{}'.format(self.)
-#

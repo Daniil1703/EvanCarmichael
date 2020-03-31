@@ -8,7 +8,6 @@ app_name = 'favorites'
 urlpatterns = [
     path('favorites/', include([
         path('',favorites_list, name='list'),
-
         path('add/', add_to_favorites, name='add'),
         path('remove/', remove_from_favorites, name='remove'),
         path('delete/', delete_favorites, name='delete'),

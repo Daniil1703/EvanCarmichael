@@ -97,7 +97,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lincolnDB',
         'USER': 'postgres',
-        'PASSWORD': 'Db23Postgres55Ql293',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
     }
 }
@@ -149,6 +149,5 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-# PASSWORD_CHANE_REDIRECT_URL =
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -24,8 +24,6 @@ urlpatterns = [
     path('account/password_change/done/',
              auth_views.PasswordChangeDoneView.as_view(),
              name='password_change_done'),
-
-    # Система восстановления пароля
     path('login/password_reset/',
              auth_views.PasswordResetView.as_view(\
              success_url=reverse_lazy('polls:password_reset_done')),
@@ -39,8 +37,6 @@ urlpatterns = [
              name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(),
              name='password_reset_complete'),
-
-    # Регистрация пользователя
     path('account/register/', views.register, name='register'),
 
 ]

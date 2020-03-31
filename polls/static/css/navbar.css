@@ -99,8 +99,8 @@ a:focus {
     cursor: pointer;
 }
 
-/* Dropdown button on hover & focus */
-/* .dropbtn:hover, .dropbtn:focus {
+/* Dropdown button on hover & focus
+.dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
 } */
 
@@ -119,6 +119,7 @@ a:focus {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+    display: none;
     margin-top: 2px;
     position: absolute;
     background-color: #f3f3f3;

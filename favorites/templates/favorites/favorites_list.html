@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/post_model.css' %}">
 <link rel="stylesheet" type="text/css" type="text/css" href="{% static 'css/slider.css' %}">
 <link rel="stylesheet" type="text/css" type="text/css" href="{% static 'css/auth/login.css' %}">
-
 <script type="text/javascript" src="{% static 'js/ajax_for_favorites.js' %}"></script>
 
 
@@ -18,7 +17,6 @@
     <div class="zagolovok">
         <p class="zagolovok_style">Избранное</p>
     </div>
-
     <div class="clear_all_favorites_btn">
         <form class="" action="{% url 'favorites:delete' %}" method="post">
             {% csrf_token %}
@@ -28,7 +26,6 @@
             </button>
         </form>
     </div>
-
 <div class="do_it" id="slides">
     {% for post in posts %}
         {% for item in request.session.favorites %}
