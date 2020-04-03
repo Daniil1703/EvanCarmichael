@@ -57,11 +57,11 @@ class Tag(models.Model):
     class Meta:
         ordering = ['title']
 
-class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,
-                                on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='users/%Y/', blank=True)
-
-    def __str__(self):
-        return 'Profile for user {} {}'.format(self.user.username,
-                                               self.user.first_name)
+# class Profile(models.Model):
+#     user = models.OneToOneField(settings.AUTH_USER_MODEL,
+#                                 on_delete=models.CASCADE)
+#     photo = models.ImageField(upload_to='users/%Y/', blank=True)
+#
+#     def __str__(self):
+#         return 'Profile for user {} {}'.format(self.user.username,
+#                                                self.user.first_name)

@@ -1,0 +1,61 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+{% block links %}
+
+{% endblock %}
+{% block content %}
+<div class="zagolovok zagolovok_index">
+  <p class="zagolovok_style">Заметки</p>
+</div>
+
+<div class="container_todos">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+
+            <div class="card-todos">
+                <div class="card-header-todos shadow-sm bg-white">
+                    <h1 class="display-5 text-info">
+                        <i class="fas fa-list-ol"></i>
+                        Todo task
+                    </h1>
+                </div>
+
+                <div class="card-body-todos">
+                    <ul class="list-group">
+                        <form class="" action="{% url 'todos:insert_todo_item' %}" autocomplete="off" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="content" value="">
+                                <div class="input-group-appent text-info">
+                                    <span class="input-group-text py-0">
+                                        <button class="btn btn-sm text-info" type="submit" name="button">
+                                            <i class="fa fa-plus-circle fa-lg"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                        {% for todo in todos %}
+                            <li class="list-group-item">
+                                {{ todo.content }}
+                                <form class="float-right d-inline" action="{% url 'todos:delete_todo_item' todo.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn" type="submit" name="button">
+                                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="footer_main" style="margin-top:500px;">
+    {% include "polls/includes/footer.html" %}
+</div>
+
+{% endblock %}

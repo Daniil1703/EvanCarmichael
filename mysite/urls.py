@@ -23,8 +23,10 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('polls.urls')),
+    path('',include('users.urls')),
     path('',include('favorites.urls')),
     path('',include('todos.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

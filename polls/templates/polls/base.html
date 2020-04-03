@@ -13,13 +13,16 @@
     <link rel="icon" type="image/png" href="{% static 'images/icons/favicn.ico' %}">
     <!-- NAVBAR and FOOTER LINK -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/tags_list.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/favorites.css' %}">
-	<link rel="stylesheet" type="text/css" href="{%static 'css/search.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags_list.css' %}">
+	<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+	<link rel="stylesheet" href="{% static 'css/favorites.css' %}">
+	<link rel="stylesheet" href="{%static 'css/search.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/auth/captcha.css' %}">
+	<link rel="stylesheet" href="{% static 'css/auth/errorList.css' %}">
+	<link rel="stylesheet" href="{% static 'css/messages.css' %}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -27,6 +30,9 @@
 	<script type="text/javascript" src="{% static 'js/navbar.js' %}"></script>
 	<link rel="icon" type="image/png" href="{% static 'images/icons/favicn.ico' %}">
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- BOOTSTRAP LINK -->
 
@@ -38,6 +44,7 @@
     <!-- ШАПКА САЙТА -->
 	<div class="" >
 		{% include "polls/includes/navbar.html" %}
+		{% include 'polls/includes/messages.html' %}
 	</div>
 	<div class="toTop">
 		<div id = "toTop" ><img  src="{% static 'images/icons/up.ico' %}" alt=""></div>

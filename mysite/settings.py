@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'polls',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
     'favorites',
+    'captcha',
     'todos'
 ]
 
@@ -74,10 +76,7 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS =[
-    'django.contrib.auth.backends.ModelBackend',
-    'polls.authentication.EmailAuthBackend',
-]
+
 
 CKEDITOR_CONFIGS = {
     'default':{
@@ -87,7 +86,7 @@ CKEDITOR_CONFIGS = {
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -147,7 +146,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+#settings for authentication
+LOGOUT_REDIRECT_URL = '/user/login/'
+LOGIN_URL = '/user/login/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+# capture settings
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+CAPTCHA_IMAGE_SIZE = (180, 60)
+CAPTCHA_FONT_SIZE = (32)
+CAPTCHA_BACKGROUND_COLOR = '#cccccc'
+CAPTCHA_FOREGROUND_COLOR = '#344e5d'
+CAPTCHA_LENGTH = 6

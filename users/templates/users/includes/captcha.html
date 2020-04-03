@@ -1,0 +1,10 @@
+{% load static %}
+<div class="block_captcha">
+    {{ form.captcha }}
+    <button type="button" class='captcha-refresh'>
+        <img
+         width="30"
+         src="{% static 'images/icons/reload.png' %}"
+         alt="reload capture">
+    </button>
+</div>

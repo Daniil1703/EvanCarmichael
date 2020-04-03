@@ -1,0 +1,48 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Вход
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/auth/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="block_auth">
+    <h6 class="login_title">
+        {% if form.errors %}
+            Логин или пароль были введены не верно
+            {% else %}
+                Заполните поля для входа в аккаунт
+        {% endif %}
+    </h6>
+    <form class="form1" action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
+        <div class="field_input">
+            <div class="error-p">{{ form.email.errors }}</div>
+            <label for="{{ field.label }}">{{ form.email.label }}</label>
+            {{ form.email }}
+
+            <div class="error-p">{{ form.password.errors }}</div>
+            <label for="{{ field.label }}">{{ form.password.label }}</label>
+            {{ form.password }}
+
+            {% if form.captcha %}
+            <div class="error-p"> {{ form.captcha.errors }}</div>
+                {% include 'users/includes/captcha.html' %}
+            {% endif %}
+        </div>
+        <input class="but_auth" type="submit" value="войти">
+    </form>
+
+    <div class="login_detail">
+        <p>Забыли пароль? <a class="link_login_detail" href="{% url 'users:password_reset' %}">Восстановить</a></p>
+        <p>Нет аккаунта? <a class="link_login_detail" href="{% url 'users:user_create_url'%}">Регистрация</a></p>
+    </div>
+    {% include 'users/includes/reload_capture.html' %}
+</div>
+{% include "polls/includes/footer.html" %}
+
+{% endblock %}

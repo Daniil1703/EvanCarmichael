@@ -1,0 +1,37 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error'%}
+            <script>
+                M.toast({
+                    html: "<div class='mes-e'>ERROR: {{message}}</div>",
+                    displayLength:4000,
+                    classes: 'messages'
+                });
+            </script>
+        {% elif message.tags == 'success' %}
+            <script>
+                M.toast({
+                    html: "<div class='mes-s'>SUCCESS: {{message}}</div>",
+                    displayLength:4000,
+                    classes: 'messages'
+                });
+            </script>
+        {% elif message.tags == 'warning' %}
+            <script>
+                M.toast({
+                    html: "<div class='mes-w'>WARNING: {{message}}</div>",
+                    displayLength:4000,
+                    classes: 'messages'
+                });
+            </script>
+        {% elif message.tags == 'info'%}
+            <script>
+                M.toast({
+                    html: "<div class='mes-i'>INFO: {{message}}</div>",
+                    displayLength:6000,
+                    classes: 'messages'
+                });
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}

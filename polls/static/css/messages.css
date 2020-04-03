@@ -1,0 +1,57 @@
+.mes-e {
+    color: red;
+    border: 3px solid red;
+    border-radius: 10px;
+    background: #e3e3e3;
+    padding: 10px;
+    margin: auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.mes-s {
+    z-index: 99999;
+    color: #00B945;
+    border: 3px solid #00B945;
+    border-radius: 10px;
+    background: #e3e3e3;
+    padding: 10px;
+    margin: auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.mes-w {
+    z-index: 99999;
+    color: #D8A601;
+    border: 3px solid #D8A601;
+    border-radius: 10px;
+    background: #e3e3e3;
+    padding: 10px;
+    margin: auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.mes-i {
+    z-index: 99999;
+    color: #0191D8;
+    border: 3px solid #0191D8;
+    border-radius: 10px;
+    background: #e3e3e3;
+    padding: 10px;
+    margin: auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.messages {
+    margin-top: 90px;
+    display: flex;
+    width: 100%;
+    position: absolute;
+}
