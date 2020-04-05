@@ -42,7 +42,7 @@
 </head>
 <body>
     <!-- ШАПКА САЙТА -->
-	<div class="" >
+	<div class="">
 		{% include "polls/includes/navbar.html" %}
 		{% include 'polls/includes/messages.html' %}
 	</div>
@@ -50,9 +50,11 @@
 		<div id = "toTop" ><img  src="{% static 'images/icons/up.ico' %}" alt=""></div>
 	</div>
     <!-- ОСНОВНОЙ КОНТЕНТ -->
-    {% block content %}
-        К сожелению, на данный момент нет контента
-    {% endblock %}
+	<div class="" style="margin-top: 100px;">
+		{% block content %}
+		К сожелению, на данный момент нет контента
+		{% endblock %}
+	</div>
 
 </body>
 </html>
