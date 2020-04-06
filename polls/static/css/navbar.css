@@ -33,7 +33,7 @@
     border-bottom: 4px solid rgb(211, 210, 210);
     font-size: 1.2em !important;
     color: rgb(82, 80, 80) !important;
-    font-family: Poppins-Regular;
+    font: 2.3vw "Oswald", sans-serif;
     line-height: 1.7;
 }
 
@@ -73,8 +73,8 @@ a:focus {
 .dropbtn {
     font-size: 1.2em !important;
     color: rgb(82, 80, 80) !important;
-    margin: 8px 10px;
-    font-family: Poppins-Regular;
+    margin: 10px 10px;
+    font: 2.3vw "Oswald", sans-serif
     line-height: 1.7;
 }
 
