@@ -14,17 +14,12 @@
         <div class="card-grid-space">
             {% if post.article_image %}
                 <a class="card" href="{% url 'polls:post_detail_url' slug=post.slug %}" style="--bg-img: url('{{ post.article_image.url}}')">
-                    <div class="date" style="color: rgb(243, 237, 237);">{{ post.date_pub|date:"j E Y"}}</div>
+                    <div class="date">{{ post.date_pub|date:"j E Y"}}</div>
                     <div class="star2">
                         {% include 'favorites/includes/add_to_favorites.html' with type="post" id=post.id %}
                     </div>
                     <div class="new_class">
-                        <h1 class="title_main" style="color: rgb(243, 237, 237); margin-bottom: 10px">{{ post.title }}</h1>
-                        <div style="opacity:0.9">
-                            <p class="title_main_detail">
-                                {{ post.title_detail|truncatewords:16 }}
-                            </p>
-                        </div>
+                        <h1 class="title_main" style="color: rgb(243, 237, 237); margin-bottom: 10px">{{ post.title|truncatewords:22 }}</h1>
                     </div>
                 </a>
             {% endif %}
