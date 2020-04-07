@@ -21,27 +21,17 @@
         background-image: url("{% static 'images/icons/pointed-star.png' %}");
     }
 </style>
+<div class="post-detail-block">
     <div class="post_structure">
-        <div class="category_datePub">
-
-            {% for tag in post.tags.all %}
-                <a href="{% url 'polls:tag_detail' slug=tag.slug %}" style="border-bottom: 1px solid #576197; font-size: 15px;">
-                    Категория: {{ tag.title }}
-                </a>
-            {% endfor %}
-            <p style="margin-left: 25px">
-            {{ post.date_pub|date:"j E Y"}}
-            </p>
-
-            <div class="star">
-                {% include 'favorites/includes/add_to_favorites.html' with type="post" id=post.id %}
-            </div>
-        </div>
-
         <div class="title_post_detail">
-            <h1 class="nt-6">
-                    {{ post.title }}
+            <h1 class="title-h1">
+                {{ post.title }}
             </h1>
+        </div>
+        <div class="category_datePub">
+            <p>
+                <img src="https://img.icons8.com/cotton/64/000000/time.png" width="25"/>{{ post.date_pub|date:"j E Y"}}
+            </p>
         </div>
 
         <div class="share_link_for_post">
@@ -54,17 +44,31 @@
                 <a class="a2a_button_email"></a>
                 <a class="a2a_button_telegram"></a>
                 <a class="a2a_button_odnoklassniki"></a>
+                <div class="star">
+                    {% include 'favorites/includes/add_to_favorites.html' with type="post" id=post.id %}
+                </div>
             </div>
             <script async src="https://static.addtoany.com/menu/page.js"></script>
             <!— AddToAny END —>
         </div>
-
+        <hr>
         <div class="body_of_post">
             {% autoescape off %}
-                {{ post.body }}
+                <span>{{ post.body }}</span>
             {% endautoescape %}
         </div>
-
-        <div class="line"></div>
+        <hr>
+        <div class="tags-post-detail">
+            {% for tag in post.tags.all %}
+            <a href="{% url 'polls:tag_detail' slug=tag.slug %}">
+                {{ tag.title }}
+            </a>
+            {% endfor %}
+        </div>
+        <hr>
     </div>
+    <!-- <div class="ads-post-detail">
+
+    </div> -->
+</div>
 {% endblock %}
