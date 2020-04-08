@@ -22,7 +22,6 @@ class Post(models.Model):
 
     date_pub = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200, db_index=True)
-    title_detail = models.CharField(max_length=300, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = RichTextField(blank=True)
     article_image = models.FileField(
@@ -56,12 +55,3 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ['title']
-
-# class Profile(models.Model):
-#     user = models.OneToOneField(settings.AUTH_USER_MODEL,
-#                                 on_delete=models.CASCADE)
-#     photo = models.ImageField(upload_to='users/%Y/', blank=True)
-#
-#     def __str__(self):
-#         return 'Profile for user {} {}'.format(self.user.username,
-#                                                self.user.first_name)
