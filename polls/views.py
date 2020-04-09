@@ -23,8 +23,11 @@ class PostDetail(ObjectDetailMixin, View):
 
 # Отображение постов
 def index(request):
+    postsB = Post.objects.all().filter(publicate_in="B")
 
-    posts = Post.objects.all()
+
+
+    posts = Post.objects.all().filter(publicate_in="L")
     paginator = Paginator(posts, 6)
 
     page_number = request.GET.get('page', 1)
@@ -43,6 +46,7 @@ def index(request):
         next_url = ''
 
     context = {
+        'postsB': postsB,
         'page_object': page,
         'is_paginated': is_paginated,
         'prev_url': prev_url,

@@ -97,6 +97,9 @@
     .title-h1 {
         font-size: 25px;
     }
+    .post_structure img {
+        max-height: 400px;
+    }
 }
 
 @media screen and (max-width: 650px) {

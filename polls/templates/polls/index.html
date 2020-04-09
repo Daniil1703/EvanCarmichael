@@ -27,9 +27,11 @@
 		</div>
 		{% endif %}
 
-		<div class="do_it" id="slides">
+		<div class="do_it" id="slides" style="margin-bottom: 30px;">
 			{% for post in page_object.object_list %}
-				{% include "polls/includes/posts.html" %}
+				{% if post.publicate_in == "L" %}
+					{% include "polls/includes/posts.html" %}
+				{% endif %}
 			{% endfor %}
 		</div>
 		{% include "polls/includes/pagination.html" %}

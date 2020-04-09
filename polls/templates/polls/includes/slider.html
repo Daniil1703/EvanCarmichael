@@ -1,6 +1,34 @@
 {% load static %}
 <div class="slideshow">
-      <!-- Full-width images with number and caption text -->
+    <!-- Full-width images with number and caption text -->
+    {% for posts in postsB %}
+        <div class="mySlides fades">
+            {% if posts.article_image %}
+            <a href="{% url 'polls:post_detail_url' slug=posts.slug %}">
+                <img class="img-slide"  width="800" height="400" src="{{ posts.article_image.url }}">
+                    <div class="bilboard-text">
+                    <h1 class="bilboard-text-h" style="color: rgb(243, 237, 237); margin-bottom: 10px">
+                        &ldquo;{{ posts.title }}&rdquo;
+                    </h1>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+
+    <div class="mySlides fades">
+        <a href="/">
+            <img class="img-slide"  width="800" height="400" src="{% static 'media/bilboard/img.jpg' %}">
+            <div class="bilboard-text">
+                <h1 class="bilboard-text-h" style="color: rgb(243, 237, 237); margin-bottom: 10px">
+                    &ldquo;Основатель Twitter'a Джек Дорси пожертвует 1 миллиард
+                    долларов на борьбу с коронавирусом. Это 28% его состояния&rdquo;
+                </h1>
+              </div>
+          </a>
+      </div>
+
     <div class="mySlides fades">
         <a href="/">
             <img class="img-slide"  width="800" src="{% static 'media/bilboard/covid.jpg' %}">

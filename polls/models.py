@@ -4,6 +4,7 @@ from ckeditor.fields import RichTextField
 from time import time
 from django.conf import settings
 from django.template.defaultfilters import slugify as django_slugify
+from django.utils.translation import gettext_lazy as _
 
 alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e',
             'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k',
@@ -20,14 +21,26 @@ def gen_slug(s):
 
 class Post(models.Model):
 
+    class HowPublicate(models.TextChoices):
+        LIST = 'L', _('Лента')
+        BILBOARD = 'B', _('Слайдер')
+
     date_pub = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = RichTextField(blank=True)
     article_image = models.FileField(
-        upload_to='posts/%Y/', blank = True,null = True
-    )
+        upload_to='posts/%Y/',
+        blank = True,
+        null = True
+        )
     tags = models.ManyToManyField('Tag', blank=True, related_name='posts')
+    publicate_in = models.CharField(
+        _('Тип публикации:'),
+        max_length=2,
+        choices=HowPublicate.choices,
+        default=HowPublicate.LIST,
+        )
 
     class Meta:
         ordering = ['-date_pub']
@@ -39,6 +52,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=50)

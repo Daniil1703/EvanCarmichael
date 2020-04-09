@@ -12,7 +12,7 @@
     margin: 0px 10px 0 10px;
 
     max-width: 800px;
-    max-height: 450px;
+    max-height: 400px;
 }
 
 .slideshow:hover {
@@ -22,7 +22,7 @@
 
 }
 .img-slide {
-    width: 100%;
+    width: 800px;
     min-height: 300px;
     min-width: 500px;
     border-radius: 5px;
@@ -37,10 +37,10 @@
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 45%;
+  top: 40%;
   color: white;
   width: auto;
-  margin-top: -22px;
+  /* margin-top: -22px; */
   padding: 16px;
   font-weight: bold;
   font-size: 18px;
@@ -74,6 +74,7 @@
     text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
     line-height: 1.1em;
     font-size: 30px;
+    font-weight: bold;
     font-family: 'Open Sans';
 }
 
@@ -106,7 +107,7 @@
 
 @media screen and (max-width:450px){
     .img-slide {
-        transform: translateX(-60px);
+        transform: translateX(-200px);
     }
 }
 
@@ -124,7 +125,8 @@
       padding: 10px;
     }
     .bilboard-text-h {
-        font-size: 1.4em;
+        font-size: 1.7em;
+        font-weight: bold;
     }
     .bilboard-text {
       padding: 0px 10%;
