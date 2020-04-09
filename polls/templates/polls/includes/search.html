@@ -1,4 +1,5 @@
 <form action="" method="post" id="search-block-form">
+    {% csrf_token %}
     <div class="form-item">
         <input style="font-size: 17px; color: rgb(50, 50, 50)" type="text" name="" value="" maxlength="128" placeholder="Найти...">
         <button style="border:none; margin: -3px 20px;" class="btn btn-outline-secondary border-0" type="button">

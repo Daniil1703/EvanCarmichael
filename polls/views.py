@@ -59,8 +59,7 @@ def serchArticles(request):
 
     if search_query:
         posts = Post.objects.filter(Q(title__icontains=search_query) |
-                                    Q(body__icontains=search_query) |
-                                    Q(title_detail__icontains=search_query))
+                                    Q(body__icontains=search_query))
 
         tags = Tag.objects.filter(Q(title__icontains=search_query))
         context = {
