@@ -88,7 +88,17 @@ iframe {
 /* СТИЛИ ДЛЯ ОТОБРАЖЕНИЯ ПОСТОВ НА ГЛАВНОЙ СТРАНИЦЕ */
 
 .zagolovok_index {
-	margin-top: 10px;
+	margin: 10px auto 20px auto;
+}
+
+.zagolovok {
+	max-width: 1110px;
+  }
+
+.zagolovok_style {
+	margin: 0 10px;
+	border-bottom: 1px solid rgb(124, 124, 124);
+  font-size: 35px;
 }
 
 
