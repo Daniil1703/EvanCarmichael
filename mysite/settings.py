@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'favorites',
     'captcha',
-    'todos'
+    'todos',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

@@ -17,6 +17,10 @@
     <form class="forms_auth" action="{% url 'users:user_create_url' %}" method="post">
         {% csrf_token %}
         <div class="field_input">
+            <div class="error-p">{{ form.login_user.errors }}</div>
+            <label for="{{ field.label }}">{{ form.login_user.label }}</label>
+            {{ form.login_user }}
+
             <div class="error-p">{{ form.email.errors }}</div>
             <label for="{{ field.label }}">{{ form.email.label }}</label>
             {{ form.email }}

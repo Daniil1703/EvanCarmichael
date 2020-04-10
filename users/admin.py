@@ -8,13 +8,13 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     model = CustomUser
     list_display = (
-        'email', 'is_staff', 'is_active',
+        'login_user', 'email', 'is_staff', 'is_active',
     )
     list_filter = ('email', 'is_staff', 'is_active',)
 
     fieldsets = (
         (None, {'fields': (
-            'email', 'password'
+            'login_user', 'email', 'password'
         )}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
@@ -23,8 +23,8 @@ class CustomUserAdmin(UserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'email', 'user_image', 'password1', 'password2', 'is_staff',
-                'is_active'
+                'login_user', 'email', 'password1', 'password2',
+                'is_staff', 'is_active'
             )}
         ),
     )

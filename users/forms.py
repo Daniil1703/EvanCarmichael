@@ -15,6 +15,10 @@ class CaptchaForm(forms.Form):
 
 
 class CustomUserCreationForm(UserCreationForm):
+    login_user = forms.CharField(
+        label=('Логин:'),
+        widget=forms.TextInput(attrs={'class': 'un'}),
+    )
     email = forms.EmailField(
         label=('Email:'),
         widget=forms.EmailInput(attrs={'class': 'un'}),
@@ -36,7 +40,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
         model = CustomUser
         fields = [
-            'email'
+            'login_user', 'email'
         ]
 
     def clean_email(self):
