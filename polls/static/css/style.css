@@ -92,13 +92,14 @@ iframe {
 }
 
 .zagolovok {
+	text-align: center;
 	max-width: 1110px;
   }
 
 .zagolovok_style {
 	margin: 0 10px;
-	border-bottom: 1px solid rgb(124, 124, 124);
-  font-size: 35px;
+	border-bottom: 1px solid rgba(124, 124, 124, 0.5);
+  	font-size: 35px;
 }
 
 
