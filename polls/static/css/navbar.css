@@ -3,7 +3,7 @@
 
 #navbar {
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 300;
     width: 100%;
     display: block;
@@ -12,9 +12,9 @@
 }
 
 .bar-items {
+    border-bottom: 1px solid rgba(0,0,0,0.22);;
     max-width: 1200px;
     margin: auto;
-    border-bottom: 1px solid black;
     padding-right: 20px;
 }
 .navbar-items {
