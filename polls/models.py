@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 from time import time
 from django.conf import settings
@@ -28,7 +29,7 @@ class Post(models.Model):
     date_pub = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
-    body = RichTextField(blank=True)
+    body = RichTextUploadingField(blank=True)
     article_image = models.FileField(
         upload_to='posts/%Y/',
         blank = True,
