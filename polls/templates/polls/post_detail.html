@@ -66,6 +66,23 @@
             {% endfor %}
         </div>
         <hr>
+        {% for comments in comment %}
+        <div class="">
+            {% if comments.parent_comment %}
+                <div class="" style="margin-left:30px;">
+                    <h4>{{ comments.author.login_user }}</h4>
+                    <p>{{ comments.body }}</p>
+                    <p>{{ comments.created_time }} | <a href="#">Ответить</a></p>
+                    <hr>
+                </div>
+            {% else %}
+                <h4>{{ comments.author.login_user }}</h4>
+                <p>{{ comments.body }}</p>
+                <p>{{ comments.created_time }} | <a href="#">Ответить</a></p>
+                <hr>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
     <!-- <div class="ads-post-detail">
 

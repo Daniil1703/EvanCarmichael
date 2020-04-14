@@ -1,13 +1,17 @@
+from .forms import CommentForm
+from .models import Post, Tag, Comment
+from .utils import ObjectDetailMixin
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
 from django.views.generic import View
+from django.views.generic.edit import FormView
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Q
-
-from .models import Post, Tag
-from .utils import ObjectDetailMixin
+from users.models import CustomUser
 
 
 
@@ -15,10 +19,21 @@ class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'polls/tag_detail.html'
 
-class PostDetail(ObjectDetailMixin, View):
-    model = Post
-    template = 'polls/post_detail.html'
+# class PostDetail(ObjectDetailMixin, View):
+#     model = Post
+#     template = 'polls/post_detail.html'
 
+class PostDetail(View):
+    form_class = CommentForm
+    template_name = 'polls/post_detail.html'
+    def get(self, request, slug):
+        post = get_object_or_404(Post, slug__iexact=slug)
+        comment = Comment.objects.all().filter(is_enable=True)
+        context = {
+            'post': post,
+            'comment': comment
+        }
+        return render(request, template_name=self.template_name, context=context)
 
 
 # Отображение постов
