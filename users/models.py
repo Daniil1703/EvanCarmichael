@@ -9,7 +9,7 @@ from .managers import CustomUserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     login_user = models.CharField(
-        _('Логин'), unique=True, db_index=True, max_length=20
+        _('Логин'), unique=True, db_index=True, max_length=40
     )
     email = models.EmailField(_('email адресс'), unique=True)
     is_staff = models.BooleanField(default=False)

@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customuser',
             name='login_user',
-            field=models.CharField(db_index=True, default=django.utils.timezone.now, max_length=20, unique=True, verbose_name='Логин'),
+            field=models.CharField(db_index=True, default=django.utils.timezone.now, max_length=40, unique=True, verbose_name='Логин'),
             preserve_default=False,
         ),
     ]
