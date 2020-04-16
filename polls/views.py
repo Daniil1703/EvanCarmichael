@@ -24,16 +24,37 @@ class TagDetail(ObjectDetailMixin, View):
 #     template = 'polls/post_detail.html'
 
 class PostDetail(View):
-    form_class = CommentForm
     template_name = 'polls/post_detail.html'
+    form_class = CommentForm()
     def get(self, request, slug):
         post = get_object_or_404(Post, slug__iexact=slug)
         comment = Comment.objects.all().filter(is_enable=True)
         context = {
             'post': post,
-            'comment': comment
+            'comment': comment,
+            'form_class': self.form_class
         }
-        return render(request, template_name=self.template_name, context=context)
+        return render(
+            request, template_name=self.template_name, context=context)
+
+    def post(self, request, slug):
+        if request.method == 'POST':
+            form = CommentForm(request.POST)
+            post = get_object_or_404(Post, slug__iexact=slug)
+            if form.is_valid():
+                comment = Comment(
+                    article_id=post.id,
+                    author_id=request.user.id,
+                    body=form.cleaned_data['body'])
+                comment.save()
+                return redirect('polls:post_detail_url', slug=post.slug)
+        else:
+            context = {
+                'form_class': self.form_class
+            }
+        return render(
+            request, template_name=self.template_name, context=context)
+
 
 
 # Отображение постов
