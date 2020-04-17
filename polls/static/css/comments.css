@@ -1,0 +1,165 @@
+.comment-block {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    /* overflow: hidden; */
+    max-width: 700px;
+}
+
+.box-comment {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.comment-avatar {
+    border-radius: 50%;
+    border: 1px solid #9c9d9e;
+    margin-right: 10px;
+}
+
+.comment-avatar img {
+    border-radius: 50%;
+}
+.comment-data {
+    width: 100%;
+    display: inline-block;
+    /* background: red; */
+}
+
+.comment-data h4{
+    word-wrap: break-word;
+    max-width: 220px;
+    overflow: hidden;
+    font-weight: bold;
+    color: #363636;
+    font-size: 20px;
+}
+
+.comment-body {
+    max-width: 550px;
+    word-wrap: break-word;
+    overflow: hidden;
+    line-height: 1.36;
+    color: #363636;
+    font-size: 18px;
+}
+
+.comment-body-tree {
+    max-width: 550px;
+    word-wrap: break-word;
+    overflow: hidden;
+    line-height: 1.36;
+    color: #363636;
+    font-size: 17px;
+}
+
+/* ------------------------ЕСЛИ ПОЛЬЗОВАТЕЛЬ НЕ АВТОРИЗОВАН----------------- */
+.login-for-comments {
+    text-align: center;
+    width: 100%;
+    color: #525151;
+}
+
+
+.auth-for-comment {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ----------------------------ЕСЛИ АВТОРИЗОВАН И ХОЧЕТ ОСТАВИТЬ КОММЕНТ---------- */
+
+.comment-input-block {
+    margin: 0 0 0 5px;
+}
+.comment-input {
+    font-family: "Oswald", sans-serif;
+    width: 100%;
+    background: #d3d2d2;
+    border-radius: 10px;
+    height: 150px;
+    padding: 10px;
+    border: 2px;
+    font-size: 17px;
+}
+
+.comment-input:focus {
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.but_comment {
+    float: right;
+    font-weight: 700;
+    font-size: 14px;
+    color: #e3e3e3;
+    background: #7c7c7c;
+    font-family: 'Ubuntu', sans-serif;
+    width: 200px;
+    height: 50px;
+    border-radius: 40px;
+}
+
+.but_comment:hover {
+    cursor: pointer;
+    background: #ed9f64;
+    color: #857c7c;
+}
+
+.but_comment:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    background: #ed9a22;
+}
+
+/* _______________пользователь хочет ответить на комментарий_______________ */
+.comment-input-block-replie {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0 0 20px 0;
+    width: 100%;
+}
+
+.comment-input-block-replie form{
+    width: 85%;
+}
+
+.comment-input-block-replie form .comment-input{
+    height: 100px;
+}
+
+@media screen and (max-width: 750px) {
+    .comment-body-tree {
+        max-width: 450px;
+    }
+    .comment-body {
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .comment-body-tree {
+        max-width: 350px;
+    }
+    .comment-body {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .comment-body-tree {
+        max-width: 250px;
+    }
+    .comment-body {
+        max-width: 300px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .comment-body-tree {
+        max-width: 200px;
+    }
+    .comment-body {
+        max-width: 250px;
+    }
+}

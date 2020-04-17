@@ -92,6 +92,7 @@ class Comment(models.Model):
         verbose_name="main_comment",
         blank=True,
         null=True,
+        related_name='replies',
         on_delete=models.CASCADE)
     is_enable = models.BooleanField(
         _('Активен'), default=True, blank=False, null=False)

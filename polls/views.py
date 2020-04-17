@@ -42,7 +42,12 @@ class PostDetail(View):
             form = CommentForm(request.POST)
             post = get_object_or_404(Post, slug__iexact=slug)
             if form.is_valid():
+                perent = request.POST.get('comments_id')
+                comments_qs = None
+                if perent:
+                    comments_qs = perent
                 comment = Comment(
+                    parent_comment_id = comments_qs,
                     article_id=post.id,
                     author_id=request.user.id,
                     body=form.cleaned_data['body'])
@@ -109,3 +114,37 @@ def serchArticles(request):
 def tags_list(request):
     tags = Tag.objects.all()
     return render(request, 'polls/tags_list.html', context={'tags': tags})
+
+
+        # {% if comments.parent_comment %}
+        # <div style="margin-left: 50px;" class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}" alt="ew"></div>
+        #     <div class="comment-data">
+        #         <h4>{{ comments.author.login_user }}</h4>
+        #         <p class="comment-body-tree">{{ comments.body }}</p>
+        #         <p>
+        #             {{ comments.created_time }} |
+        #         </p>
+        #         <form class="comment-input-block" action="{% url 'polls:post_detail_url' slug=post.slug%}" method="post">
+        #             {% csrf_token %}
+        #                 <input type="hidden" name="comments_id" value="{{ comments.id }}">
+        #                 {{ form_class.as_p }}
+        #                 <button class="but_comment" type="submit" name="button">Оставить комментарий</button>
+        #         </form>
+        #         <hr>
+        #     </div>
+        # {% else %}
+        #     <div class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}" alt="ew"></div>
+        #     <div class="comment-data">
+        #         <h4>{{ comments.author.login_user }}</h4>
+        #         <p class="comment-body">{{ comments.body }}</p>
+        #         <p>{{ comments.created_time }} |
+        #             {% if form %}
+        #                 <a class="btn btn-default btn-xs pull-right"
+        #                     onclick="return show_comments_form({{ comments.id }})">
+        #                     Ответить
+        #                 </a>
+        #             {% endif %}
+        #         </p>
+        #         <hr>
+        #     </div>
+        # {% endif %}

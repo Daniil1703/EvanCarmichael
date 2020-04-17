@@ -6,11 +6,9 @@ from .models import Comment
 
 class CommentForm(ModelForm):
 
-    parent_comment_id = forms.IntegerField(
-        widget = forms.HiddenInput, required=False)
     body = forms.CharField(
         label = '',
-        widget = forms.Textarea
+        widget = forms.Textarea(attrs={'class': 'comment-input', 'placeholder': 'Начните вводить текст'})
     )
     class Meta:
         model = Comment
