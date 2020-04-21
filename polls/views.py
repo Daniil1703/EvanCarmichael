@@ -19,16 +19,13 @@ class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'polls/tag_detail.html'
 
-# class PostDetail(ObjectDetailMixin, View):
-#     model = Post
-#     template = 'polls/post_detail.html'
 
 class PostDetail(View):
     template_name = 'polls/post_detail.html'
     form_class = CommentForm()
     def get(self, request, slug):
         post = get_object_or_404(Post, slug__iexact=slug)
-        comment = Comment.objects.all().filter(is_enable=True)
+        comment = Comment.objects.all().filter(is_enable=True, parent_comment_id=None)
         context = {
             'post': post,
             'comment': comment,

@@ -1,10 +1,9 @@
 .comment-block {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
     /* overflow: hidden; */
     max-width: 700px;
 }
+
+/* СТИЛИ ДЛЯ ГЛАВНЫХ КОММЕНТАРИЕВ */
 
 .box-comment {
     display: flex;
@@ -13,22 +12,22 @@
     width: 100%;
 }
 
-.comment-avatar {
-    border-radius: 50%;
-    border: 1px solid #9c9d9e;
-    margin-right: 10px;
-}
-
-.comment-avatar img {
-    border-radius: 50%;
-}
 .comment-data {
+    padding-left: 20px;
     width: 100%;
+}
+.comment-avatar {
     display: inline-block;
-    /* background: red; */
+    flex-shrink: 0;
+    margin-right: auto;
 }
 
-.comment-data h4{
+.comment-avatar img{
+    border-radius: 50%;
+    border: 1px solid #868788;
+}
+
+.comment-login {
     word-wrap: break-word;
     max-width: 220px;
     overflow: hidden;
@@ -37,23 +36,65 @@
     font-size: 20px;
 }
 
-.comment-body {
+
+.comment-p {
+    /* text-align: justify; */
     max-width: 550px;
     word-wrap: break-word;
-    overflow: hidden;
     line-height: 1.36;
     color: #363636;
     font-size: 18px;
 }
 
-.comment-body-tree {
-    max-width: 550px;
+/* СТИЛИ ДЛЯ ОТВЕТА НА КОММЕНТАРИИ */
+
+.parent-comment {
+    width: 100%;
+    padding-left: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    float: right;
+    margin-bottom: 30px;
+}
+
+.parent-data {
+    padding-left: 10px;
+    width: 95%;
+}
+.answer-comment, .parent-data span, .box-comment span {
+    color: #868788 ;
+    font-size: 17px;
+}
+.parent-avatar {
+    display: inline-block;
+    flex-shrink: 0;
+    margin-right: auto;
+}
+
+.parent-avatar img{
+    border-radius: 50%;
+    border: 1px solid #868788;
+}
+
+.parent-login {
     word-wrap: break-word;
+    max-width: 200px;
     overflow: hidden;
+    font-weight: bold;
+    color: #363636;
+    font-size: 18px;
+}
+
+
+.parent-p {
+    max-width: 500px;
+    word-wrap: break-word;
     line-height: 1.36;
     color: #363636;
     font-size: 17px;
 }
+
 
 /* ------------------------ЕСЛИ ПОЛЬЗОВАТЕЛЬ НЕ АВТОРИЗОВАН----------------- */
 .login-for-comments {
@@ -127,39 +168,49 @@
 .comment-input-block-replie form .comment-input{
     height: 100px;
 }
-
-@media screen and (max-width: 750px) {
-    .comment-body-tree {
-        max-width: 450px;
-    }
-    .comment-body {
+@media screen and (max-width: 700px) {
+    .comment-p {
         max-width: 500px;
     }
+    .parent-p {
+        max-width: 450px;
+    }
 }
 
-@media screen and (max-width: 620px) {
-    .comment-body-tree {
-        max-width: 350px;
-    }
-    .comment-body {
+@media screen and (max-width: 600px) {
+    .comment-p {
         max-width: 400px;
+        font-size: 17px;
+    }
+    .parent-p {
+        max-width: 350px;
+        font-size: 16px;
     }
 }
 
-@media screen and (max-width: 520px) {
-    .comment-body-tree {
-        max-width: 250px;
-    }
-    .comment-body {
+@media screen and (max-width: 500px) {
+    .comment-p {
         max-width: 300px;
+        font-size: 17px;
+        text-align: left;
+    }
+    .parent-p {
+        max-width: 250px;
+        font-size: 15px;
     }
 }
 
-@media screen and (max-width: 420px) {
-    .comment-body-tree {
-        max-width: 200px;
+@media screen and (max-width: 400px) {
+    .comment-p {
+        max-width: 260px;
+        text-align: left;
     }
-    .comment-body {
-        max-width: 250px;
+
+    .parent-p {
+        max-width: 210px;
+    }
+
+    .answer-comment, .parent-data span, .box-comment span {
+        font-size: 15px;
     }
 }

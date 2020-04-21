@@ -67,74 +67,10 @@
             {% endfor %}
         </div>
         <hr>
-<!--------------------------------- КОММЕНТАРИИ К СТАТЬЯМ------------------------------ -->
-        <h2>{{ comment.count }} Комментариев</h2>
-        <hr>
-        {% for comments in comment %}
-            <div class="comment-block">
-                {% if not comments.parent_comment %}
-                    <div class="box-comment">
-                        <div class="comment-avatar"><img width="70" src="{% static 'images/icons/noava.png' %}" alt="ew"></div>
-                        <div class="comment-data">
-                            <h4>{{ comments.author.login_user }}</h4>
-                            <p class="comment-body">{{ comments.body }}</p>
-                            <p>{{ comments.created_time }} |
-                                {% if request.user.is_authenticated %}
-                                    <a href="#">Ответить</a>
-                                {% else %}
-                                    <a href="{% url 'users:login' %}">Ответить</a>
-                                {% endif %}
-                            </p>
-                            <hr>
-                        </div>
-                    </div>
-                    {% for parent_comment_id in comments.replies.all %}
-                        <div class="box-comment">
-                            <div style="margin-left: 50px;" class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}" alt="ew"></div>
-                            <div class="comment-data">
-                                <h4>{{ parent_comment_id.author.login_user }}</h4>
-                                <p class="comment-body-tree">{{ parent_comment_id.body }}</p>
-                                <p>
-                                    {{ parent_comment_id.created_time }}
-                                </p>
-                                <hr>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    {% if request.user.is_authenticated %}
-                        <div class="comment-input-block-replie">
-                            <form action="{% url 'polls:post_detail_url' slug=post.slug%}" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="comments_id" value="{{ comments.id }}">
-                                {{ form_class.as_p }}
-                                <button class="but_comment" type="submit" name="button">Ответить</button>
-                            </form>
-                        </div>
-                    {% endif %}
-                {% endif %}
-            </div>
-        {% endfor %}
-
-        {% if request.user.is_authenticated %}
-            <form class="comment-input-block" action="{% url 'polls:post_detail_url' slug=post.slug%}" method="post">
-                {% csrf_token %}
-                    {{ form_class.as_p }}
-                    <button class="but_comment" type="submit" name="button">Оставить комментарий</button>
-            </form>
-        {% else %}
-            <div class="login-for-comments">
-                <hr>
-                <h5>
-                    <a class="auth-for-comment" href="{% url 'users:login' %}">Войдите</a>
-                     в систему или
-                     <a class="auth-for-comment" href="{% url 'users:user_create_url' %}">зарегистрируйтесь</a>,
-                     чтобы оставить комментарии
-                 </h5>
-            </div>
-        {% endif %}
+        {% include 'polls/includes/comments.html' %}
     </div>
-    <!-- <div class="ads-post-detail">
-
-    </div> -->
+    <!-- <div class="ads-post-detail"> </div> -->
 </div>
+
+<script src="{% static 'js/comments.js' %}"> </script>
 {% endblock %}
