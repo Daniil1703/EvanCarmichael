@@ -28,8 +28,9 @@
 }
 
 .comment-login {
+    min-height: 25px;
     word-wrap: break-word;
-    max-width: 220px;
+    width: 100%;
     overflow: hidden;
     font-weight: bold;
     color: #363636;
@@ -78,8 +79,9 @@
 }
 
 .parent-login {
+    min-height: 25px;
     word-wrap: break-word;
-    max-width: 200px;
+    width: 100%;
     overflow: hidden;
     font-weight: bold;
     color: #363636;

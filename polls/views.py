@@ -2,6 +2,8 @@ from .forms import CommentForm
 from .models import Post, Tag, Comment
 from .utils import ObjectDetailMixin
 
+from django.http import Http404
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
@@ -57,7 +59,16 @@ class PostDetail(View):
         return render(
             request, template_name=self.template_name, context=context)
 
-
+@login_required
+def comment_remove(request, slug, pk):
+    post = get_object_or_404(Post, slug__iexact=slug)
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.user.id == comment.author.id:
+        comment.delete()
+    else:
+        raise Http404()
+        
+    return redirect('polls:post_detail_url', slug=post.slug)
 
 # Отображение постов
 def index(request):
@@ -111,37 +122,3 @@ def serchArticles(request):
 def tags_list(request):
     tags = Tag.objects.all()
     return render(request, 'polls/tags_list.html', context={'tags': tags})
-
-
-        # {% if comments.parent_comment %}
-        # <div style="margin-left: 50px;" class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}" alt="ew"></div>
-        #     <div class="comment-data">
-        #         <h4>{{ comments.author.login_user }}</h4>
-        #         <p class="comment-body-tree">{{ comments.body }}</p>
-        #         <p>
-        #             {{ comments.created_time }} |
-        #         </p>
-        #         <form class="comment-input-block" action="{% url 'polls:post_detail_url' slug=post.slug%}" method="post">
-        #             {% csrf_token %}
-        #                 <input type="hidden" name="comments_id" value="{{ comments.id }}">
-        #                 {{ form_class.as_p }}
-        #                 <button class="but_comment" type="submit" name="button">Оставить комментарий</button>
-        #         </form>
-        #         <hr>
-        #     </div>
-        # {% else %}
-        #     <div class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}" alt="ew"></div>
-        #     <div class="comment-data">
-        #         <h4>{{ comments.author.login_user }}</h4>
-        #         <p class="comment-body">{{ comments.body }}</p>
-        #         <p>{{ comments.created_time }} |
-        #             {% if form %}
-        #                 <a class="btn btn-default btn-xs pull-right"
-        #                     onclick="return show_comments_form({{ comments.id }})">
-        #                     Ответить
-        #                 </a>
-        #             {% endif %}
-        #         </p>
-        #         <hr>
-        #     </div>
-        # {% endif %}

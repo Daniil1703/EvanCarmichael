@@ -1,5 +1,5 @@
 {% load static %}
-<h4>
+<h4 style="font-weight:bold">
     {% if comment.count == 0 %}
         Будьте первым, кто оставит комментарий
     {% else %}
@@ -13,40 +13,55 @@
         <div class="box-comment">
             <div class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}"></div>
             <div class="comment-data">
-                <h4 class="comment-login">{{ comments.author.login_user }}</h4>
+                <h4 class="comment-login">{{ comments.author.login_user }}
+                    {% if request.user.id == comments.author.id %}
+                    <a href="{% url 'polls:comment_remove' slug=post.slug pk=comments.pk %}">
+                        <span style="float:right; height:25px; height:25px; width:25px; background-image: url({% static 'images/icons/cancel.png' %})">
+                        </span>
+                    </a>
+                    {% endif %}
+                </h4>
                 <p class="comment-p">{{ comments.body }}</p>
                 <span>{{ comments.created_time }}</span>
                 {% if request.user.is_authenticated %}
-                <div class="nav1" style="display:inline-block">
+                <div class="nav1" style="display:inline-block;font-weight: bold">
                     <a onclick="showHide('form-answ{{ comments.id }}')"
                     href="#form-answ{{ comments.id }}">
-                    | Ответить
+                    Ответить
                     </a>
                 </div>
                 {% else %}
-                    <a style="font-weight: bold" href="{% url 'users:login' %}"> | Ответить</a>
                 {% endif %}
                 <hr>
             </div>
         </div>
         <!-- БЛОК КОММЕНТАРИЕВ ДЛЯ ОТВЕТА НА КОММЕНТАРИИ -->
-        {% for parent_comment_id in comments.replies.all %}
+        <div class="">
+            {% for parent_comment_id in comments.replies.all %}
             <div class="parent-comment">
                 <div class="parent-avatar"><img width="40" src="{% static 'images/icons/noava.png' %}"></div>
                 <div class="parent-data">
-                    <h4 class="parent-login">{{ parent_comment_id.author.login_user }}</h4>
+                    <h4 class="parent-login">{{ parent_comment_id.author.login_user }}
+                        {% if request.user.id == parent_comment_id.author.id %}
+                        <a href="{% url 'polls:comment_remove' slug=post.slug pk=parent_comment_id.pk %}">
+                            <span style="background-size:20px 20px;float:right;height:20px; width:20px; background-image: url({% static 'images/icons/cancel.png' %})">
+                            </span>
+                        </a>
+                        {% endif %}
+                    </h4>
                     <p class="parent-p">{{ parent_comment_id.body }}</p>
                     <span>{{ parent_comment_id.created_time }}</span>
                     <hr>
                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
 <!-- -----------------------ОСТВЕТИТЬ НА ГОТОВЫЙ КОММЕНТАРИЙ------------------------ -->
 
         {% if request.user.is_authenticated %}
             <div id="form-answ{{ comments.id }}" class="comment-input-block-replie" style="display:none">
                 <p style="float:left">Ответ для {{ comments.author.login_user }}:</p>
-                <form action="{% url 'polls:post_detail_url' slug=post.slug%}" method="post">
+                <form action="{% url 'polls:post_detail_url' slug=post.slug %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="comments_id" value="{{ comments.id }}">
                     {{ form_class.as_p }}
@@ -59,7 +74,7 @@
 <!-- -----------------------ОСТАВИТЬ КОММЕНТАРИЙ К СТАТЬЕ------------------------ -->
 <hr>
 {% if request.user.is_authenticated %}
-    <form class="comment-input-block" action="{% url 'polls:post_detail_url' slug=post.slug%}" method="post">
+    <form class="comment-input-block" action="{% url 'polls:post_detail_url' slug=post.slug %}" method="post">
         {% csrf_token %}
             {{ form_class.as_p }}
             <button class="but_comment" type="submit" name="button">Оставить комментарий</button>
