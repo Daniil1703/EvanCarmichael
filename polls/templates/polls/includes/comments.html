@@ -25,7 +25,7 @@
                 <span>{{ comments.created_time }}</span>
                 {% if request.user.is_authenticated %}
                 <div class="nav1" style="display:inline-block;font-weight: bold">
-                    <a style="color: #868788; font-weight:bold; border-bottom: 1px solid #868788; font-style:italic;" onclick="showHide('form-answ{{ comments.id }}')"
+                    <a style="margin-left:5px;color: #868788; font-weight:bold; border-bottom: 1px solid #868788; font-style:italic;" onclick="showHide('form-answ{{ comments.id }}')"
                     href="#form-answ{{ comments.id }}">
                     ОТВЕТИТЬ
                     </a>
@@ -35,7 +35,7 @@
                 <br>
                     {% if comments.replies.count > 0 %}
                     <button onclick="showHide('answers{{ comments.id }}')" type="button" name="button">
-                        <strong style="color: #868788">показать/скрыть ответы</strong>
+                        <strong style="color: #587ea3">показать/скрыть ответы</strong>
                     </button>
                     {% endif %}
                 <hr>
