@@ -8,7 +8,7 @@ class CommentForm(ModelForm):
 
     body = forms.CharField(
         label = '',
-        widget = forms.Textarea(attrs={'class': 'comment-input', 'placeholder': 'Начните вводить текст'})
+        widget = forms.Textarea(attrs={'class': 'comment-input', 'placeholder': 'Начните ввод...'})
     )
     class Meta:
         model = Comment
