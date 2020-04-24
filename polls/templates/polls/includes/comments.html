@@ -4,9 +4,12 @@
         Будьте первым, кто оставит комментарий
     {% else %}
         Комментариев: {{ comment.count }}
+        <br>
+        {{ comment.replies.count}}
     {% endif %}
 </h4>
 <hr>
+
 {% for comments in comment %}
     <div class="comment-block">
         <!-- БЛОК КОММЕНТАРИЕВ ДЛЯ СТАТЬИ -->
@@ -25,7 +28,7 @@
                 <span>{{ comments.created_time }}</span>
                 {% if request.user.is_authenticated %}
                 <div class="nav1" style="display:inline-block;font-weight: bold">
-                    <a style="margin-left:5px;color: #868788; font-weight:bold; border-bottom: 1px solid #868788; font-style:italic;" onclick="showHide('form-answ{{ comments.id }}')"
+                    <a style="margin-left:5px;color: #868788; font-weight:bold; border-bottom: 1px solid #868788;" onclick="showHide('form-answ{{ comments.id }}')"
                     href="#form-answ{{ comments.id }}">
                     ОТВЕТИТЬ
                     </a>
@@ -42,9 +45,9 @@
             </div>
         </div>
         <!-- БЛОК КОММЕНТАРИЕВ ДЛЯ ОТВЕТА НА КОММЕНТАРИИ -->
-        <div  class="">
+        <div id="answers{{ comments.id }}" style="display:none; flex-direction:column" ">
             {% for parent_comment_id in comments.replies.all %}
-            <div id="answers{{ comments.id }}" style="display:none" class="parent-comment">
+            <div class="parent-comment">
                 <div class="parent-avatar"><img width="40" src="{% static 'images/icons/noava.png' %}"></div>
                 <div class="parent-data">
                     <h4 class="parent-login">{{ parent_comment_id.author.login_user }}
@@ -67,7 +70,7 @@
         {% if request.user.is_authenticated %}
             <div id="form-answ{{ comments.id }}" class="comment-input-block-replie" style="display:none">
                 <p style="float:left">Ответ для {{ comments.author.login_user }}:</p>
-                <form action="{% url 'polls:post_detail_url' slug=post.slug %}" method="post">
+                <form class="comment-input-block" action="." method="post">
                     {% csrf_token %}
                     <input type="hidden" name="comments_id" value="{{ comments.id }}">
                     {{ form_class.as_p }}
@@ -78,9 +81,8 @@
     </div>
 {% endfor %}
 <!-- -----------------------ОСТАВИТЬ КОММЕНТАРИЙ К СТАТЬЕ------------------------ -->
-<hr>
 {% if request.user.is_authenticated %}
-    <form class="comment-input-block" action="{% url 'polls:post_detail_url' slug=post.slug %}" method="post">
+    <form class="comment-input-block" action="." method="post" style="margin-bottom:90px;">
         {% csrf_token %}
             {{ form_class.as_p }}
             <button class="but_comment" type="submit" name="button">Оставить комментарий</button>

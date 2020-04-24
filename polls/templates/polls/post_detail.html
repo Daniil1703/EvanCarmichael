@@ -67,10 +67,13 @@
             {% endfor %}
         </div>
         <hr>
-        {% include 'polls/includes/comments.html' %}
+        <div class="comment-section">
+            {% include 'polls/includes/comments.html' %}
+        </div>
     </div>
     <!-- <div class="ads-post-detail"> </div> -->
 </div>
 
 <script src="{% static 'js/comments.js' %}"> </script>
+<script src="{% static 'ajax/comments.js' %}"></script>
 {% endblock %}

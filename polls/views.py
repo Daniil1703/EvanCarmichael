@@ -2,7 +2,8 @@ from .forms import CommentForm
 from .models import Post, Tag, Comment
 from .utils import ObjectDetailMixin
 
-from django.http import Http404
+from django.http import Http404, JsonResponse
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
@@ -38,6 +39,7 @@ class PostDetail(View):
 
     def post(self, request, slug):
         if request.method == 'POST':
+            comment = Comment.objects.all().filter(is_enable=True, parent_comment_id=None)
             form = CommentForm(request.POST)
             post = get_object_or_404(Post, slug__iexact=slug)
             if form.is_valid():
@@ -45,17 +47,29 @@ class PostDetail(View):
                 comments_qs = None
                 if perent:
                     comments_qs = perent
-                comment = Comment(
+                comment_to = Comment(
                     parent_comment_id = comments_qs,
                     article_id=post.id,
                     author_id=request.user.id,
                     body=form.cleaned_data['body'])
-                comment.save()
-                return redirect('polls:post_detail_url', slug=post.slug)
+                comment_to.save()
         else:
-            context = {
-                'form_class': self.form_class
-            }
+            form = CommentForm()
+
+        context = {
+            'post': post,
+            'comment': comment,
+            'form_class': self.form_class
+        }
+
+        # ЕСЛИ АЯКС ЗАПРОС
+        if request.is_ajax():
+            # В ПЕРЕМЕННУЮ ДОБАВЛЯЕМ УЧАСТОК ВЕРСКИ, КОТОРОЙ НЕОБХОДИМО
+            # ОБНОВИТЬ
+            html = render_to_string('polls/includes/comments.html',
+                                    context, request=request)
+            # ВОЗВРАЩАЕМ ОБНОВЛЕННУЮ СТРАНИЦУ
+            return JsonResponse({'forms': html})
         return render(
             request, template_name=self.template_name, context=context)
 
@@ -67,7 +81,7 @@ def comment_remove(request, slug, pk):
         comment.delete()
     else:
         raise Http404()
-        
+
     return redirect('polls:post_detail_url', slug=post.slug)
 
 # Отображение постов

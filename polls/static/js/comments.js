@@ -10,18 +10,3 @@ function showHide(element_id) {
         else obj.style.display = "none"; //Скрываем элемент
     }
 }
-
-$('.nav1').on('click', 'a', function(){
-  let wy = $(window).height() / 2,
-      id = $(this).attr('href'),
-      ey = $(id).offset().top,
-      eh = $(id).outerHeight() / 2,
-      top = ey - (wy - eh);
-
-  top = top < 0 ? 0 : top;
-
-  $('body,html').animate({
-    scrollTop: top
-  }, 1500);
-  return false;
-});
