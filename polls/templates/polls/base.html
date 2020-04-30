@@ -32,6 +32,7 @@
 
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
     <!-- BOOTSTRAP LINK -->
 
@@ -58,4 +59,39 @@
 		{% include "polls/includes/footer.html" %}
 	</div>
 </body>
+<script>
+	function getCookie(name){
+			let cookieValue = null;
+			if (document.cookie && document.cookie !== '')
+			{
+				let cookies = document.cookie.split(';');
+				for (let i = 0; i < cookies.length; i++)
+				{
+					let cookie = jQuery.trim(cookies[i]);
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '='))
+					{
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+
+	const csrftoken = getCookie('csrftoken')
+
+	function csrfSafeMethod(method) {
+		// Для этих методов токен не будет подставляться в заголовок.
+		return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method))
+	 }
+
+	$.ajaxSetup({
+		beforeSend: (xhr, settings) => {
+			if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+				 xhr.setRequestHeader("X-CSRFToken", csrftoken)
+			 }
+		}
+	})
+</script>
 </html>
