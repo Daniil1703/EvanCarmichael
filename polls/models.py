@@ -19,7 +19,8 @@ alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e',
 
 
 def gen_slug(s):
-    return django_slugify(''.join(alphabet.get(w, w) for w in s.lower()) + '-' + str(int(time())))
+    return django_slugify(''.join(alphabet.get(w, w)\
+                          for w in s.lower()) + '-' + str(int(time())))
 
 
 
