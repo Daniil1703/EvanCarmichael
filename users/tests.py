@@ -9,21 +9,13 @@ class UsersManagersTests(TestCase):
         user = User.objects.create_user(
             email='normal@user.com',
             password='foo',
-            first_name='Danya',
-            last_name='Khlistunov',
-            user_image=''
         )
         self.assertEqual(user.email, 'normal@user.com')
-        self.assertEqual(user.first_name, 'Danya')
-        self.assertEqual(user.last_name, 'Khlistunov')
-        self.assertEqual(user.user_image, '')
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
 
         try:
-            # username is None for the AbstractUser option
-            # username does not exist for the AbstractBaseUser option
             self.assertIsNone(user.username)
         except AttributeError:
             pass
