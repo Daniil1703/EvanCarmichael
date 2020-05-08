@@ -22,7 +22,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         verbose_name = _('пользователя')
-        verbose_name_plural = _('пользователей')
+        verbose_name_plural = _('пользователи')
 
     def __str__(self):
          return self.email
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    picture = models.ImageField(_('Фотография'), default='user_pics/default_pic.png',
+                                upload_to='user_pics/%Y/')
+
+    class Meta:
+        verbose_name = _('профиль')
+        verbose_name_plural = _('профили')
+
+    def __str__(self):
+        return f'Аккаунт {self.user.login_user}'
