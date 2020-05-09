@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from PIL import Image
 from .managers import CustomUserManager
 
 
@@ -38,3 +39,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Аккаунт {self.user.login_user}'
+
+    def save(self):
+        super().save()
+
+        img = Image.open(self.picture.path)
+
+        if img.height > 400 or img.width > 400:
+            output_size = (400, 400)
+            img.thumbnail(output_size)
+            img.save(self.picture.path)
