@@ -6,7 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import AbstractBaseUser
 from .models import CustomUser
-from .forms import CustomUserCreationForm, LoginForm, CaptchaForm, SecureLoginForm
+from .forms import CustomUserCreationForm, LoginForm, CaptchaForm,\
+                   SecureLoginForm, PassChForm, CustomUserChangeForm,\
+                   ProfileUpdateFrom
 
 
 class UserCreate(View):
@@ -129,6 +131,32 @@ class UserLogin(View):
                     'form': bound_form,
                     }
                )
+
+class ProfileUser(View):
+    def get(self, request):
+        u_form = CustomUserChangeForm(instance=request.user)
+        p_form = ProfileUpdateFrom(instance=request.user.profile)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form
+        }
+        return render(request, 'users/profile.html', context=context)
+    def post(self, request):
+        u_form = CustomUserChangeForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateFrom(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if p_form.is_valid():
+            p_form.save()
+            messages.success(request, 'Изображение обновлено!')
+            return redirect('users:account')
+
+        context = {
+            'u_form': u_form,
+            'p_form': p_form
+        }
+
+        return render(request, 'users/profile.html', context=context)
 
 def message_change_password(request):
     messages.success(request, 'Вы успешно сменили пароль!')

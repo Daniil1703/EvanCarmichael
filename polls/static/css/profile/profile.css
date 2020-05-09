@@ -1,0 +1,78 @@
+.account-container {
+    display: flex;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar-profile {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 550px;
+    border-right: 1px solid grey;
+}
+.sidebar-profile a{
+    width: 99%;
+    margin-bottom: 2px;
+    border: 1px solid grey;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2e3f50;
+    border-radius: 5px 0 0 5px;
+}
+
+.information {
+    width: 900px;
+    height:500px;
+}
+.information-blocks {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.disc-inf {
+    margin-bottom: 30px;
+    color: #2e3f50;
+}
+
+.button-submit-profile {
+    float:right;
+    border-bottom: 1px solid grey;
+    color: grey;
+}
+
+.button-submit-profile:hover,.button-submit-profile:focus {
+    color: #2e3f50;
+    border-bottom: 1px solid #2e3f50;
+}
+
+.information-blocks .image_ava-img {
+    border: 2px solid grey;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.image_ava {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+#upload-image {
+    display: none;
+}
+.image-upload-button {
+    margin-top: 10px;
+    border: 1px solid #71c2ff;
+    padding: 10px;
+    color: #494f58;
+    font-weight: bold;
+}
+.image-upload-button:hover {
+    cursor: pointer;
+}

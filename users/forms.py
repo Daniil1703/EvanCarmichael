@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm,\
     UserCreationForm, UserChangeForm,PasswordResetForm, SetPasswordForm
-from .models import CustomUser
 from django.core.exceptions import ValidationError
 from captcha.fields import CaptchaField
+
+from .models import CustomUser, Profile
 
 class CaptchaForm(forms.Form):
     captcha = CaptchaField(
@@ -158,3 +159,12 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ['email']
+
+class ProfileUpdateFrom(forms.ModelForm):
+    picture = forms.ImageField(
+        widget=forms.FileInput(attrs={'class': 'upload-image',
+                                      'id': 'upload-image'}),
+    )
+    class Meta:
+        model = Profile
+        fields = ['picture']

@@ -1,0 +1,37 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Профиль {{ request.user.login_user }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/profile/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="account-container">
+    <div class="sidebar-profile">
+        <a href="#">Основные настройки</a>
+        <a href="#">Пароль</a>
+        <a href="#">Почта и логин</a>
+    </div>
+    <div class="information">
+        <div class="information-blocks">
+            <h2 class="disc-inf">Основные настройки</h2>
+            <div class="image_ava">
+                <img class="image_ava-img" src="{{ user.profile.picture.url }}" alt="">
+            </div>
+            <form class="" action="." method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="upload-image">
+                    <p class="image-upload-button">выбрать изображение <img src="{% static 'images/icons/upload_image.png' %}" alt=""></p>
+                    {{ p_form.picture }}
+                </label>
+                <br>
+                <button class="button-submit-profile" type="submit" name="button">Применить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
