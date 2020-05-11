@@ -30,7 +30,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    picture = models.ImageField(_('Фотография'), default='user_pics/default_pic.png',
+    picture = models.ImageField(_('Фотография'), 
+                                default='user_pics/default_user_icon.png',
                                 upload_to='user_pics/%Y/')
 
     class Meta:
@@ -40,8 +41,8 @@ class Profile(models.Model):
     def __str__(self):
         return f'Аккаунт {self.user.login_user}'
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.picture.path)
 
