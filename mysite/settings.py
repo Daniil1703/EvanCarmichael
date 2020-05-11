@@ -25,7 +25,7 @@ SECRET_KEY = 'jh#$urd&y7s!(%daz+6-b34#)5ohsdwlauv_44m6-vv16=&tub'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.106']
+ALLOWED_HOSTS = ['192.168.1.103']
 
 
 # Application definition
@@ -95,8 +95,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'lincolnDB',
-        'USER': 'postgres',
+        'NAME': 'postgres',
+        'USER': 'newsadmin',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
     }
