@@ -4,5 +4,4 @@ __pycache__
 myvenv
 /static
 .DS_Store
-/media
-.idea
+.vscode/*
