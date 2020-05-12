@@ -30,6 +30,7 @@
     ```
 ### Настройка PostgreSQL
 В данной статье [HOW TO INSTALL POSTGRESQL](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04) подробно описан процесс установки Postgre под LinuxOS
+
 ### Конфигурация Django
 После того, как вы установили PostgreSQL, создали пользователя и базу данных, необходимо подключить ее к проекту.
 - Измините файл `mysite/setting.py`, как показано ниже:
@@ -51,3 +52,21 @@
     python3 manage.py makemigrations
     python3 manage.py migrate
     ```
+### Создание суперпользователя
+- Выполните команду в терминале:
+    ```bash
+    python3 manage.py createsuperuser
+    ```
+- Заполните поля
+
+### Запуск сервера
+- Запуск сервера осуществляется командой:
+    ```bash
+    python3 manage.py runserver
+    ```
+- Откройте браузер и перейдите на http://127.0.0.1:8000/.
+
+- Если вы все прошлые пункты выполнили правильно, перед вами должна открыться страница сайта.
+
+### О странице
+Если в ходе выполнения инсталяции вы столкнулись с какими-либо ошибками, пожалуйста напише на почту `hlistunovd#yandex.ru`, я постараюсь помочь всем, что в моих силах.
