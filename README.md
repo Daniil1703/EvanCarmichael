@@ -12,7 +12,7 @@
 - Настройки профиля, смена фотографии пользователя, пароля, логина, почты.
 ## Установка:
 ### Виртуальное окружение
-После того, как скачали файлы, создайте виртуальное окружение в директории проекта
+Создайте виртуальное окружение в директории проекта
 - OS X / Linux, выполните следущие команды:
 Создание виртуального окружения:
     ```
@@ -29,3 +29,25 @@
     pip3 install -r requirements.txt
     ```
 ### Настройка PostgreSQL
+В данной статье [HOW TO INSTALL POSTGRESQL](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04) подробно описан процесс установки Postgre под LinuxOS
+### Конфигурация Django
+После того, как вы установили PostgreSQL, создали пользователя и базу данных, необходимо подключить ее к проекту.
+- Измините файл `mysite/setting.py`, как показано ниже:
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'Имя пользователя БД', 
+            'PASSWORD': 'Пароль от БД',
+            'HOST': 'localhost',
+        }
+    }
+    ```
+- Откройте опять терминал, в директории проекта активируйте виртуальное окружение.
+
+- Необходимо создать таблицы в базе данных, для этого выполните следущие команды:
+    ```bash
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+    ```
