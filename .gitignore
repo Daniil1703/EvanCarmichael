@@ -5,3 +5,7 @@ myvenv
 /static
 .DS_Store
 .vscode/*
+/media
+
+migrations/
+!migrations/__init__.py
