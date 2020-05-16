@@ -13,7 +13,12 @@
                 <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
             </form>
             <div class="block-drop">
-                <button class="dropbtn" onclick="myFunction()">Еще 	&rsaquo;
+                <button class="dropbtn" onclick="myFunction()">
+                    {% if request.user.is_authenticated %}
+                    {{ request.user.login_user }} &rsaquo;
+                    {% else %}
+                    Еще 	&rsaquo;
+                    {% endif %}
                 </button>
                 <div class="dropdown-content" id="myDropdown">
                     {% if request.user.is_authenticated %}

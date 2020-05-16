@@ -163,7 +163,9 @@ class CustomUserChangeForm(UserChangeForm):
 class ProfileUpdateFrom(forms.ModelForm):
     picture = forms.ImageField(
         widget=forms.FileInput(attrs={'class': 'upload-image',
-                                      'id': 'upload-image'}),
+                                      'id': 'upload-image',
+                                      'type': 'file',
+                                      'name': 'pic[]'}),
     )
     class Meta:
         model = Profile

@@ -20,7 +20,7 @@
         <div class="information-blocks">
             <h2 class="disc-inf">Основные настройки</h2>
             <div class="image_ava">
-                <img class="image_ava-img" src="{{ user.profile.picture.url }}" alt="">
+                <img id="image" class="image_ava-img" src="{{ user.profile.picture.url }}" alt="">
             </div>
             <form class="" action="." method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -34,4 +34,22 @@
         </div>
     </div>
 </div>
+<script>
+function readURL(input) {
+
+if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#image').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+}
+}
+
+$("#upload-image").change(function(){
+readURL(this);
+});
+</script>
 {% endblock %}
