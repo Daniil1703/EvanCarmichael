@@ -50,5 +50,7 @@ urlpatterns = [
         template_name='users/password_reset_complete.html',
         ),
         name='password_reset_complete'),
-    path('profile/', ProfileUser.as_view(), name='account')
+    path('profile/main', ProfileUser.as_view(), name='account'),
+    path('profile/password', ProfilePassword.as_view(), name='pass_ch'),
+    path('profile/mail-and-login', ProfileMail.as_view(), name='login_mail')
 ]

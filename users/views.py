@@ -8,7 +8,8 @@ from django.contrib.auth.models import AbstractBaseUser
 from .models import CustomUser
 from .forms import CustomUserCreationForm, LoginForm, CaptchaForm,\
                    SecureLoginForm, PassChForm, CustomUserChangeForm,\
-                   ProfileUpdateFrom
+                   ProfileUpdateFrom, LoginChangeForm, EmailChangeForm
+from django.contrib.auth.models import User
 
 
 class UserCreate(View):
@@ -132,32 +133,6 @@ class UserLogin(View):
                     }
                )
 
-class ProfileUser(View):
-    def get(self, request):
-        u_form = CustomUserChangeForm(instance=request.user)
-        p_form = ProfileUpdateFrom(instance=request.user.profile)
-        context = {
-            'u_form': u_form,
-            'p_form': p_form
-        }
-        return render(request, 'users/profile.html', context=context)
-    def post(self, request):
-        u_form = CustomUserChangeForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateFrom(request.POST,
-                                   request.FILES,
-                                   instance=request.user.profile)
-        if p_form.is_valid():
-            p_form.save()
-            messages.success(request, 'Изображение обновлено!')
-            return redirect('users:account')
-
-        context = {
-            'u_form': u_form,
-            'p_form': p_form
-        }
-
-        return render(request, 'users/profile.html', context=context)
-
 def message_change_password(request):
     messages.success(request, 'Вы успешно сменили пароль!')
     return redirect('polls:index')
@@ -166,3 +141,70 @@ def logout_view(request):
     logout(request)
     messages.warning(request, 'Вы вышли из системы!')
     return redirect('users:login')
+    
+class ProfileUser(View):
+    def get(self, request):
+        p_form = ProfileUpdateFrom(instance=request.user.profile)
+        context = {
+            'p_form': p_form
+        }
+        return render(request, 'users/profile.html', context=context)
+    def post(self, request):
+        p_form = ProfileUpdateFrom(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if p_form.is_valid():
+            p_form.save()
+            messages.success(request, 'Изображение обновлено!')
+            return redirect('users:account')
+        context = {
+            'p_form': p_form,
+        }
+        return render(request, 'users/profile.html', context=context)
+
+class ProfilePassword(View):
+    def get(self, request):
+        p_form = PassChForm(request.user)
+        context = {
+            'p_form': p_form
+        }
+        return render(request, 'users/profile-pas.html', context=context)
+    def post(self, request):
+        p_form = PassChForm(request.user, request.POST)
+        if p_form.is_valid():
+            user = p_form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Ваш пароль был успешно изменен!')
+            return redirect('users:pass_ch')
+        else:
+            messages.error(request, 'Пожалуйста, исправьте ошибки!')
+        context = {
+            'p_form': p_form,
+        }
+        return render(request, 'users/profile-pas.html', context=context)
+
+class ProfileMail(View):
+    def get(self, request):
+        p_form = EmailChangeForm(instance=request.user)
+        u_form = LoginChangeForm(instance=request.user)
+        context = {
+            'p_form': p_form,
+            'u_form': u_form
+        }
+        return render(request, 'users/profile-mail.html', context=context)
+    def post(self, request):
+        p_form = EmailChangeForm(request.POST, instance=request.user)
+        u_form = LoginChangeForm(request.POST, instance=request.user)
+        if p_form.is_valid() and u_form.is_valid():
+            p_form.save()
+            u_form.save()
+            messages.success(request, 'Вашы данные успешно обновлены!')
+            return redirect('users:login_mail')
+        else:
+            messages.error(request, 'Такой логин или адрес эл.почты уже зарегистрированы!')
+            return redirect('users:login_mail')
+        context = {
+            'p_form': p_form,
+            'u_form': u_form,
+        }
+        return render(request, 'users/profile-mail.html', context=context)

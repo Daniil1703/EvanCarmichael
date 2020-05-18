@@ -170,3 +170,25 @@ class ProfileUpdateFrom(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['picture']
+
+class EmailChangeForm(forms.ModelForm):
+    email = forms.EmailField(
+        label=('Email:'),
+        widget=forms.EmailInput(attrs={'class': 'un'})
+    )
+
+    class Meta:
+        model = CustomUser
+        fields = ['email']
+
+
+class LoginChangeForm(forms.ModelForm):
+    login_user = forms.CharField(
+        label=('Логин:'),
+        widget=forms.TextInput(attrs={'class': 'un'})
+    )
+
+    class Meta:
+        model = CustomUser
+        fields = ['login_user']
+    
