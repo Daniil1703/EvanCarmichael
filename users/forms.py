@@ -174,7 +174,7 @@ class ProfileUpdateFrom(forms.ModelForm):
 class EmailChangeForm(forms.ModelForm):
     email = forms.EmailField(
         label=('Email:'),
-        widget=forms.EmailInput(attrs={'class': 'un'})
+        widget=forms.EmailInput(attrs={'class': 'pass'})
     )
 
     class Meta:
@@ -185,7 +185,7 @@ class EmailChangeForm(forms.ModelForm):
 class LoginChangeForm(forms.ModelForm):
     login_user = forms.CharField(
         label=('Логин:'),
-        widget=forms.TextInput(attrs={'class': 'un'})
+        widget=forms.TextInput(attrs={'class': 'pass'})
     )
 
     class Meta:

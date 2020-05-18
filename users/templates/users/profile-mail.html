@@ -1,0 +1,31 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Профиль {{ request.user.login_user }}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/profile/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="account-container">
+    <div class="sidebar-profile">
+        <a href="{% url 'users:account' %}">Изображение</a>
+        <a href="{% url 'users:pass_ch' %}">Пароль</a>
+        <a href="{% url 'users:login_mail' %}" class="tabs__link_active">Почта и логин</a>
+    </div>
+    <div class="information">
+        <div class="information-blocks">
+            <h2 class="disc-inf">Личная информация</h2>
+            <form class="form-input" action="{% url 'users:login_mail' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ p_form.as_p }}
+                {{ u_form.as_p }}
+                <button class="button-submit-profile" type="submit" name="button">Применить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
