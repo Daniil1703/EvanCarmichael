@@ -17,7 +17,7 @@
     <div class="comment-block">
         <!-- БЛОК КОММЕНТАРИЕВ ДЛЯ СТАТЬИ -->
         <div class="box-comment">
-            <div class="comment-avatar"><img width="50" src="{% static 'images/icons/noava.png' %}"></div>
+            <div class="comment-avatar"><img src="{{ comments.author.profile.picture.url }}"></div>
             <div class="comment-data">
                 <h4 class="comment-login">{{ comments.author.login_user }}
                     {% if request.user.id == comments.author.id %}
@@ -48,10 +48,10 @@
             </div>
         </div>
         <!-- БЛОК КОММЕНТАРИЕВ ДЛЯ ОТВЕТА НА КОММЕНТАРИИ -->
-        <div id="answers{{ comments.id }}" style="display:none; flex-direction:column" ">
+        <div id="answers{{ comments.id }}" style="display:none; flex-direction:column">
             {% for parent_comment_id in comments.replies.all %}
             <div class="parent-comment">
-                <div class="parent-avatar"><img width="40" src="{% static 'images/icons/noava.png' %}"></div>
+                <div class="parent-avatar"><img src="{{ parent_comment_id.author.profile.picture.url }}"></div>
                 <div class="parent-data">
                     <h4 class="parent-login">{{ parent_comment_id.author.login_user }}
                         {% if request.user.id == parent_comment_id.author.id %}
