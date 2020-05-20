@@ -23,6 +23,9 @@
                 <div class="dropdown-content" id="myDropdown">
                     {% if request.user.is_authenticated %}
                     <a class="nav-link" href="{% url 'users:account' %}">Аккаунт</a>
+                    {% if request.user.is_staff %}
+                    <a class="nav-link" href="{% url 'polls:tag_create_url' %}">[staff:Теги]</a>
+                    {% endif%}
                     <a class="nav-link" href="{% url 'users:logout' %}">Выход</a>
                     {% else %}
                     <a class="nav-link" href="{% url 'users:login' %}">Вход</a>

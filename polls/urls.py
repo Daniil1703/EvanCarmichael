@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
+from django.contrib.admin.views.decorators import staff_member_required
 from . import views
 # from .views import *
 
@@ -12,8 +13,9 @@ urlpatterns = [
     path('search', views.serchArticles, name='search_article'),
     path('post/<str:slug>/', views.PostDetail.as_view(), name="post_detail_url"),
     path('tags/', views.tags_list, name='tags_list'),
+    path('tag/create', staff_member_required(views.TagCreate.as_view()), name='tag_create_url'),
     path('tag/<str:slug>/', views.TagDetail.as_view(), name='tag_detail'),
-    path('post/<str:slug>/<str:pk>/remove/', views.comment_remove, name='comment_remove'),
+    path('post/<str:slug>/<str:pk>/remove/', views.comment_remove, name='comment_remove')
 ]
 
 if settings.DEBUG is True:

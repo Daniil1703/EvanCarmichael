@@ -49,6 +49,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-date_pub']
+        verbose_name = _('статью')
+        verbose_name_plural = _('статьи')
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -60,9 +62,11 @@ class Post(models.Model):
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50, blank=True, unique=True)
-    tag_image = models.FileField(upload_to='categories/%Y/', blank = True,null = True)
+    title = models.CharField(_('Название категории'), max_length=50)
+    slug = models.SlugField(_('URL'), max_length=50, blank=True, unique=True)
+    tag_image = models.ImageField(_('Изображение'), 
+                                  upload_to='categories/%Y/',
+                                  blank = True,null = True)
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -74,6 +78,8 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ['title']
+        verbose_name = _('категорию')
+        verbose_name_plural = _('категории')
 
 class Comment(models.Model):
 

@@ -1,4 +1,4 @@
-from .forms import CommentForm
+from .forms import CommentForm, TagForm
 from .models import Post, Tag, Comment
 from .utils import ObjectDetailMixin
 
@@ -64,16 +64,27 @@ class PostDetail(View):
             'form_class': self.form_class
         }
 
-        # ЕСЛИ АЯКС ЗАПРОС
         if request.is_ajax():
-            # В ПЕРЕМЕННУЮ ДОБАВЛЯЕМ УЧАСТОК ВЕРСКИ, КОТОРОЙ НЕОБХОДИМО
-            # ОБНОВИТЬ
             html = render_to_string('polls/includes/comments.html',
                                     context, request=request)
-            # ВОЗВРАЩАЕМ ОБНОВЛЕННУЮ СТРАНИЦУ
             return JsonResponse({'forms': html})
         return render(
             request, template_name=self.template_name, context=context)
+
+class TagCreate(View):
+    def get(self, request):
+        form = TagForm()
+        return render(request, 'polls/tag_create.html', context={'form': form})
+
+    def post(self, request):
+        form = TagForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Добавлена новая категория!')
+            return redirect('polls:tags_list')
+        else:
+            messages.error(request, 'Упс... Такая категория уже есть!')
+            return redirect('polls:tag_create_url')
 
 @login_required
 def comment_remove(request, slug, pk):

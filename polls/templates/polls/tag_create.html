@@ -1,0 +1,52 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Создание категорий
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/staffpanel/tag_create.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="tag-container">
+    <h3 class="tag-title">Добавление новой категории</h3>
+    <p class="tag-title-p">хочешь обновить уже готовую? 
+        <a class="tag-title-a" href="/">тебе сюда</a></p>
+    <div class="image_ava">
+        <img id="image" class="image_ava-img" src="/" alt="">
+    </div>
+    <form class="tag-form" action="{% url 'polls:tag_create_url' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h6>Название новой категории:</h6>
+        {{ form.title }}
+        {{ form.slug }}
+        <label for="upload-image">
+            <p class="image-upload-button">выбрать изображение <img src="{% static 'images/icons/upload_image.png' %}" alt=""></p>
+            {{ form.tag_image }}
+        </label>
+        <br>
+        <button class="button-submit-profile " type="submit">Добавить тег</button>
+    </form>
+</div>
+
+<script>
+    function readURL(input) {
+    
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = function (e) {
+            $('#image').attr('src', e.target.result);
+        };
+    
+        reader.readAsDataURL(input.files[0]);
+    }
+    }
+    
+    $("#upload-image").change(function(){
+    readURL(this);
+    });
+    </script>
+{% endblock %}
