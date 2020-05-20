@@ -16,8 +16,6 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from users.models import CustomUser
 
-
-
 class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'polls/tag_detail.html'
@@ -27,6 +25,13 @@ class TagUpdate(ObjectUpdateMixin, View):
     model_form = TagForm
     template = 'polls/tag_update.html'
     redirect_url = 'polls:tag_choice_url'
+
+class TagDelete(View):
+    def post(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        tag.delete()
+        messages.success(request, 'Запись удалена!')
+        return redirect('polls:tag_choice_url')
 
 class PostDetail(View):
     template_name = 'polls/post_detail.html'

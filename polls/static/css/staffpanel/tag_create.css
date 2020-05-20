@@ -90,7 +90,23 @@
 
 .button-submit-profile {
     float:right;
-    border-bottom: 1px solid grey;
-    color: grey;
+    background: rgb(0, 179, 68);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 15px;
     margin-bottom: 30px;
+}
+
+.tag-form-delete {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.tag-form-delete button {
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(201, 0, 0);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 15px;
 }

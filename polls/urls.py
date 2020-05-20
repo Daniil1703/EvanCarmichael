@@ -25,6 +25,9 @@ urlpatterns = [
     path('tag/<str:slug>/update/', 
           staff_member_required(views.TagUpdate.as_view()), 
           name='tag_update_url'),
+    path('tag/<str:slug>/delete', 
+         staff_member_required(views.TagDelete.as_view()), 
+         name='tag_delete_url'),
     path('post/<str:slug>/<str:pk>/remove/', 
           views.comment_remove, 
           name='comment_remove')
