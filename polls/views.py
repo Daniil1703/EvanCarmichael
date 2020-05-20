@@ -86,6 +86,32 @@ class TagCreate(View):
             messages.error(request, 'Упс... Такая категория уже есть!')
             return redirect('polls:tag_create_url')
 
+class TagUpdate(View):
+    def get(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForm(instance=tag)
+        context = {
+            'tag': tag,
+            'form': bound_form
+        }
+        return render(request, 'polls/tag_update.html', context=context)
+    
+    def post(self, request, slug):
+        tag = Tag.objects.get(slug__iexact=slug)
+        bound_form = TagForm(request.POST, instance=tag)
+        if bound_form.is_valid():
+            bound_form.save()
+            messages.success(request, 'Категория обновлена!')
+            return redirect('polls:tags_list')
+        else:
+            messages.error(request, 'Упс... Такая категория уже есть!')
+            return redirect('polls:tag_create_url')
+
+class TagChoice(View):
+    def get(self, request):
+        tags = Tag.objects.all()
+        return render(request, 'polls/tags_choice.html', context={'tags': tags})
+
 @login_required
 def comment_remove(request, slug, pk):
     post = get_object_or_404(Post, slug__iexact=slug)
@@ -147,5 +173,8 @@ def serchArticles(request):
     return render(request, 'polls/search_article.html', context=context)
 
 def tags_list(request):
-    tags = Tag.objects.all()
+    if request.method == 'GET':
+        tags = Tag.objects.all()
+    else:
+        return redirect('polls:index')
     return render(request, 'polls/tags_list.html', context={'tags': tags})

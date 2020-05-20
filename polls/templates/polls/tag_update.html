@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title_block %}
-    Создание категорий
+    Изменение категории "{{ tag.title|title }}"
 {% endblock %}
 
 {% block links %}
@@ -11,23 +11,22 @@
 
 {% block content %}
 <div class="tag-container">
-    <h3 class="tag-title">Добавление новой категории</h3>
-    <p class="tag-title-p">хочешь обновить уже готовую? 
-        <a class="tag-title-a" href="{% url 'polls:tag_choice_url' %}">тебе сюда</a></p>
+    <h3 class="tag-title">Изменение категории "{{ tag.title|title }}"</h3>
     <div class="image_ava">
-        <img id="image" class="image_ava-img" src="/" alt="">
+        <img id="image" class="image_ava-img" src="{{ tag.tag_image.url }}" alt="">
     </div>
-    <form class="tag-form" action="{% url 'polls:tag_create_url' %}" method="post" enctype="multipart/form-data">
+    <form class="tag-form" action="{% url 'polls:tag_update_url' slug=tag.slug%}"
+          method="post" novalidate enctype="multipart/form-data">
         {% csrf_token %}
-        <h6>Название новой категории:</h6>
+        <h6>Текущее название:</h6>
         {{ form.title }}
         {{ form.slug }}
         <label for="upload-image">
-            <p class="image-upload-button">выбрать изображение <img src="{% static 'images/icons/upload_image.png' %}" alt=""></p>
+            <p class="image-upload-button">новое изображение <img src="{% static 'images/icons/upload_image.png' %}" alt=""></p>
             {{ form.tag_image }}
         </label>
         <br>
-        <button class="button-submit-profile " type="submit">Добавить тег</button>
+        <button class="button-submit-profile" type="submit">Изменить тег</button>
     </form>
 </div>
 

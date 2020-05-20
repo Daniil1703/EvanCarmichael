@@ -1,0 +1,30 @@
+{% extends 'polls/base.html' %}
+
+{% block title_block %}
+    Выбор категории
+{% endblock %}
+
+{% block content %}
+<div class="zagolovok zagolovok_index">
+  <p class="zagolovok_style">Выбери категорию для изменения</p>
+</div>
+
+<div class="cards-list">
+    {% for tag in tags %}
+        <a href="{% url 'polls:tag_update_url' slug=tag.slug%}">
+            <div class="card-tag">
+
+                <div class="card_image">
+                    {% if tag.tag_image %}
+                        <img src="{{ tag.tag_image.url}}" />
+                    {% endif %}
+                </div>
+
+                <div class="card_title title-white">
+                    <p class="title-white" style="font-size: 21px;">{{ tag.title }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}
