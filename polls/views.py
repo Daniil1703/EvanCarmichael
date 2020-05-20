@@ -1,6 +1,6 @@
 from .forms import CommentForm, TagForm
 from .models import Post, Tag, Comment
-from .utils import ObjectDetailMixin
+from .utils import ObjectDetailMixin, ObjectUpdateMixin
 
 from django.http import Http404, JsonResponse
 from django.template.loader import render_to_string
@@ -22,6 +22,11 @@ class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'polls/tag_detail.html'
 
+class TagUpdate(ObjectUpdateMixin, View):
+    model = Tag
+    model_form = TagForm
+    template = 'polls/tag_update.html'
+    redirect_url = 'polls:tag_choice_url'
 
 class PostDetail(View):
     template_name = 'polls/post_detail.html'
@@ -81,27 +86,6 @@ class TagCreate(View):
         if form.is_valid():
             form.save()
             messages.success(request, 'Добавлена новая категория!')
-            return redirect('polls:tags_list')
-        else:
-            messages.error(request, 'Упс... Такая категория уже есть!')
-            return redirect('polls:tag_create_url')
-
-class TagUpdate(View):
-    def get(self, request, slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        bound_form = TagForm(instance=tag)
-        context = {
-            'tag': tag,
-            'form': bound_form
-        }
-        return render(request, 'polls/tag_update.html', context=context)
-    
-    def post(self, request, slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        bound_form = TagForm(request.POST, instance=tag)
-        if bound_form.is_valid():
-            bound_form.save()
-            messages.success(request, 'Категория обновлена!')
             return redirect('polls:tags_list')
         else:
             messages.error(request, 'Упс... Такая категория уже есть!')
