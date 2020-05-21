@@ -111,12 +111,28 @@
     }
 }
 
-.post-form-delete button {
+.post-form-update{
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(0, 179, 68);
+    color: white;
+    padding: 11px 10px;
+    font: 1.3vw "Oswald", sans-serif;
+    border-radius: 5px;
+    margin-right: 5px; margin-bottom: 20px;
+    font-weight: bold;
     float: right;
+}
+.post-form-update:hover{
+    color: white;
+}
+.post-form-delete button {
     margin-left: auto;
     margin-right: auto;
     background: rgb(201, 0, 0);
+    font: 1.3vw "Oswald", sans-serif;
     color: white;
-    padding: 1px 10px;
-    border-radius: 5px;
+    padding: 10px 10px;
+    border-radius: 5px;margin-bottom: 20px;
+    font-weight: bold;
 }
