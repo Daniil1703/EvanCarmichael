@@ -33,6 +33,13 @@ class TagDelete(View):
         messages.success(request, 'Запись удалена!')
         return redirect('polls:tag_choice_url')
 
+class PostDelete(View):
+    def post(self, request, slug):
+        post = Post.objects.get(slug__iexact=slug)
+        post.delete()
+        messages.success(request, 'Запись удалена!')
+        return redirect('polls:index')
+
 class TagCreate(ObjectCreateMixin, View):
     template = 'polls/tag_create.html'
     model_form = TagForm

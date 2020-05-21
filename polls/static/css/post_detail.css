@@ -79,9 +79,6 @@
     margin: 5px;
     padding: 4px;
 }
-.body_of_post {
-
-}
 
 .body_of_post span{
     color: #212529;
@@ -112,4 +109,14 @@
     .title-h1 {
         font-size: 23px;
     }
+}
+
+.post-form-delete button {
+    float: right;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(201, 0, 0);
+    color: white;
+    padding: 1px 10px;
+    border-radius: 5px;
 }

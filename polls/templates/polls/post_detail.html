@@ -48,6 +48,10 @@
                 <div class="star">
                     {% include 'favorites/includes/add_to_favorites.html' with type="post" id=post.id %}
                 </div>
+                <form class="post-form-delete" action="{% url 'polls:post_delete_url' slug=post.slug %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Удалить статью</button>
+                </form>
             </div>
             <script async src="https://static.addtoany.com/menu/page.js"></script>
             <!— AddToAny END —>
