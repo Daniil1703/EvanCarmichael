@@ -10,8 +10,8 @@ app_name = 'polls'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('search', views.serchArticles, name='search_article'),
-    path('post/create', 
+    path('search/', views.serchArticles, name='search_article'),
+    path('post/create/', 
           staff_member_required(views.PostCreate.as_view()), 
           name='post_create_url'),
 
@@ -19,17 +19,21 @@ urlpatterns = [
           views.PostDetail.as_view(),
           name="post_detail_url"),
 
-    path('post/<str:slug>/delete', 
+    path('post/<str:slug>/update/', 
+          staff_member_required(views.PostUpdate.as_view()), 
+          name='post_update_url'),
+
+    path('post/<str:slug>/delete/', 
          staff_member_required(views.PostDelete.as_view()), 
          name='post_delete_url'),
 
     path('tags/', views.tags_list, name='tags_list'),
 
-    path('tags/choise',
+    path('tags/choise/',
           staff_member_required(views.TagChoice.as_view()), 
           name='tag_choice_url'),
 
-    path('tag/create', 
+    path('tag/create/', 
          staff_member_required(views.TagCreate.as_view()), 
          name='tag_create_url'),
 
@@ -39,7 +43,7 @@ urlpatterns = [
           staff_member_required(views.TagUpdate.as_view()), 
           name='tag_update_url'),
 
-    path('tag/<str:slug>/delete', 
+    path('tag/<str:slug>/delete/', 
          staff_member_required(views.TagDelete.as_view()), 
          name='tag_delete_url'),
 

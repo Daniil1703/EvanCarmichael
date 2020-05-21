@@ -27,6 +27,12 @@ class TagUpdate(ObjectUpdateMixin, View):
     template = 'polls/tag_update.html'
     redirect_url = 'polls:tag_choice_url'
 
+class PostUpdate(ObjectUpdateMixin, View):
+    model = Post
+    model_form = PostForm
+    template = 'polls/post_update.html'
+    redirect_url = 'polls:index'
+
 class TagDelete(ObjectDeleteMixin, View):
     model = Tag
     message = 'Категория успешно удалена!'
