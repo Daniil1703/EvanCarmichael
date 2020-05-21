@@ -72,10 +72,9 @@
 
 .bilboard-text-h {
     text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
-    line-height: 1.1em;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: 'Open Sans';
+    line-height: 1.2em;
+    font-size: 31px;
+    font-family: 'Fira Code', monospace;
 }
 
 /* Fading animation */
