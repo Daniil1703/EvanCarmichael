@@ -1,4 +1,4 @@
-from .forms import CommentForm, TagForm
+from .forms import CommentForm, TagForm, PostForm
 from .models import Post, Tag, Comment
 from .utils import ObjectDetailMixin, ObjectUpdateMixin
 
@@ -32,6 +32,44 @@ class TagDelete(View):
         tag.delete()
         messages.success(request, 'Запись удалена!')
         return redirect('polls:tag_choice_url')
+
+class TagCreate(View):
+    def get(self, request):
+        form = TagForm()
+        return render(request, 'polls/tag_create.html', context={'form': form})
+
+    def post(self, request):
+        form = TagForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Данные успешно опубликованы!')
+            return redirect('polls:tags_list')
+        else:
+            messages.error(request, 'Упс... Такая категория уже есть!')
+            return redirect('polls:tag_create_url')
+
+class TagChoice(View):
+    def get(self, request):
+        tags = Tag.objects.all()
+        return render(request, 'polls/tags_choice.html', context={'tags': tags})
+
+class PostCreate(View):
+    def get(self, request):
+        form = PostForm()
+        return render(request, 'polls/post_create.html', context={'form': form})
+    
+    def post(self, request):
+        bound_form = PostForm(request.POST, request.FILES)
+        print(bound_form.is_valid())
+        if bound_form.is_valid():
+            bound_form.save()
+            messages.success(request, 'Данные успешно опубликованы!')
+            return redirect('polls:index')
+        else:
+            messages.error(request, 'Упс... Что-то пошло не так, проверьте\
+                                     введеные данные и повторите попытку.')
+            return render(request, 'polls/post_create.html', 
+                          context={'form': bound_form})
 
 class PostDetail(View):
     template_name = 'polls/post_detail.html'
@@ -81,25 +119,6 @@ class PostDetail(View):
         return render(
             request, template_name=self.template_name, context=context)
 
-class TagCreate(View):
-    def get(self, request):
-        form = TagForm()
-        return render(request, 'polls/tag_create.html', context={'form': form})
-
-    def post(self, request):
-        form = TagForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Добавлена новая категория!')
-            return redirect('polls:tags_list')
-        else:
-            messages.error(request, 'Упс... Такая категория уже есть!')
-            return redirect('polls:tag_create_url')
-
-class TagChoice(View):
-    def get(self, request):
-        tags = Tag.objects.all()
-        return render(request, 'polls/tags_choice.html', context={'tags': tags})
 
 @login_required
 def comment_remove(request, slug, pk):
