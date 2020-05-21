@@ -65,3 +65,14 @@ class ObjectUpdateMixin:
         else:
             messages.error(request, 'Упс... Такая запись уже есть!')
             return redirect(self.redirect_url)
+
+class ObjectDeleteMixin:
+    model = None
+    message = None
+    redirect_url = None
+
+    def post(self, request, slug):
+        obj = self.model.objects.get(slug__iexact=slug)
+        obj.delete()
+        messages.success(request, self.message)
+        return redirect(self.redirect_url)

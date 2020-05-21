@@ -1,6 +1,7 @@
 from .forms import CommentForm, TagForm, PostForm
 from .models import Post, Tag, Comment
-from .utils import ObjectDetailMixin, ObjectUpdateMixin, ObjectCreateMixin
+from .utils import ObjectDetailMixin, ObjectUpdateMixin, ObjectCreateMixin,\
+                   ObjectDeleteMixin
 
 from django.http import Http404, JsonResponse
 from django.template.loader import render_to_string
@@ -26,19 +27,15 @@ class TagUpdate(ObjectUpdateMixin, View):
     template = 'polls/tag_update.html'
     redirect_url = 'polls:tag_choice_url'
 
-class TagDelete(View):
-    def post(self, request, slug):
-        tag = Tag.objects.get(slug__iexact=slug)
-        tag.delete()
-        messages.success(request, 'Запись удалена!')
-        return redirect('polls:tag_choice_url')
+class TagDelete(ObjectDeleteMixin, View):
+    model = Tag
+    message = 'Категория успешно удалена!'
+    redirect_url = 'polls:tag_choice_url'
 
-class PostDelete(View):
-    def post(self, request, slug):
-        post = Post.objects.get(slug__iexact=slug)
-        post.delete()
-        messages.success(request, 'Запись удалена!')
-        return redirect('polls:index')
+class PostDelete(ObjectDeleteMixin, View):
+    model = Post
+    message = 'Статья успешно удалена!'
+    redirect_url = 'polls:index'
 
 class TagCreate(ObjectCreateMixin, View):
     template = 'polls/tag_create.html'
@@ -120,7 +117,6 @@ def comment_remove(request, slug, pk):
 
     return redirect('polls:post_detail_url', slug=post.slug)
 
-# Отображение постов
 def index(request):
     postsB = Post.objects.all().filter(publicate_in="B")
 
