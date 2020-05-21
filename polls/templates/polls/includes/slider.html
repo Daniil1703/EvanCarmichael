@@ -5,7 +5,7 @@
         <div class="mySlides fades">
             {% if posts.article_image %}
             <a href="{% url 'polls:post_detail_url' slug=posts.slug %}">
-                <img class="img-slide"  width="800" height="400" src="{{ posts.article_image.url }}">
+                <img class="img-slide" src="{{ posts.article_image.url }}">
                     <div class="bilboard-text">
                     <h1 class="bilboard-text-h" style="color: rgb(243, 237, 237); margin-bottom: 10px">
                         {{ posts.title }}

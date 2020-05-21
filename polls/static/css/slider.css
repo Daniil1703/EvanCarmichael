@@ -10,22 +10,24 @@
     box-shadow: 0 0 5px;
     border-radius: 2px;
     margin: 0px 10px 0 10px;
-
+    -webkit-filter: brightness(90%);
+    filter: brightness(90%);
     max-width: 800px;
     max-height: 400px;
 }
 
 .slideshow:hover {
-    -webkit-filter: brightness(90%);
-    filter: brightness(90%);
+    -webkit-filter: brightness(85%);
+    filter: brightness(85%);
     cursor: pointer;
 
 }
 .img-slide {
-    width: 800px;
-    min-height: 300px;
-    min-width: 500px;
-    border-radius: 2px;
+  width: 800px;
+  height: 400px;
+  min-height: 300px;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
 /* Hide the images by default */
@@ -63,9 +65,9 @@
 
 /* Caption text */
 .bilboard-text {
-  padding: 8px 10%;
+  /* padding: 8px 10%; */
   position: absolute;
-  bottom: 8px;
+  bottom: 0;
   width: 100%;
   text-align: center;
 }
@@ -74,6 +76,7 @@
     text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
     line-height: 1.2em;
     font-size: 31px;
+    background: linear-gradient( rgba(0, 0, 0, 0.5) , rgba(0, 0, 0, 0.5) );
     font-family: 'Fira Code', monospace;
 }
 
@@ -104,19 +107,31 @@
     }
 }
 
-@media screen and (max-width:450px){
+@media screen and (max-width:790px) {
+    /* .bilboard-text-h {
+        font-size: 1.6em;
+    } */
     .img-slide {
-        transform: translateX(-213px);
-    }
+      width: 790px;
+  }
 }
 
-@media screen and (max-width:790px) {
-    .bilboard-text-h {
-        font-size: 1.6em;
-    }
-    .bilboard-text {
-      padding: 0px 10%;
-    }
+@media screen and (max-width:730px) {
+  .img-slide {
+    width: 730px;
+}
+}
+
+@media screen and (max-width:650px) {
+  .img-slide {
+    width: 650px;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .img-slide {
+    width: 600px;
+}
 }
 
 @media screen and (max-width:550px) {
@@ -127,7 +142,31 @@
         font-size: 1.7em;
         font-weight: bold;
     }
-    .bilboard-text {
-      padding: 0px 10%;
-    }
+
+    .img-slide {
+      width: 550px;
+  }
+}
+@media screen and (max-width:500px) {
+  .img-slide {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .img-slide {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .img-slide {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width:380px) {
+  .img-slide {
+    width: 380px;
+  }
 }
