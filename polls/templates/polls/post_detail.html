@@ -25,6 +25,13 @@
 <div class="post-detail-block">
     <div class="post_structure">
         <div class="title_post_detail">
+            {% if request.user.is_staff %}
+            <form style="display: inline-block;" class="post-form-delete" action="{% url 'polls:post_delete_url' slug=post.slug %}" method="post">
+                {% csrf_token %}
+                <button type="submit">удалить</button>
+            </form>
+            <a class="post-form-update" href="{% url 'polls:post_update_url' slug=post.slug %}">изменить</a>
+            {% endif %}
             <h1 class="title-h1">
                 {{ post.title }}
             </h1>
@@ -36,7 +43,6 @@
         </div>
 
         <div class="share_link_for_post">
-            <!— AddToAny BEGIN —>
             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                 <a class="a2a_button_copy_link"></a>
                 <a class="a2a_button_vk"></a>
@@ -48,13 +54,8 @@
                 <div class="star">
                     {% include 'favorites/includes/add_to_favorites.html' with type="post" id=post.id %}
                 </div>
-                <form class="post-form-delete" action="{% url 'polls:post_delete_url' slug=post.slug %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Удалить статью</button>
-                </form>
             </div>
             <script async src="https://static.addtoany.com/menu/page.js"></script>
-            <!— AddToAny END —>
         </div>
         <hr>
         <div class="body_of_post">
