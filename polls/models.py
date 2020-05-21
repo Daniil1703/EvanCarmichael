@@ -34,7 +34,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = RichTextUploadingField(blank=True)
-    article_image = models.FileField(
+    article_image = models.ImageField(
         upload_to='posts/%Y/',
         blank = True,
         null = True
