@@ -13,6 +13,33 @@ class ObjectDetailMixin:
         return render(request, self.template,
                       context={self.model.__name__.lower(): obj})
 
+class ObjectCreateMixin:
+    template = None
+    model_form = None
+    message_succ = None
+    message_erro = None
+    redirect_url = None
+
+    def get(self, request):
+        form = self.model_form()
+        context = {
+            'form': form
+        }
+        return render(request, self.template, context=context)
+    
+    def post(self, request):
+        bound_form = self.model_form(request.POST, request.FILES)
+        if bound_form.is_valid():
+            bound_form.save()
+            messages.success(request, self.message_succ)
+            return redirect(self.redirect_url)
+        else:
+            messages.error(request, self.message_erro)
+            context = {
+                'form': bound_form
+            }
+            return render(request, self.template, context=context)
+
 class ObjectUpdateMixin:
     model = None
     model_form = None

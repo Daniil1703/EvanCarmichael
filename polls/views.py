@@ -1,6 +1,6 @@
 from .forms import CommentForm, TagForm, PostForm
 from .models import Post, Tag, Comment
-from .utils import ObjectDetailMixin, ObjectUpdateMixin
+from .utils import ObjectDetailMixin, ObjectUpdateMixin, ObjectCreateMixin
 
 from django.http import Http404, JsonResponse
 from django.template.loader import render_to_string
@@ -33,43 +33,25 @@ class TagDelete(View):
         messages.success(request, 'Запись удалена!')
         return redirect('polls:tag_choice_url')
 
-class TagCreate(View):
-    def get(self, request):
-        form = TagForm()
-        return render(request, 'polls/tag_create.html', context={'form': form})
+class TagCreate(ObjectCreateMixin, View):
+    template = 'polls/tag_create.html'
+    model_form = TagForm
+    message_succ = 'Категория успешно опубликована!'
+    message_erro = 'Упс... Такая категория уже есть!'
+    redirect_url = 'polls:tags_list'
 
-    def post(self, request):
-        form = TagForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Данные успешно опубликованы!')
-            return redirect('polls:tags_list')
-        else:
-            messages.error(request, 'Упс... Такая категория уже есть!')
-            return redirect('polls:tag_create_url')
+class PostCreate(ObjectCreateMixin, View):
+    template = 'polls/post_create.html'
+    model_form = PostForm
+    message_succ = 'Статья успешно опубликована!'
+    message_erro = 'Упс... Что-то пошло не так, проверьте\
+                    введеные данные и повторите попытку.'
+    redirect_url = 'polls:index'
 
 class TagChoice(View):
     def get(self, request):
         tags = Tag.objects.all()
         return render(request, 'polls/tags_choice.html', context={'tags': tags})
-
-class PostCreate(View):
-    def get(self, request):
-        form = PostForm()
-        return render(request, 'polls/post_create.html', context={'form': form})
-    
-    def post(self, request):
-        bound_form = PostForm(request.POST, request.FILES)
-        print(bound_form.is_valid())
-        if bound_form.is_valid():
-            bound_form.save()
-            messages.success(request, 'Данные успешно опубликованы!')
-            return redirect('polls:index')
-        else:
-            messages.error(request, 'Упс... Что-то пошло не так, проверьте\
-                                     введеные данные и повторите попытку.')
-            return render(request, 'polls/post_create.html', 
-                          context={'form': bound_form})
 
 class PostDetail(View):
     template_name = 'polls/post_detail.html'
