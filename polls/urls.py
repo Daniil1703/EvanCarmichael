@@ -11,6 +11,9 @@ app_name = 'polls'
 urlpatterns = [
     path('', views.index, name='index'),
     path('search', views.serchArticles, name='search_article'),
+    path('post/create', 
+          staff_member_required(views.PostCreate.as_view()), 
+          name='post_create_url'),
     path('post/<str:slug>/', 
           views.PostDetail.as_view(),
           name="post_detail_url"),
