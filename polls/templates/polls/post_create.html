@@ -1,0 +1,68 @@
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title_block %}
+    Создание статьи
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/staffpanel/post_create.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="post-container">
+    <h3 class="post-title">Добавление новой статьи</h3>
+    <form class="post-form" action="{% url 'polls:post_create_url' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h5>Название новой статьи</h5>
+        {{ form.title }}
+        <h5 style="margin-top: 30px;">Отображение главного изображения статьи</h5>
+        <label for="upload-image">
+            <p class="image-upload-button">добавить изображение <img src="{% static 'images/icons/upload_image.png' %}" alt=""></p>
+            {{ form.article_image }}
+        </label>
+        <h6>*вид на слайдере*</h6>
+        <div class="img-bilboard">
+            <img id="image" class="img-bilboard-img" src="/" alt="">
+        </div>
+        <h6 style="margin-top: 30px;">*вид в ленте*</h6>
+        <div class="image_ava">
+            <img id="image-2" class="image_ava-img" src="/" alt="">
+        </div>
+        <h5 style="margin-top: 30px;">Текст статьи</h5>
+        {{ form.media }}
+        {{ form.body }}
+        <h5 style="margin-top: 30px;">Категории, к которым относится статья
+            (чтобы выбрать несколько зажмите ctrl перед кликом)</h5>
+        {{ form.tags }}
+        <h5 style="margin-top: 30px;">Куда хотите опубликовать статью?</h5>
+        {{ form.publicate_in }}
+        <br>
+        <button class="button-submit-profile" type="submit">Опубликовать</button>
+    </form>
+</div>
+<script>
+    function readURL(input) {
+    
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        var reader2 = new FileReader();
+    
+        reader.onload = function (e) {
+            $('#image').attr('src', e.target.result);
+        };
+        
+        reader2.onload = function (e) {
+            $('#image-2').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+        reader2.readAsDataURL(input.files[0]);
+    }
+    }
+    
+    $("#upload-image").change(function(){
+    readURL(this);
+    });
+    </script>
+{% endblock %}
