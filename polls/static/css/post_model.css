@@ -14,7 +14,7 @@
   margin-top: 6px;
   --bg-filter-opacity: 0.1;
   background-image: linear-gradient(rgba(0, 0, 0,var(--bg-filter-opacity)),rgba(6,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 15em;
+  height: 13em;
   width: 15em;
   font-size: 1.5em;
   color: white;
@@ -43,6 +43,7 @@
   text-shadow: 0 0 3px black, 0 0 5px rgb(0, 0, 0);
   font-size: 1em;
   line-height: 1.1em;
+  font-family: 'Fira Code', monospace;
 }
 
 .card #body_text {
