@@ -1,5 +1,5 @@
 {% load static %}
-<h4 style="font-weight:bold">
+<h4 class="comments-main-text">
     {% if comment.count == 0 %}
         Будьте первым, кто оставит комментарий
     {% else %}
@@ -11,10 +11,9 @@
         {{ comment.replies.count}}
     {% endif %}
 </h4>
-<hr>
 
+<div class="comment-block">
 {% for comments in comment %}
-    <div class="comment-block">
         <!-- БЛОК КОММЕНТАРИЕВ ДЛЯ СТАТЬИ -->
         <div class="box-comment">
             <div class="comment-avatar"><img src="{{ comments.author.profile.picture.url }}"></div>
@@ -33,7 +32,7 @@
                 <div class="nav1" style="display:inline-block;font-weight: bold">
                     <a style="margin-left:5px;color: #868788; font-weight:bold; border-bottom: 1px solid #868788;" onclick="showHide('form-answ{{ comments.id }}')"
                     href="#form-answ{{ comments.id }}">
-                    ОТВЕТИТЬ
+                    ответить
                     </a>
                 </div>
                 {% else %}
@@ -41,7 +40,7 @@
                 <br>
                     {% if comments.replies.count > 0 %}
                     <button onclick="showHide('answers{{ comments.id }}')" type="button" name="button">
-                        <strong style="color: #587ea3">показать/скрыть ответы</strong>
+                        <strong style="color: #587ea3">показать ответы</strong>
                     </button>
                     {% endif %}
                 <hr>
@@ -81,8 +80,8 @@
                 </form>
             </div>
         {% endif %}
+        {% endfor %}
     </div>
-{% endfor %}
 <!-- -----------------------ОСТАВИТЬ КОММЕНТАРИЙ К СТАТЬЕ------------------------ -->
 {% if request.user.is_authenticated %}
     <form id="write_comment" class="comment-input-block" action="." method="post" style="margin-bottom:90px;">
