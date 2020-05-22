@@ -26,6 +26,11 @@ class PageHit(models.Model):
     url = models.SlugField(max_length=150, blank=True, unique=True)
     count = models.PositiveIntegerField(default=0)
 
+    class Meta:
+        ordering = ['-count']
+        verbose_name = _('Счетчик')
+        verbose_name_plural = _('счетчики')
+
 class Post(models.Model):
     class HowPublicate(models.TextChoices):
         LIST = 'L', _('Лента')

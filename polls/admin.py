@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Post, Tag, Comment
+from .models import Post, Tag, Comment, PageHit
 from django.urls import reverse
 from django.utils.html import format_html
 
 admin.site.register(Post)
 admin.site.register(Tag)
+admin.site.register(PageHit)
 
 def disable_commentstatus(modeladmin, request, queryset):
     queryset.update(is_enable=False)

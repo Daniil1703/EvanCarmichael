@@ -5,10 +5,10 @@ from .models import PageHit
 
 def counted(f):
     @wraps(f)
-    def decorator(request, *args, **kwargs):
+    def decorator(request, slug, *args, **kwargs):
         with transaction.atomic():
-            counter, created = PageHit.objects.get_or_create(url=request.path)
+            counter, created = PageHit.objects.get_or_create(url=slug)
             counter.count = F('count') + 1
             counter.save()
-        return f(request, *args, **kwargs)
+        return f(request, slug, *args, **kwargs)
     return decorator

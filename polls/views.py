@@ -1,5 +1,6 @@
+import datetime
 from .forms import CommentForm, TagForm, PostForm
-from .models import Post, Tag, Comment
+from .models import Post, Tag, Comment, PageHit
 from .decorators import counted
 from .utils import ObjectDetailMixin, ObjectUpdateMixin, ObjectCreateMixin,\
                    ObjectDeleteMixin
@@ -71,6 +72,9 @@ class PostDetail(View):
 
     @method_decorator(counted)
     def get(self, request, slug):
+        # dt_filter = datetime.datetime.now() - datetime.timedelta(days=7)
+        # post_of_week = Post.objects.all().filter(date_pub__gte=dt_filter).values_list('slug')
+
         post = get_object_or_404(Post, slug__iexact=slug)
         comment = Comment.objects.all().filter(is_enable=True,
                                                parent_comment_id=None,
