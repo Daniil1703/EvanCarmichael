@@ -1,5 +1,6 @@
 {% extends 'polls/base.html' %}
 {% load static %}
+{% load counter %}
 
 {% block title_block %}
     {{ post.title }}
@@ -39,6 +40,7 @@
         <div class="category_datePub">
             <p>
                 <img src="https://img.icons8.com/cotton/64/000000/time.png" width="25"/>{{ post.date_pub}}
+                <img style="margin-left: 20px; transform: translateY(-5px);" src="https://img.icons8.com/offices/30/000000/visible.png" width="30"/> {% page_hits %}
             </p>
         </div>
 
