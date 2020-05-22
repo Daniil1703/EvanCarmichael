@@ -1,7 +1,8 @@
-/* .ads-post-detail {
-    width: 300px;
+.ads-post-detail {
+    width: 400px;
     height: 800px;
-} */
+    margin-left: 30px; margin-top: 20px;
+}
 .post-detail-block {
     display: flex;
     max-width: 1200px;
@@ -92,6 +93,12 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .ads-post-detail {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 950px) {
     .post_structure {
         margin: 0px 20px 0 20px
@@ -142,4 +149,11 @@
     padding: 10px 10px;
     border-radius: 5px;margin-bottom: 20px;
     font-weight: bold;
+}
+
+/* стили для рекламы рекомендаци */
+
+.recomendation {
+    text-align: center;
+    color: rgb(128, 128, 128);
 }
