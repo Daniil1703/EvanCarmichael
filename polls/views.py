@@ -1,5 +1,6 @@
 from .forms import CommentForm, TagForm, PostForm
 from .models import Post, Tag, Comment
+from .decorators import counted
 from .utils import ObjectDetailMixin, ObjectUpdateMixin, ObjectCreateMixin,\
                    ObjectDeleteMixin
 
@@ -8,6 +9,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.views.generic import View
 from django.views.generic.edit import FormView
@@ -66,6 +68,8 @@ class TagChoice(View):
 class PostDetail(View):
     template_name = 'polls/post_detail.html'
     form_class = CommentForm()
+
+    @method_decorator(counted)
     def get(self, request, slug):
         post = get_object_or_404(Post, slug__iexact=slug)
         comment = Comment.objects.all().filter(is_enable=True,
