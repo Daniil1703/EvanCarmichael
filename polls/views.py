@@ -69,7 +69,8 @@ class PostDetail(View):
     def get(self, request, slug):
         post = get_object_or_404(Post, slug__iexact=slug)
         comment = Comment.objects.all().filter(is_enable=True,
-                                               parent_comment_id=None)
+                                               parent_comment_id=None,
+                                               article=post)
         context = {
             'post': post,
             'comment': comment,
@@ -80,10 +81,11 @@ class PostDetail(View):
 
     def post(self, request, slug):
         if request.method == 'POST':
-            comment = Comment.objects.all().filter(is_enable=True,
-                                                   parent_comment_id=None)
             form = CommentForm(request.POST)
             post = get_object_or_404(Post, slug__iexact=slug)
+            comment = Comment.objects.all().filter(is_enable=True,
+                                                   parent_comment_id=None,
+                                                   article=post)
             if form.is_valid():
                 perent = request.POST.get('comments_id')
                 comments_qs = None
