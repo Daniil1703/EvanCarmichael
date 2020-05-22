@@ -22,10 +22,11 @@ def gen_slug(s):
     return django_slugify(''.join(alphabet.get(w, w)\
                           for w in s.lower()) + '-' + str(int(time())))
 
-
+class PageHit(models.Model):
+    url = models.SlugField(max_length=150, blank=True, unique=True)
+    count = models.PositiveIntegerField(default=0)
 
 class Post(models.Model):
-
     class HowPublicate(models.TextChoices):
         LIST = 'L', _('Лента')
         BILBOARD = 'B', _('Слайдер')
