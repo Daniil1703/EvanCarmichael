@@ -27,11 +27,14 @@
     <div class="post_structure">
         <div class="title_post_detail">
             {% if request.user.is_staff %}
-            <form style="display: inline-block;" class="post-form-delete" action="{% url 'polls:post_delete_url' slug=post.slug %}" method="post">
+            <form style="display: inline-block;" class="post-form-delete" 
+                  action="{% url 'polls:post_delete_url' slug=post.slug %}" method="post">
                 {% csrf_token %}
                 <button type="submit">удалить</button>
             </form>
-            <a class="post-form-update" href="{% url 'polls:post_update_url' slug=post.slug %}">изменить</a>
+            <a class="post-form-update" href="{% url 'polls:post_update_url' slug=post.slug %}">
+                изменить
+            </a>
             {% endif %}
             <h1 class="title-h1">
                 {{ post.title }}
@@ -78,7 +81,17 @@
         </div>
     </div>
     <div class="ads-post-detail">
-        <h3 class="recomendation">Топ популярных новостей этой недели:</h3>    
+        <h3 class="recomendation">Свежие новости этой недели</h3>   
+            {% for posts in post_of_week %}
+            <div class="recom-articles">
+                <h4>
+                    <a href="{% url 'polls:post_detail_url' slug=posts.slug %}">
+                        <h5>{{ posts.title }}</h5>
+                    </a>
+                </h4>
+                <p>{{ posts.date_pub }}</p>
+            </div>
+            {% endfor %} 
     </div>
 </div>
 
