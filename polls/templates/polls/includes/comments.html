@@ -3,7 +3,7 @@
     {% if comment.count == 0 %}
         Будьте первым, кто оставит комментарий
     {% else %}
-        Комментариев: {{ comment.count }}
+        Комментариев: {{ comment.count }} <br>
         {% if user.is_authenticated %}
         <a href="#write_comment" style="font-family: 'Ubuntu', sans-serif;font-size:17px; border-bottom: 1px solid #ed9a22;"> оставить комментарий</a>
         {% endif %}
@@ -84,18 +84,22 @@
     </div>
 <!-- -----------------------ОСТАВИТЬ КОММЕНТАРИЙ К СТАТЬЕ------------------------ -->
 {% if request.user.is_authenticated %}
-    <form id="write_comment" class="comment-input-block" action="." method="post" style="margin-bottom:90px;">
+    <form id="write_comment" class="comment-input-block" action="." 
+          method="post">
         {% csrf_token %}
             {{ form_class.as_p }}
-            <button class="but_comment" type="submit" name="button">Оставить комментарий</button>
+            <button class="but_comment" type="submit" 
+                    name="button">Оставить комментарий</button>
     </form>
 {% else %}
     <div class="login-for-comments">
         <hr>
         <h5>
-            <a class="auth-for-comment" href="{% url 'users:login' %}">Войдите</a>
+            <a class="auth-for-comment" 
+               href="{% url 'users:login' %}">Войдите</a>
              в систему или
-             <a class="auth-for-comment" href="{% url 'users:user_create_url' %}">зарегистрируйтесь</a>,
+             <a class="auth-for-comment" 
+                href="{% url 'users:user_create_url' %}">зарегистрируйтесь</a>,
              чтобы оставить комментарии
          </h5>
     </div>
