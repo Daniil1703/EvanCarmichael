@@ -20,6 +20,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from users.models import CustomUser
 
+
 class TagDetail(ObjectDetailMixin, View):
     model = Tag
     template = 'polls/tag_detail.html'
