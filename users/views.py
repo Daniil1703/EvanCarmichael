@@ -1,3 +1,8 @@
+from .models import CustomUser
+from .forms import CustomUserCreationForm, LoginForm, CaptchaForm,\
+                   SecureLoginForm, PassChForm, CustomUserChangeForm,\
+                   ProfileUpdateFrom, LoginChangeForm, EmailChangeForm
+
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.http import HttpResponse
@@ -5,10 +10,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import AbstractBaseUser
-from .models import CustomUser
-from .forms import CustomUserCreationForm, LoginForm, CaptchaForm,\
-                   SecureLoginForm, PassChForm, CustomUserChangeForm,\
-                   ProfileUpdateFrom, LoginChangeForm, EmailChangeForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 
@@ -137,6 +139,7 @@ def message_change_password(request):
     messages.success(request, 'Вы успешно сменили пароль!')
     return redirect('polls:index')
 
+@login_required
 def logout_view(request):
     logout(request)
     messages.warning(request, 'Вы вышли из системы!')
