@@ -3,9 +3,9 @@
     {% if comment.count == 0 %}
         Будьте первым, кто оставит комментарий
     {% else %}
-        Комментариев: {{ comment.count }} <br>
+        Комментариев: {{ comment.count }}
         {% if user.is_authenticated %}
-        <a href="#write_comment" style="font-family: 'Ubuntu', sans-serif;font-size:17px; border-bottom: 1px solid #ed9a22;"> оставить комментарий</a>
+        <a href="#write_comment" style="font-family: 'Ubuntu', sans-serif;font-size:17px; border-bottom: 1px solid #ed9a22;"> <br>оставить комментарий</a>
         {% endif %}
         <br>
         {{ comment.replies.count}}
