@@ -75,7 +75,7 @@
                 <form class="comment-input-block" action="." method="post">
                     {% csrf_token %}
                     <input type="hidden" name="comments_id" value="{{ comments.id }}">
-                    {{ form_class.as_p }}
+                    {{ form_class.body }}
                     <button class="but_comment" type="submit" name="button">Ответить</button>
                 </form>
             </div>
@@ -84,13 +84,15 @@
     </div>
 <!-- -----------------------ОСТАВИТЬ КОММЕНТАРИЙ К СТАТЬЕ------------------------ -->
 {% if request.user.is_authenticated %}
-    <form id="write_comment" class="comment-input-block" action="." 
-          method="post">
-        {% csrf_token %}
-            {{ form_class.as_p }}
-            <button class="but_comment" type="submit" 
-                    name="button">Оставить комментарий</button>
-    </form>
+    <div class="comment-input-block-d">
+        <form id="write_comment" class="comment-input-block" action="." 
+              method="post">
+            {% csrf_token %}
+                {{ form_class.body }}
+                <button class="but_comment" type="submit" 
+                        name="button">Оставить комментарий</button>
+        </form>
+    </div>
 {% else %}
     <div class="login-for-comments">
         <hr>
