@@ -1,6 +1,6 @@
 .bilboard-main {
     max-width: 1110px;
-    margin: auto;
+    margin: 90px auto 0 auto;
 }
 /* Slideshow container */
 .slideshow {
@@ -100,7 +100,7 @@
 @media screen and (max-width: 1040px) {
     .bilboard-main {
         max-width: 1120px;
-        margin: 0 10px 0 10px;
+        margin: 90px 10px 0 10px;
     }
     .slideshow {
         margin: auto;
