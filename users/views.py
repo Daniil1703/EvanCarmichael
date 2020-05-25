@@ -76,14 +76,14 @@ class UserLogin(View):
                     user = authenticate(
                         request, email=cd['email'], password=cd['password']
                     )
-                if user is not None:
-                    if user.is_active:
-                        login(request,user)
-                        messages.success(request, 'Вы успешно вошли в систему!')
-                        del request.session['try_login']
-                        return redirect('polls:index')
-                    else:
-                        return HttpResponse('Disabled account')
+                    if user is not None:
+                        if user.is_active:
+                            login(request,user)
+                            messages.success(request, 'Вы успешно вошли в систему!')
+                            del request.session['try_login']
+                            return redirect('polls:index')
+                        else:
+                            return HttpResponse('Disabled account')
                 else:
                     messages.error(
                         request, 'Неверный ввод данных'
@@ -100,28 +100,24 @@ class UserLogin(View):
                     user = authenticate(
                         request, email=cd['email'], password=cd['password']
                     )
+                    if user is not None:
+                        if user.is_active:
+                            login(request,user)
+                            messages.success(
+                                request,
+                                'Вы успешно вошли в систему!'
+                            )
+                        del request.session['try_login']
+                        return redirect('polls:index')
+                    else:
+                        return HttpResponse('Disabled account')
                 else:
                     # если введеная капча не проходит проверку, то
                     # сбрасываем все введенные данные и вызываем ошибку
                     messages.error(
                         request, 'Неверный ввод данных'
                         )
-                    return redirect('users:login')
-                if user is not None:
-                    if user.is_active:
-                        login(request,user)
-                        messages.success(
-                            request,
-                            'Вы успешно вошли в систему!'
-                        )
-                        del request.session['try_login']
-                        return redirect('polls:index')
-                    else:
-                        return HttpResponse('Disabled account')
-                else:
-                    messages.error(
-                        request, 'Неверный ввод данных'
-                        )
+
                     # Если введенные данные пользователя не проходят проверку,
                     # то запоминаем попытку входа, и сбрасываем все введенные
                     # данные
