@@ -1,9 +1,9 @@
-@include 'navbar';
-@include 'tags_list';
-@include 'footer';
-@include 'favorites';
-@include 'search.css'
-@include 'style';
-@include '/auth/captcha';
-@include '/auth/errorList';
+@import 'navbar';
+@import 'tags_list';
+@import 'footer';
+@import 'favorites';
+@import 'search';
+@import 'style';
+@import 'auth/captcha';
+@import 'auth/errorList';
 
