@@ -9,3 +9,7 @@ myvenv
 
 migrations/
 !migrations/__init__.py
+
+/env
+/polls/static/css/.sass-cache
+*.css.map
