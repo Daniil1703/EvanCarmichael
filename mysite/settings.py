@@ -25,7 +25,7 @@ SECRET_KEY = 'jh#$urd&y7s!(%daz+6-b34#)5ohsdwlauv_44m6-vv16=&tub'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.103']
+ALLOWED_HOSTS = ['192.168.0.108']
 
 
 # Application definition
@@ -45,8 +45,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'favorites',
     'captcha',
-    'django_extensions',
-    'rest_framework'
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
