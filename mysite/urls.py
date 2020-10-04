@@ -10,7 +10,6 @@ urlpatterns = [
     path('',include('favorites.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('captcha/', include('captcha.urls')),
-    path('api-auth/', include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:
