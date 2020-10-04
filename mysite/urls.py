@@ -9,7 +9,11 @@ urlpatterns = [
     path('',include('users.urls')),
     path('',include('favorites.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+<<<<<<< HEAD
     path('captcha/', include('captcha.urls')),
+=======
+    path('captcha/', include('captcha.urls'))
+>>>>>>> 948f1b07c3bcb232fdcbb6457eed5036e1534f61
 ]
 
 if settings.DEBUG:
